@@ -83,28 +83,28 @@ Time frames are also key in the development cycle.  You have limited time to cod
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Hamburger menu | H | 1hr | 1.5hr | -hr|
-| Sign In Modal | H | 3hr | -hr | -hr|
-| Input Modal | H | H | -hr | -hr|
-| Table Template | H | 1.5hr| -hr | -hr |
-| Vue.js| M | 4hr | 2hr | -hr|
-| Average and totals| H | 3hrs| 2hr | -hr |
-| CSS (Bootstrap)| H | 3hr | -hr | -hr|
-| Navigation Bar (mobile-first) | L | 1hr | -hr | -hr|
-| D3.js Chart | L | 1hr | -hr | -hr|
-| Footer | L | 1hr | -hr | -hr|
-| Total | H | 15.5hrs| -hrs | -hrs |
+| Hamburger menu | H | 1 hr | hr | -hr|
+| Sign In Modal | H | 3 hrs | -hr | -hr|
+| Input Modal | H | H | 3 hrs | -hr|
+| Table Template | H | 3 hrs| -hr | -hr |
+| Vue.js| M | 3 hrs | hr | -hr|
+| Average and totals| H | 3 hrs| 2hr | -hr |
+| CSS (Bootstrap)| H | 3hrs | -hr | -hr|
+| Navigation Bar (mobile-first) | L | 1 hr | -hr | -hr|
+| D3.js Chart | L | 2 hrs | -hr | -hr|
+| Footer | L | 1 hr | -hr | -hr|
+| Total | H | 23 hrs| -hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| About, Contact, etc. for the Footer | L | 3hr | -hr | -hr|
-| More charts (line graph, bar chart, pie chart)| L | 1hr | -hr | -hr|
-| Filter by month, year, etc.| M | 4hr | -hr | -hr|
-| Sort by category | H | 4hr | -hr | -hr|
-| Choose specific to look at | H | 4hr | -hr | -hr|
-| Logo| L | 4hr | -hr | -hr|
-| Total | H | 20hrs| -hrs | -hrs |
+| About, Contact, etc. for the Footer | L | 2 hrs | -hr | -hr|
+| More charts (line graph, bar chart, pie chart)| L | 4 hrs | -hr | -hr|
+| Filter by month, year, etc.| M | 4 hrs | -hr | -hr|
+| Sort by category | H | 4 hrs | -hr | -hr|
+| Choose specific to look at | H | 4 hrs | -hr | -hr|
+| Logo| L | 2.5 hrs | -hr | -hr|
+| Total | M | 20.5 hrs| -hrs | -hrs |
 
 ## Additional Libraries
  Use this section to list all supporting libraries and thier role in the project. 
