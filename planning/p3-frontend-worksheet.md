@@ -49,18 +49,30 @@ Once complete tally up the time and determine how long the project will take to 
 
 ### MVP/PostMVP - 5min
 
-The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
+ 
 
 #### MVP (examples)
 
-- Pull data using google json api
-- Render data on page 
-- Allow user to choose favorites 
-- Save their choices in firebase
+- Hamburger menu
+- Sign In Modal
+- Input Modal 
+- Table Template
+- Vue.js
+- Average and totals 
+- CSS (Bootstrap)
+- Navigation Bar (mobile-first)
+- D3.js Chart
+- Footer
 
 #### PostMVP 
 
-- Anything else that is not MVP
+- About, Contact, etc. for the Footer
+- More charts (line graph, bar chart, pie chart)
+- Filter by month, year, etc.
+- Sort by category
+- Choose specific to look at
+- Logo
+
 
 ## Functional Components
 
@@ -71,25 +83,27 @@ Time frames are also key in the development cycle.  You have limited time to cod
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Hamburger | H | 1hr | 1.5hr | -hr|
-| Project Previews | H | 3hr | -hr | -hr|
-| Regular Nav | H | H | -hr | -hr|
-| Adding Form | H | 1.5hr| -hr | -hr |
-| Other sections and flex| M | 4hr | 2hr | -hr|
-| Working with API | H | 3hrs| 2hr | -hr |
-| Responsive | H | 3hr | -hr | -hr|
-| Social Media Icons | L | 1hr | -hr | -hr|
+| Hamburger menu | H | 1hr | 1.5hr | -hr|
+| Sign In Modal | H | 3hr | -hr | -hr|
+| Input Modal | H | H | -hr | -hr|
+| Table Template | H | 1.5hr| -hr | -hr |
+| Vue.js| M | 4hr | 2hr | -hr|
+| Average and totals| H | 3hrs| 2hr | -hr |
+| CSS (Bootstrap)| H | 3hr | -hr | -hr|
+| Navigation Bar (mobile-first) | L | 1hr | -hr | -hr|
+| D3.js Chart | L | 1hr | -hr | -hr|
+| Footer | L | 1hr | -hr | -hr|
 | Total | H | 15.5hrs| -hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Project Hover | L | 3hr | -hr | -hr|
-| Banner letters wiggle | L | 1hr | -hr | -hr|
-| Interactive Banner | M | 4hr | -hr | -hr|
-| Materialize | H | 4hr | -hr | -hr|
-| Bootstrap | H | 4hr | -hr | -hr|
-| Make own icon | L | 4hr | -hr | -hr|
+| About, Contact, etc. for the Footer | L | 3hr | -hr | -hr|
+| More charts (line graph, bar chart, pie chart)| L | 1hr | -hr | -hr|
+| Filter by month, year, etc.| M | 4hr | -hr | -hr|
+| Sort by category | H | 4hr | -hr | -hr|
+| Choose specific to look at | H | 4hr | -hr | -hr|
+| Logo| L | 4hr | -hr | -hr|
 | Total | H | 20hrs| -hrs | -hrs |
 
 ## Additional Libraries
