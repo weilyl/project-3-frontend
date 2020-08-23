@@ -1,5 +1,11 @@
 # Project Overview
 
+## Project
+
+Link to completed project [here]().
+Link to project frontend [here]().
+Link to project backend [here]().
+
 ## Project Schedule
 
 This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
@@ -19,10 +25,6 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality.
 
-## Google Sheet
-
-Include link to your google sheet here.  Here is the sample [Suresh had used in class](https://docs.google.com/spreadsheets/d/1V1M3Eq1NXH2PNmeTlVviRhEjX9kenq769Vo2P5mMtro/edit#gid=0) 
-
 ## Wireframes
 
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe. Do not include the actual image and have it render on the page.  
@@ -31,27 +33,17 @@ Upload images of wireframe to cloudinary and add the link here with a descriptio
 - [Tablet](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/nav-highlight.gif)
 - [Desktop](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/desktop.png)
 
-Wireframing Resources:
-
-- [Mockflow](https://mockflow.com/app/#Wireframe)
-- [Figma](https://www.figma.com/)
-
-
 ## Time/Priority Matrix 
 
-Include a full list of features that have been [prioritized](https://res.cloudinary.com/doaftkgbv/image/upload/v1583773146/ValueVSComplexity_u2inhx.png) based on the `Time and Priority` Matix.  This involves drawing a a square.  In the middle of the square, on the x axis draw a line.  The most left part of the line should start with 0hrs and the end of the line should include 2hrs.  This line will be used to estimate how much time any one feature will take to complete. 
+Here is a full list of features that have been [prioritized](https://res.cloudinary.com/dssciwyew/image/upload/v1598141818/Priority%20Matrix%20Frontend%20P3.png) based on the `Time and Priority` Matix. 
 
-Now draw a vertical line on the y axis.  The top of this line should have `High` and the bottom `Low`.  This line will be used to assign a priority to to each feature you wish to include in the project.  
 
-Now create a separate list starting with A and assign it one of the features.  Continue to assign each feature a letter.  Once complete add each letter to the matrix assigning based on what your feel it's prioirty is an how long it will take to implement. If any one feature takes longer than 2hrs to complete than break it down into smaller tasks and reassign them a new letter. 
+### MVP/PostMVP
 
-Once complete tally up the time and determine how long the project will take to complete. Now break those features into MVP and PostMVP so you can guarantee you will have a fully functioning project to demo. 
-
-### MVP/PostMVP - 5min
-
+The functionality will then be divided into two separate lists: MPV and PostMVP. The MVP list includes functionality that will be implemented upon project completion. 
  
 
-#### MVP (examples)
+#### MVP
 
 - Hamburger menu
 - Sign In Modal
@@ -122,10 +114,5 @@ function reverse(string) {
 ## Issues and Resolutions
  Use this section to list of all major issues encountered and their resolution.
 
-#### SAMPLE.....
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
 **RESOLUTION**: Missing comma after first object in sources {} object
-
-## Previous Project Worksheet
- - [Readme's](https://github.com/jkeohan/fewd-class-repo/tree/master/final-project-worksheet/project-worksheet-examples)
- - [Best of class readme](https://github.com/jkeohan/fewd-class-repo/blob/master/final-project-worksheet/project-worksheet-examples/portfolio-gracie.md)
