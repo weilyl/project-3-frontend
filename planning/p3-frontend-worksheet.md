@@ -2,9 +2,11 @@
 
 ## Project
 
-Link to completed project [here]().
-Link to project frontend [here](https://github.com/weilyl/project-3-frontend).
-Link to project backend [here](https://github.com/weilyl/project-3-backend).
+Link to completed project [here]()
+
+Link to project frontend [here](https://github.com/weilyl/project-3-frontend)
+
+Link to project backend [here](https://github.com/weilyl/project-3-backend)
 
 ## Project Schedule
 
@@ -29,7 +31,7 @@ Use this section to describe your final project and perhaps any links to relevan
 
 - [Mobile-Homepage](https://res.cloudinary.com/wjclavell/image/upload/v1598145428/Project%203/Finance_Tracker_mobile_ymbohj.png)
 - [Mobile-Login/Modal](https://res.cloudinary.com/wjclavell/image/upload/v1598156265/Project%203/Finance-Tracker_Login-Modal_mmfq5h.png)
-- [Desktop](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/desktop.png)
+- [Desktop](https://res.cloudinary.com/wjclavell/image/upload/v1598200003/Project%203/FinanceTracker_Desktop_h1dcx3.png)
 
 ## Time/Priority Matrix
 
