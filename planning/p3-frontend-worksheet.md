@@ -27,8 +27,8 @@ Use this section to describe your final project and perhaps any links to relevan
 
 ## Wireframes
 
-- [Mobile](https://res.cloudinary.com/wjclavell/image/upload/v1598145428/Project%203/Finance_Tracker_mobile_ymbohj.png)
-- [Tablet](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/nav-highlight.gif)
+- [Mobile-Homepage](https://res.cloudinary.com/wjclavell/image/upload/v1598145428/Project%203/Finance_Tracker_mobile_ymbohj.png)
+- [Mobile-Login/Modal](https://res.cloudinary.com/wjclavell/image/upload/v1598156265/Project%203/Finance-Tracker_Login-Modal_mmfq5h.png)
 - [Desktop](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/desktop.png)
 
 ## Time/Priority Matrix
