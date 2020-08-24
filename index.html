@@ -57,6 +57,13 @@
       </div>
       <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
 
+      <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
+      <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
+      <div id="login" v-if="loggedin">
+        <button v-on:click="handleLogout">Logout</button>
+      </div>
+      <!-- BUTTON TO LOG OUT USING VUE ENDS -->
+
     </header>
 
     <!-- SIGN UP MODAL FORM BEGINS -->
@@ -94,7 +101,7 @@
             <button class="btn btn-deep-orange">Sign up</button>
           </div>
 
-          <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL AND THEN OPENS THE LOG IN MODAL -->
+          <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL (data-target) AND THEN OPENS THE LOG IN MODAL (data-dismiss) -->
           <!--div class="text-center"-->
           <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
              data-target="#modalLoginForm" data-dismiss="modal">Already have an account? Log in here</a>
@@ -143,6 +150,8 @@
     <div id="app">
       <h1>{{hello}}</h1>
     </div>
+
+
     <!-- THE VUE INSTANCE ENDS -->
 
   </body>
