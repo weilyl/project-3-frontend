@@ -44,27 +44,47 @@
     <script src="./js/app.js" defer></script>
     <!-- -------------------------------------------- -->
   </head>
+
   <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Finance Tracker</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <header>
+      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style>
+        <ul class="navbar-nav mr-auto">
 
-      <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
-      <!-- DESKTOP to do: justify right of nav-bar in desktop -->
-      <!-- MOBILE to do: put in hamburger menu -->
-      <div class="text-center">
-        <a href="" class="btn btn-default btn-rounded mb-4"
-           data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
+          <li class="text-white nav-item active">
+            <a class="nav-link text-white" href="#">Home</a>
+          </li>
+
+          <li class="text-muted nav-item active">
+            <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
+            <!-- DESKTOP to do: justify right of nav-bar in desktop -->
+            <!-- MOBILE to do: put in hamburger menu -->
+            <!--div class="text-center"-->
+              <a href="" class="text-muted nav-link"
+                 data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
+            <!--/div-->
+            <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
+          </li>
+
+          <li class="text-muted nav-item active">
+            <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
+            <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
+            <div id="login" v-if="loggedin">
+              <a href="" v-on:click="handleLogout"
+                 class="nav-link text-white active">Logout</a>
+            </div>
+            <!-- BUTTON TO LOG OUT USING VUE ENDS -->
+          </li>
+
+        </ul>
       </div>
-      <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
-
-      <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
-      <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
-      <div id="login" v-if="loggedin">
-        <button v-on:click="handleLogout">Logout</button>
-      </div>
-      <!-- BUTTON TO LOG OUT USING VUE ENDS -->
-
-    </header>
+    </nav>
 
     <!-- SIGN UP MODAL FORM BEGINS -->
     <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -150,7 +170,6 @@
     <div id="app">
       <h1>{{hello}}</h1>
     </div>
-
 
     <!-- THE VUE INSTANCE ENDS -->
 
