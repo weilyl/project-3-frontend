@@ -6,14 +6,14 @@
     <title>Project 3</title>
 
     <!-- VUE SCRIPT TAG -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <!-- -------------------------------- -->
 
     <!-- JQUERY SCRIPT TAG -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
+      crossorigin="anonymous" defer
     ></script>
     <!-- -------------------------------------------- -->
 
@@ -22,17 +22,17 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
+      crossorigin="anonymous" defer
     />
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
+      crossorigin="anonymous" defer
     ></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
+      crossorigin="anonymous" defer
     ></script>
     <!-- -------------------------------------------- -->
 
@@ -45,10 +45,105 @@
     <!-- -------------------------------------------- -->
   </head>
   <body>
+
+    <header>
+
+      <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
+      <!-- DESKTOP to do: justify right of nav-bar in desktop -->
+      <!-- MOBILE to do: put in hamburger menu -->
+      <div class="text-center">
+        <a href="" class="btn btn-default btn-rounded mb-4"
+           data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
+      </div>
+      <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
+
+    </header>
+
+    <!-- SIGN UP MODAL FORM BEGINS -->
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="text" id="orangeForm-name" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+            </div>
+            <div class="md-form mb-5">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="orangeForm-email" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+            </div>
+
+            <div class="md-form mb-4">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="orangeForm-pass" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+            </div>
+
+          </div>
+
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-deep-orange">Sign up</button>
+          </div>
+
+          <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL AND THEN OPENS THE LOG IN MODAL -->
+          <!--div class="text-center"-->
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+             data-target="#modalLoginForm" data-dismiss="modal">Already have an account? Log in here</a>
+          <!--/div-->
+
+        </div>
+      </div>
+    </div>
+    <!-- SIGN UP MODAL ENDS -->
+
+    <!-- LOG IN MODAL BEGINS -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="defaultForm-email" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+            </div>
+
+            <div class="md-form mb-4">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="defaultForm-pass" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+            </div>
+
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-default">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- LOG IN MODAL ENDS -->
+
+
     <!-- THE VUE INSTANCE BEGINS -->
     <div id="app">
       <h1>{{hello}}</h1>
     </div>
     <!-- THE VUE INSTANCE ENDS -->
+
   </body>
 </html>
