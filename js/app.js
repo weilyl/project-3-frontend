@@ -54,25 +54,53 @@ function tabulate(data, columns) {
 tabulate(data, ['date', 'amount', 'category']); // 3 column table
 
 
+// var data_grouped = [
+//   { "category_name" : "food", "category_total" : 295},
+//   { "category_name" : "transportation", "category_total" : 102},
+// ]
+
+var data_grouped = 
+  { 
+  
+}
+
+
+for (let i=0; i<data.length; i++) {
+  // check if category exits in grouped array
+  // if it exists add amount
+  // if it doesn't exist create new object and set the total to that amount
+  
+  if (data_grouped[data[i].category])  {
+    // category total in data grouped += expense amount in data
+    data_grouped[data[i].category] += data[i].amount
+  } 
+  else {
+    // category name in data grouped object = expense amount
+    data_grouped[data[i].category] = data[i].amount
+  }
+}
+
+console.log(data_grouped)
+
 // pie chart
-var w = 300,                            //width
-    h = 300,                            //height
-    r = 100,                            //radius
+var w = 600,                            //width
+    h = 600,                            //height
+    r = 200,                            //radius
     color = d3.scale.category20c();     //builtin range of colors
     
     var vis = d3.select("body")
         .append("svg:svg")              //create the SVG element inside the <body>
-        .data([data])                   //associate our data with the document
+        .data([data_grouped])                   //associate our data with the document
         .attr("width", w)               //set the width and height of our visualization (these will be attributes of the <svg> tag
         .attr("height", h)
         .append("svg:g")                                        //make a group to hold our pie chart
         .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
 
-    var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
+    var arc = d3.svg.arc()                                      //this will create <path> elements for us using arc data
         .outerRadius(r);
 
-    var pie = d3.layout.pie()                       //this will create arc data for us given a list of values
-        .value(function(d) { return d.amount; });   //we must tell it out to access the value of each element in our data array
+    var pie = d3.layout.pie()                                 //this will create arc data for us given a list of values
+        .value(function(d) { return d.category_total; });     //we must tell it out to access the value of each element in our data array
 
     var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
         .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
@@ -81,18 +109,17 @@ var w = 300,                            //width
         .attr("class", "slice");            //allow us to style things in the slices (like text)
 
         arcs.append("svg:path")
-        .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
-        .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+        .attr("fill", function(d, i) { return color(i); } )         //set the color for each slice to be chosen from the color function defined above
+        .attr("d", arc);                                            //this creates the actual SVG path using the associated data (pie) with the arc drawing function
 
         arcs.append("svg:text")                                     //add a label to each slice
         .attr("transform", function(d) {                            //set the label's origin to the center of the arc
         //we have to make sure to set these before calling arc.centroid
         d.innerRadius = 0;
         d.outerRadius = r;
-        return "translate(" + arc.centroid(d) + ")";                //this gives us a pair of coordinates like [50, 50]
-            })
-            .attr("text-anchor", "middle")                          //center the text on it's origin
-            .text(function(d, i) { return data[i].category; });     //get the label from our original data array
+        return "translate(" + arc.centroid(d) + ")";})              //this gives us a pair of coordinates like [50, 50]
+        .attr("text-anchor", "middle")                              //center the text on it's origin
+        .text(function(d, i) { return data[i].category_name; });    //get the label from our original data array
         
 
 
