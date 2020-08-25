@@ -47,6 +47,7 @@
   </head>
 
   <body>
+  <div id="login">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Finance Tracker</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -76,7 +77,7 @@
           <li class="text-muted nav-item active">
             <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
             <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
-            <div class="login" v-if="loggedin">
+            <div v-if="loggedin">
               <a href="" v-on:click="handleLogout"
                  class="nav-link text-white active">Logout</a>
             </div>
@@ -106,8 +107,8 @@
             </div>
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="orangeForm-email" class="form-control validate" v-model="createUN">
-              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+              <input type="text" id="orangeForm-email" class="form-control validate" v-model="createUN">
+              <label data-error="wrong" data-success="right" for="orangeForm-email">Your username</label>
             </div>
 
             <div class="md-form mb-4">
@@ -164,6 +165,7 @@
         </div>
       </div>
     </div>
+  </div>
     <!-- LOG IN MODAL ENDS -->
 
 

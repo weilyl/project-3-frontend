@@ -7,8 +7,8 @@ const login = new Vue({
         createPW: "",
         loginUN: "",
         loginPW: "",
-        devURL: "https://squilliamp3.herokuapp.com/",
-        prodURL: "https://squilliamp3.herokuapp.com/",
+        devURL: "http://localhost:3000",
+        prodURL: null,
         user: null,
         token: null
     },
@@ -40,6 +40,7 @@ const login = new Vue({
         },
         handleSignup: function () {
             const URL = this.prodURL ? this.prodURL : this.devURL;
+            console.log(URL);
             const user = JSON.stringify({
                 username: this.createUN,
                 password: this.createPW,
@@ -51,7 +52,7 @@ const login = new Vue({
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(user)
+                body: user
             })
             .then((response) => response.json())
             .then((data) => {
