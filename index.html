@@ -9,31 +9,41 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <!-- -------------------------------- -->
 
+    <!-- Add Bootstrap and Bootstrap-Vue CSS to the <head> section -->
+    <link type="text/css" rel="stylesheet"
+          href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
+
+    <!-- Add Vue and BootstrapVue scripts just before the closing </body> tag -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js" defer></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js" defer></script>
+
     <!-- JQUERY SCRIPT TAG -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous" defer
-    ></script>
+<!--    <script-->
+<!--      src="https://code.jquery.com/jquery-3.5.1.js"-->
+<!--      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="-->
+<!--      crossorigin="anonymous" defer-->
+<!--    ></script>-->
     <!-- -------------------------------------------- -->
 
     <!-- BOOTSTAP TAGS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous" defer
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous" defer
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous" defer
-    ></script>
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+<!--      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"-->
+<!--      crossorigin="anonymous" defer-->
+<!--    />-->
+<!--    <script-->
+<!--      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"-->
+<!--      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"-->
+<!--      crossorigin="anonymous" defer-->
+<!--    ></script>-->
+<!--    <script-->
+<!--      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"-->
+<!--      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"-->
+<!--      crossorigin="anonymous" defer-->
+<!--    ></script>-->
     <!-- -------------------------------------------- -->
 
     <!-- YOUR CUSTOM CSS TAG -->
@@ -165,6 +175,35 @@
     </div>
     <!-- LOG IN MODAL ENDS -->
 
+
+    <!-- VUE SIGN UP MODAL BEGINS -->
+    <div>
+      <b-button v-b-modal.modalPopover>Sign Up/Register</b-button> <!--this goes in navbar (1) -->
+
+      <b-modal id="modalPopover" title="Modal with Popover" ok-only>
+        <p>
+          This
+          <b-button v-b-popover="'Popover inside a modal!'" title="Popover">Button</b-button>
+          triggers a popover on click.
+        </p>
+        <p>
+          This <a href="#" v-b-tooltip title="Tooltip in a modal!">Link</a> will show a tooltip on
+          hover.
+        </p>
+      </b-modal>
+    </div>
+
+    <!-- VUE SIGN UP MODAL ENDS -->
+
+
+
+    <!-- VUE LOG IN MODAL BEGINS -->
+
+    <!-- VUE LOG IN MODAL ENDS -->
+
+
+
+    <!-- TO DO: (1) Sign up modal in navbar (2) login button in Sign Up modal (3) logout button in navbar -->
 
     <!-- THE VUE INSTANCE BEGINS -->
     <div id="app">
