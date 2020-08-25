@@ -7,22 +7,22 @@ const login = new Vue({
         createPW: "",
         loginUN: "",
         loginPW: "",
-        devURL: "http://localhost:3000"
-        prodURL: "https://squilliamp3.herokuapp.com/",
+        devURL: "http://localhost:3000",
+        prodURL: "https://squilliamp3.netlify.app",
         user: null,
         token: null
     },
     methods: {
         handleLogin: function() {
             const URL = this.prodURL ? this.prodURL : this.devURL;
-            const user = {username: this.createUN, password: this.createPW};
+            const user = {username: this.loginUN, password: this.loginPW};
             console.log("hello");
             fetch(`${URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(user),
+                body: user
             })
                 .then((response) => response.json())
             .then((data) => {
@@ -40,6 +40,7 @@ const login = new Vue({
         },
         handleSignup: function () {
             const URL = this.prodURL ? this.prodURL : this.devURL;
+            console.log(URL);
             const user = JSON.stringify({
                 username: this.createUN,
                 password: this.createPW,
@@ -51,15 +52,17 @@ const login = new Vue({
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: user
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.error) {
-                        alert("sign up unsuccessful");
-                    } else {
-                        alert("signup successful")
-                    }
-                });
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if(data.error) {
+                    alert("sign up unsuccessful");
+                } else {
+                    alert("signup successful")
+                }
+            });
         }
     }
 })

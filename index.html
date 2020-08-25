@@ -42,6 +42,7 @@
 
     <!-- YOUR CUSTOM JS TAG -->
     <script src="./js/app.js" defer></script>
+    <script src="./js/login.js" defer></script>
     <!-- -------------------------------------------- -->
 
     <!-- YOUR CUSTOM D3.JS TAG -->
@@ -61,27 +62,48 @@
     <!-- -------------------------------------------- -->
 
   </head>
+
   <body>
+  <div id="login">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Finance Tracker</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <header>
+      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style>
+        <ul class="navbar-nav mr-auto">
 
-      <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
-      <!-- DESKTOP to do: justify right of nav-bar in desktop -->
-      <!-- MOBILE to do: put in hamburger menu -->
-      <div class="text-center">
-        <a href="" class="btn btn-default btn-rounded mb-4"
-           data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
+          <li class="text-white nav-item active">
+            <a class="nav-link text-white" href="#">Home</a>
+          </li>
+
+          <li class="text-muted nav-item active">
+            <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
+            <!-- DESKTOP to do: justify right of nav-bar in desktop -->
+            <!-- MOBILE to do: put in hamburger menu -->
+            <!--div class="text-center"-->
+              <a href="" class="text-muted nav-link"
+                 data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
+            <!--/div-->
+            <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
+          </li>
+
+          <li class="text-muted nav-item active">
+            <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
+            <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
+            <div v-if="loggedin">
+              <a href="" v-on:click="handleLogout"
+                 class="nav-link text-white active">Logout</a>
+            </div>
+            <!-- BUTTON TO LOG OUT USING VUE ENDS -->
+          </li>
+
+        </ul>
       </div>
-      <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
-
-      <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
-      <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
-      <div id="login" v-if="loggedin">
-        <button v-on:click="handleLogout">Logout</button>
-      </div>
-      <!-- BUTTON TO LOG OUT USING VUE ENDS -->
-
-    </header>
+    </nav>
 
     <!-- SIGN UP MODAL FORM BEGINS -->
     <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -102,26 +124,26 @@
             </div>
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="orangeForm-email" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+              <input type="text" id="orangeForm-email" class="form-control validate" v-model="createUN">
+              <label data-error="wrong" data-success="right" for="orangeForm-email">Your username</label>
             </div>
 
             <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="orangeForm-pass" class="form-control validate">
+              <input type="password" id="orangeForm-pass" class="form-control validate" v-model="createPW">
               <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
             </div>
 
           </div>
 
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-deep-orange">Sign up</button>
+            <button class="btn btn-deep-orange" v-on:click="handleSignup">Sign up</button>
           </div>
 
           <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL (data-target) AND THEN OPENS THE LOG IN MODAL (data-dismiss) -->
           <!--div class="text-center"-->
           <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
-             data-target="#modalLoginForm" data-dismiss="modal">Already have an account? Log in here</a>
+             data-target="#modalLoginForm" data-dismiss="modal" >Already have an account? Log in here</a>
           <!--/div-->
 
         </div>
@@ -133,7 +155,7 @@
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" v-if="!loggedin">
           <div class="modal-header text-center">
             <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -143,23 +165,24 @@
           <div class="modal-body mx-3">
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="defaultForm-email" class="form-control validate">
+              <input type="email" id="defaultForm-email" class="form-control validate" v-model="loginUN">
               <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
             </div>
 
             <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="defaultForm-pass" class="form-control validate">
+              <input type="password" id="defaultForm-pass" class="form-control validate" v-model="loginPW">
               <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
             </div>
 
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-default">Login</button>
+            <button class="btn btn-default" v-on:click="handleLogin">Login</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
     <!-- LOG IN MODAL ENDS -->
 
 
@@ -167,7 +190,6 @@
     <div id="app">
       <h1>{{hello}}</h1>
     </div>
-
 
     <!-- THE VUE INSTANCE ENDS -->
 
