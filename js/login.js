@@ -8,7 +8,7 @@ const login = new Vue({
         loginUN: "",
         loginPW: "",
         devURL: "http://localhost:3000",
-        prodURL: null,
+        prodURL: "https://squilliamp3.netlify.app",
         user: null,
         token: null
     },
