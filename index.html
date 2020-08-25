@@ -9,15 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <!-- -------------------------------- -->
 
-    <!-- Add Bootstrap and Bootstrap-Vue CSS to the <head> section -->
-    <link type="text/css" rel="stylesheet"
-          href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
-
-    <!-- Add Vue and BootstrapVue scripts just before the closing </body> tag -->
-    <script src="https://unpkg.com/vue/dist/vue.min.js" defer></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js" defer></script>
+    <!-- Load required Bootstrap and BootstrapVue CSS -->
+<!--    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />-->
+<!--    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />-->
+<!--    &lt;!&ndash; Load polyfills to support older browsers &ndash;&gt;-->
+<!--    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>-->
+<!--    &lt;!&ndash; Load Vue followed by BootstrapVue &ndash;&gt;-->
+<!--    <script src="https://unpkg.com/vue@latest/dist/vue.min.js" defer></script>-->
+<!--    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js" defer></script>-->
+<!--    &lt;!&ndash; Load the following for BootstrapVueIcons support &ndash;&gt;-->
+<!--    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js" defer></script>-->
 
     <!-- JQUERY SCRIPT TAG -->
 <!--    <script-->
@@ -52,128 +55,166 @@
 
     <!-- YOUR CUSTOM JS TAG -->
     <script src="./js/app.js" defer></script>
+    <script src="./js/login.js" defer></script>
     <!-- -------------------------------------------- -->
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Finance Tracker</a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="true" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style>
-        <ul class="navbar-nav mr-auto">
+  <!-- VUE NAVBAR BEGINS -->
+  <div>
+    <b-navbar toggleable="md" type="dark" variant="info">
+      <b-navbar-brand href="#">Finance Tracker</b-navbar-brand>
 
-          <li class="text-white nav-item active">
-            <a class="nav-link text-white" href="#">Home</a>
-          </li>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-          <li class="text-muted nav-item active">
-            <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
-            <!-- DESKTOP to do: justify right of nav-bar in desktop -->
-            <!-- MOBILE to do: put in hamburger menu -->
-            <!--div class="text-center"-->
-              <a href="" class="text-muted nav-link"
-                 data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>
-            <!--/div-->
-            <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
-          </li>
+      <b-collapse id="nav-collapse" is-nav>
 
-          <li class="text-muted nav-item active">
-            <!-- BUTTON TO LOG OUT USING VUE BEGINS -->
-            <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
-            <div id="login" v-if="loggedin">
-              <a href="" v-on:click="handleLogout"
-                 class="nav-link text-white active">Logout</a>
-            </div>
-            <!-- BUTTON TO LOG OUT USING VUE ENDS -->
-          </li>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-navbar-nav>
+            <b-nav-item href="#">Home</b-nav-item>
+            <b-nav-item href="#">Log In/Register</b-nav-item> <!-- TO DO: TURN INTO BUTTON THAT OPENS SIGNUP MODAL-->
+          </b-navbar-nav>
 
-        </ul>
-      </div>
-    </nav>
+          <!--Logout link/button -->
 
-    <!-- SIGN UP MODAL FORM BEGINS -->
-    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-user prefix grey-text"></i>
-              <input type="text" id="orangeForm-name" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-            </div>
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="orangeForm-email" class="form-control validate" v-model="createUN">
-              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-            </div>
+          <b-nav-item-dropdown right v-if="loggedin">
+            <!-- Using 'button-content' slot -->
+            <template v-slot:button-content>
+              <em>User</em>
+            </template>
+            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
+  <!-- VUE NAVBAR ENDS -->
 
-            <div class="md-form mb-4">
-              <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="orangeForm-pass" class="form-control validate" v-model="createPW">
-              <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-            </div>
+  <!-- commenting out Bootstrap jQuery stuff -->
+<!--  <div id="login">-->
+<!--    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">-->
+<!--      <a class="navbar-brand" href="#">Finance Tracker</a>-->
+<!--        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"-->
+<!--                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"-->
+<!--                aria-expanded="true" aria-label="Toggle navigation">-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
 
-          </div>
+<!--      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style>-->
+<!--        <ul class="navbar-nav mr-auto">-->
 
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-deep-orange">Sign up</button>
-          </div>
+<!--          <li class="text-white nav-item active">-->
+<!--            <a class="nav-link text-white" href="#">Home</a>-->
+<!--          </li>-->
 
-          <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL (data-target) AND THEN OPENS THE LOG IN MODAL (data-dismiss) -->
-          <!--div class="text-center"-->
-          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
-             data-target="#modalLoginForm" data-dismiss="modal">Already have an account? Log in here</a>
-          <!--/div-->
+<!--          <li class="text-muted nav-item active">-->
+<!--            &lt;!&ndash; BUTTON TO OPEN REGISTER MODAL BEGINS &ndash;&gt;-->
+<!--            &lt;!&ndash; DESKTOP to do: justify right of nav-bar in desktop &ndash;&gt;-->
+<!--            &lt;!&ndash; MOBILE to do: put in hamburger menu &ndash;&gt;-->
+<!--            &lt;!&ndash;div class="text-center"&ndash;&gt;-->
+<!--              <a href="" class="text-muted nav-link"-->
+<!--                 data-toggle="modal" data-target="#modalRegisterForm">Log In/Register Form</a>-->
+<!--            &lt;!&ndash;/div&ndash;&gt;-->
+<!--            &lt;!&ndash; BUTTON TO OPEN REGISTER MODAL ENDS &ndash;&gt;-->
+<!--          </li>-->
 
-        </div>
-      </div>
-    </div>
-    <!-- SIGN UP MODAL ENDS -->
+<!--          <li class="text-muted nav-item active">-->
+<!--            &lt;!&ndash; BUTTON TO LOG OUT USING VUE BEGINS &ndash;&gt;-->
+<!--            &lt;!&ndash; TO DO: How to make Logout button REPLACE Login button when signed in &ndash;&gt;-->
+<!--            <div v-if="loggedin">-->
+<!--              <a href="" v-on:click="handleLogout"-->
+<!--                 class="nav-link text-white active">Logout</a>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; BUTTON TO LOG OUT USING VUE ENDS &ndash;&gt;-->
+<!--          </li>-->
 
-    <!-- LOG IN MODAL BEGINS -->
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="defaultForm-email" class="form-control validate" v-model="loginUN">
-              <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-            </div>
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nav>-->
 
-            <div class="md-form mb-4">
-              <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="defaultForm-pass" class="form-control validate" v-model="loginPW">
-              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-            </div>
+<!--    &lt;!&ndash; SIGN UP MODAL FORM BEGINS &ndash;&gt;-->
+<!--    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--      <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--          <div class="modal-header text-center">-->
+<!--            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>-->
+<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="modal-body mx-3">-->
+<!--            <div class="md-form mb-5">-->
+<!--              <i class="fas fa-user prefix grey-text"></i>-->
+<!--              <input type="text" id="orangeForm-name" class="form-control validate">-->
+<!--              <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>-->
+<!--            </div>-->
+<!--            <div class="md-form mb-5">-->
+<!--              <i class="fas fa-envelope prefix grey-text"></i>-->
+<!--              <input type="email" id="orangeForm-email" class="form-control validate" v-model="createUN">-->
+<!--              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>-->
+<!--            </div>-->
 
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-default">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--            <div class="md-form mb-4">-->
+<!--              <i class="fas fa-lock prefix grey-text"></i>-->
+<!--              <input type="password" id="orangeForm-pass" class="form-control validate" v-model="createPW">-->
+<!--              <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>-->
+<!--            </div>-->
+
+<!--          </div>-->
+
+<!--          <div class="modal-footer d-flex justify-content-center">-->
+<!--            <button class="btn btn-deep-orange">Sign up</button>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; THIS BUTTON HAS CLOSES THE SIGN UP MODAL (data-target) AND THEN OPENS THE LOG IN MODAL (data-dismiss) &ndash;&gt;-->
+<!--          &lt;!&ndash;div class="text-center"&ndash;&gt;-->
+<!--          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"-->
+<!--             data-target="#modalLoginForm" data-dismiss="modal">Already have an account? Log in here</a>-->
+<!--          &lt;!&ndash;/div&ndash;&gt;-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; SIGN UP MODAL ENDS &ndash;&gt;-->
+
+<!--    &lt;!&ndash; LOG IN MODAL BEGINS &ndash;&gt;-->
+<!--    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--      <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--          <div class="modal-header text-center">-->
+<!--            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>-->
+<!--            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="modal-body mx-3">-->
+<!--            <div class="md-form mb-5">-->
+<!--              <i class="fas fa-envelope prefix grey-text"></i>-->
+<!--              <input type="email" id="defaultForm-email" class="form-control validate" v-model="loginUN">-->
+<!--              <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>-->
+<!--            </div>-->
+
+<!--            <div class="md-form mb-4">-->
+<!--              <i class="fas fa-lock prefix grey-text"></i>-->
+<!--              <input type="password" id="defaultForm-pass" class="form-control validate" v-model="loginPW">-->
+<!--              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="modal-footer d-flex justify-content-center">-->
+<!--            <button class="btn btn-default">Login</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
     <!-- LOG IN MODAL ENDS -->
+ <!-- end commenting of Bootstrap jQuery stuff -->
 
 
     <!-- VUE SIGN UP MODAL BEGINS -->
@@ -212,5 +253,8 @@
 
     <!-- THE VUE INSTANCE ENDS -->
 
+  <!-- Add Vue and Bootstrap-Vue JS just before the closing </body> tag -->
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
   </body>
 </html>

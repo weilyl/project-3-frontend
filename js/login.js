@@ -65,3 +65,4 @@ const login = new Vue({
         }
     }
 })
+console.log(login)
