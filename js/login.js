@@ -22,7 +22,7 @@ const login = new Vue({
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(user),
+                body: user
             })
                 .then((response) => response.json())
             .then((data) => {
