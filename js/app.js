@@ -53,12 +53,6 @@ function tabulate(data, columns) {
 // render the tables
 tabulate(data, ['date', 'amount', 'category']); // 3 column table
 
-
-// var data_grouped = [
-//   { "category_name" : "food", "category_total" : 295},
-//   { "category_name" : "transportation", "category_total" : 102},
-// ]
-
 var data_grouped = 
   { 
   
@@ -82,6 +76,10 @@ for (let i=0; i<data.length; i++) {
 
 console.log(data_grouped)
 
+let data_grouped_array = Object.entries(data_grouped).map((e) => ( { category:e[0], amount:e[1] } ));
+
+console.log(data_grouped_array)
+
 // pie chart
 var w = 600,                            //width
     h = 600,                            //height
@@ -90,17 +88,17 @@ var w = 600,                            //width
     
     var vis = d3.select("body")
         .append("svg:svg")              //create the SVG element inside the <body>
-        .data([data_grouped])                   //associate our data with the document
+        .data([data_grouped_array])     //associate our data with the document
         .attr("width", w)               //set the width and height of our visualization (these will be attributes of the <svg> tag
         .attr("height", h)
-        .append("svg:g")                                        //make a group to hold our pie chart
-        .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
+        .append("svg:g")                                      //make a group to hold our pie chart
+        .attr("transform", "translate(" + r + "," + r + ")")  //move the center of the pie chart from 0, 0 to radius, radius
 
-    var arc = d3.svg.arc()                                      //this will create <path> elements for us using arc data
+    var arc = d3.svg.arc()                                    //this will create <path> elements for us using arc data
         .outerRadius(r);
 
     var pie = d3.layout.pie()                                 //this will create arc data for us given a list of values
-        .value(function(d) { return d.category_total; });     //we must tell it out to access the value of each element in our data array
+        .value(function(d) { return d.amount; });             //we must tell it out to access the value of each element in grouped data array
 
     var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
         .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
@@ -117,13 +115,10 @@ var w = 600,                            //width
         //we have to make sure to set these before calling arc.centroid
         d.innerRadius = 0;
         d.outerRadius = r;
-        return "translate(" + arc.centroid(d) + ")";})              //this gives us a pair of coordinates like [50, 50]
-        .attr("text-anchor", "middle")                              //center the text on it's origin
-        .text(function(d, i) { return data[i].category_name; });    //get the label from our original data array
+        return "translate(" + arc.centroid(d) + ")";})                      //this gives us a pair of coordinates like [50, 50]
+        .attr("text-anchor", "middle")                                      //center the text on it's origin
+        .text(function(d, i) { return data_grouped_array[i].category; });   //get the label from grouped data array
         
-
-
-
 
 
 // line graph !!!!!!!!
