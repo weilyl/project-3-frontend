@@ -67,11 +67,9 @@ for (let i=0; i<data.length; i++) {
   }
 }
 
-console.log(data_grouped)
 
-let data_grouped_array = Object.entries(data_grouped).map((e) => ( { category:e[0], amount:e[1] } ));
+var data_grouped_array = Object.entries(data_grouped).map((e) => ( { category:e[0], amount:e[1] } ));
 
-console.log(data_grouped_array)
 
 // pie chart
 var w = 600,                            //width
