@@ -1,25 +1,28 @@
 const budget = new Vue({
     el: "#budget",
     data: {
-        budName: "",
-        budAmount: null,
+        budName: "", // grab input for create budget
+        budAmount: null, // grab input for create budget
         devURL: "http://localhost:3000",
         prodURL: "https://squilliamp3.herokuapp.com",
         URL: this.prodURL ? this.prodURL : this.devURL,
-        budget: null, //?
+        budget: null, // ?
         budget_id: null,
-        updatedBudName: "",
-        updatedBudAmount: null,
+        updatedBudName: "", // grab input for update budget
+        updatedBudAmount: null, // grab input for create budget
     },
     methods: {
         //Create a budget
         createBudget: function() {
-            //const URL = this.prodURL ? this.prodURL : this.devURL;
-            const newBudget = JSON.stringify({name: this.budName, amount: this.budAmount}); //v-model these values
+            // object from input
+            // HTML v-model="budName" & v-model="budAmount"
+            const newBudget = JSON.stringify({name: this.budName, amount: this.budAmount});
+            // fetch request from budgets#create route
             fetch(`${URL}/budgets`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    // only if logged in
                     Authorization: `bearer ${this.token}`,
                 },
                 body: newBudget
