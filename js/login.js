@@ -24,13 +24,22 @@ const login = new Vue({
                 },
                 body: user
             })
-                .then((response) => response.json())
+                .then((response) => {
+                    response.json();
+                    console.log(response, response.json)
+                })
             .then((data) => {
                 this.user = data.user;
                 this.token = data.token;
                 this.loggedin = true;
-                this.loginPW = ""
-                this.loginUN = ""
+                this.loginPW = "";
+                this.loginUN = "";
+                console.log(data, "boomshakalaka", data.user);
+                if(data.error) {
+                    alert("log in unsuccessful");
+                } else {
+                    alert("log in successful");
+                }
             });
         },
         handleLogout:function () {
