@@ -5,7 +5,6 @@ const budget = new Vue({
         budAmount: null, // grab input for create budget
         devURL: "http://localhost:3000",
         prodURL: "https://squilliamp3.herokuapp.com",
-        URL: this.prodURL ? this.prodURL : this.devURL,
         budget: null, // ?
         budget_id: null,
         updatedBudName: "", // grab input for update budget
@@ -17,26 +16,30 @@ const budget = new Vue({
         createBudget: function() {
             // object from input
             // HTML v-model="budName" & v-model="budAmount"
+            const URL = this.prodURL ? this.prodURL : this.devURL;
             const newBudget = JSON.stringify({name: this.budName, amount: this.budAmount});
             // fetch request from budgets#create route
+            console.log(newBudget)
             fetch(`${URL}/budgets`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     // only if logged in
-                    Authorization: `bearer ${this.token}`,
+                    Authorization: `bearer ${login.token}`,
                 },
                 body: newBudget
             })
                 .then((response) => {
+                    heading.loggedin = true;
                     this.budName = "";
                     this.budAmount = null;
-                    this.showOneBudget()
+                    this.showOneBudget();
+                    expense.showExpense();
                 });
         },
         //Show the budget
         showOneBudget: function() {
-            //const URL2 = this.prodURL ? this.prodURL : this.devURL;
+            const URL = this.prodURL ? this.prodURL : this.devURL;
             fetch(`${URL}/budgets/${this.budget_id}`, {
                 method: "get",
                 headers: {
@@ -130,7 +133,7 @@ const expense = new Vue({
         },
         //Show the budget
         showExpense: function() {
-            //const URL2 = this.prodURL ? this.prodURL : this.devURL;
+            const URL = this.prodURL ? this.prodURL : this.devURL;
             fetch(`${URL}/budgets/${budget.budget_id}/expenses`), {
                 method: "GET",
                 headers: {
@@ -190,7 +193,21 @@ const expense = new Vue({
             }) 
         }
     }
+
 })
+const getExpenses = function() {
+    const response = fetch( "https://squilliamp3.herokuapp.com/budgets/1/expenses", {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.VNqXj0cIwQRJ-dAKgfdWMF9Hmmh6d8wc7dYj1hdm09U`
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
+console.log(getExpenses())
+
 
 // post-MVP for budgets
 // make empty array of all budgets

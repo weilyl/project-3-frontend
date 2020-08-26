@@ -66,8 +66,16 @@ const login = new Vue({
             alert("sign up unsuccessful");
           } else {
             alert("signup successful");
+            this.loggedin = true;
           }
         });
     },
   },
 });
+
+const heading = new Vue ({
+  el: "#heading",
+  data: {
+    heading: `${login.loginUN}'s ${budget.budName} Budget`
+  }
+})

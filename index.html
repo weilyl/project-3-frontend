@@ -186,7 +186,100 @@
   </div>
     <!-- LOG IN MODAL ENDS -->
 
-  <div id="expense" v-if="loggedin">
+
+  <!-- BEGINNING OF BUDGET BUTTON AND MODAL -->
+
+  <div id="budget" v-if="loggedin"><!-- show Vue instance only when logged in -->
+    <br/>
+    <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
+    <button
+            type="button"
+            class="btn btn-primary add-expense"
+            data-toggle="modal"
+            data-target="#createBudgetModal"
+            style="background-color: #ffbb56; border: none"
+            data-dismiss="modal"
+    >
+      Create Budget
+    </button>
+    <!-- BUDGET MODAL OPEN BUTTON ENDS -->
+
+
+    <!-- BUDGET MODAL BEGINS -->
+    <div
+            class="modal fade"
+            id="createBudgetModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="budgetModalLabel"
+            aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #8a8ef2">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ebudgetModalLabel" style="color: white">
+              Create new Budget
+            </h5>
+            <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    style="color: white"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label
+                        for="budget_amount"
+                        class="col-form-label"
+                        style="color: #322a8b; font-weight: bold"
+                >Amount:</label
+                >
+                <input
+                        type="number"
+                        placeholder="$"
+                        class="form-control"
+                        id="budget_amount"
+                        v-model="budAmount"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                        for="budget_name"
+                        class="col-form-label"
+                        style="color: #322a8b; font-weight: bold"
+                >Budget Name:</label
+                >
+                <input type="text" class="form-control" id="budget_name" v-model="budName"/>
+              </div>
+              <div class="modal-footer">
+                <!-- ADD BUDGET BUTTON BEGINS -->
+                <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="create_budget"
+                        style="background-color: #80d1a1; border: none"
+                        data-dismiss="modal"
+                        v-on:click="createBudget"
+                >
+                  Create Budget
+                </button>
+                <!-- ADD BUDGET BUTTON ENDS -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- END OF BUDGET MODAL + BUTTON -->
+
+  <!-- BEGINNING OF EXPENSE MODAL & BUTTON -->
+  <div id="expense" v-if="loggedin"><!-- show Vue instance only when logged in -->
+    <br/>
   <!-- EXPENSE MODAL OPEN BUTTON BEGINS -->
     <button
             type="button"
@@ -291,99 +384,12 @@
       </div>
     </div>
     <!-- EXPENSE MODAL ENDS -->
-  </div>
-
-  <div id="budget" v-if="loggedin">
-
-    <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
-    <button
-            type="button"
-            class="btn btn-primary add-expense"
-            data-toggle="modal"
-            data-target="#createBudgetModal"
-            style="background-color: #ffbb56; border: none"
-            data-dismiss="modal"
-    >
-      Create Budget
-    </button>
-    <!-- BUDGET MODAL OPEN BUTTON ENDS -->
-
-    <!--Budget Modal begins-->
-
-    <div
-            class="modal fade"
-            id="createBudgetModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="budgetModalLabel"
-            aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #8a8ef2">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ebudgetModalLabel" style="color: white">
-              Create new Budget
-            </h5>
-            <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                    style="color: white"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label
-                        for="budget_amount"
-                        class="col-form-label"
-                        style="color: #322a8b; font-weight: bold"
-                >Amount:</label
-                >
-                <input
-                        type="number"
-                        placeholder="$"
-                        class="form-control"
-                        id="budget_amount"
-                        v-model="budAmount"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                        for="budget_name"
-                        class="col-form-label"
-                        style="color: #322a8b; font-weight: bold"
-                >Budget Name:</label
-                >
-                <input type="text" class="form-control" id="budget_name" v-model="budName"/>
-              </div>
-              <div class="modal-footer">
-                <!-- ADD BUDGET BUTTON BEGINS -->
-                <button
-                        type="button"
-                        class="btn btn-primary"
-                        id="create_budget"
-                        style="background-color: #80d1a1; border: none"
-                        data-dismiss="modal"
-                        v-on:click="createBudget"
-                >
-                  Create Budget
-                </button>
-                <!-- ADD BUDGET BUTTON ENDS -->
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </div><!-- END OF EXPENSE MODAL & BUTTON -->
 
 
-  <div id="heading">
-    <h1>{{heading}}</h1>
+
+  <div id="heading" v-bind:id="budget" v-if="loggedin">
+    <h3>{{heading}}</h3>
   </div>
 
 
