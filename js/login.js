@@ -13,27 +13,35 @@ const login = new Vue({
         token: null
     },
     methods: {
-        handleLogin: function() {
+        handleLogin: function(event) {
+            event.preventDefault()
             const URL = this.prodURL ? this.prodURL : this.devURL;
             const user = {username: this.loginUN, password: this.loginPW};
             console.log("hello");
             fetch(`${URL}/login`, {
-                method: "POST",
+                method: "post",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: user
+                body: JSON.stringify(user)
             })
                 .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 this.user = data.user;
                 this.token = data.token;
                 this.loggedin = true;
-                this.loginPW = ""
-                this.loginUN = ""
+                this.loginPW = "";
+                this.loginUN = "";
+                console.log(data, "boomshakalaka", data.user);
+                if(data.error) {
+                    alert("log in unsuccessful");
+                } else {
+                    alert("log in successful");
+                }
             });
         },
-        handleLogout:function () {
+        handleLogout: function () {
             this.loggedin = false;
             this.user = null;
             this.token = null;
