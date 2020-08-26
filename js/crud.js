@@ -10,6 +10,7 @@ const budget = new Vue({
         budget_id: null,
         updatedBudName: "", // grab input for update budget
         updatedBudAmount: null, // grab input for create budget
+        loggedin: false
     },
     methods: {
         //Create a budget
@@ -91,7 +92,6 @@ const budget = new Vue({
 const expense = new Vue({
     el: "#expense",
     data: {
-        loggedin: true,
         expCategory: "",
         expDate: "",
         expAmount: null,
@@ -102,7 +102,8 @@ const expense = new Vue({
         updatedExpCategory: "",
         updatedExpAmount: null,
         updatedExpDate: "",
-        expense_id: null
+        expense_id: null,
+        loggedin: false
         //token: null
     },
     methods: {
@@ -120,6 +121,7 @@ const expense = new Vue({
                 body: newExpense
             })
                 .then((response) => {
+                    console.log(this.expCategory, this.expAmount, this.expDate);
                     this.expCategory = "";
                     this.expAmount = null;
                     this.expDate = "";

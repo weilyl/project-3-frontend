@@ -186,8 +186,8 @@
   </div>
     <!-- LOG IN MODAL ENDS -->
 
-  <div id="expense">
-  <!-- EXPENSE BUTTON BEGINS -->
+  <div id="expense" v-if="loggedin">
+  <!-- EXPENSE MODAL OPEN BUTTON BEGINS -->
     <button
             type="button"
             class="btn btn-primary add-expense"
@@ -239,6 +239,7 @@
                         placeholder="$"
                         class="form-control"
                         id="expense_amount"
+                        v-model="expAmount"
                 />
               </div>
               <div class="form-group">
@@ -248,7 +249,7 @@
                         style="color: #322a8b; font-weight: bold"
                 >Date:</label
                 >
-                <input type="date" class="form-control" id="expense_date" />
+                <input type="date" class="form-control" id="expense_date" v-model="expDate"/>
               </div>
               <div class="form-group">
                 <label
@@ -257,7 +258,7 @@
                         style="color: #322a8b; font-weight: bold"
                 >Category:</label
                 >
-                <select id="expense_category">
+                <select id="expense_category" v-model="expCategory">
                   <option value="1">Housing</option>
                   <option value="2">Transportation</option>
                   <option value="3">Entertainment/Recreational</option>
@@ -271,15 +272,18 @@
                 </select>
               </div>
               <div class="modal-footer">
+                <!-- EXPENSE ADD BUTTON BEGINS -->
                 <button
                         type="button"
                         class="btn btn-primary"
                         id="add-expense"
                         style="background-color: #80d1a1; border: none"
                         data-dismiss="modal"
+                        v-on:click="createExpense"
                 >
                   Add Expense
                 </button>
+                <!-- EXPENSE ADD BUTTON ENDS -->
               </div>
             </form>
           </div>
@@ -289,9 +293,9 @@
     <!-- EXPENSE MODAL ENDS -->
   </div>
 
-  <div id="budget">
+  <div id="budget" v-if="loggedin">
 
-    <!-- BUDGET BUTTON BEGINS -->
+    <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
     <button
             type="button"
             class="btn btn-primary add-expense"
@@ -302,7 +306,7 @@
     >
       Create Budget
     </button>
-    <!-- BUDGET BUTTON ENDS -->
+    <!-- BUDGET MODAL OPEN BUTTON ENDS -->
 
     <!--Budget Modal begins-->
 
@@ -344,6 +348,7 @@
                         placeholder="$"
                         class="form-control"
                         id="budget_amount"
+                        v-model="budAmount"
                 />
               </div>
               <div class="form-group">
@@ -353,18 +358,21 @@
                         style="color: #322a8b; font-weight: bold"
                 >Budget Name:</label
                 >
-                <input type="text" class="form-control" id="budget_name" />
+                <input type="text" class="form-control" id="budget_name" v-model="budName"/>
               </div>
               <div class="modal-footer">
+                <!-- ADD BUDGET BUTTON BEGINS -->
                 <button
                         type="button"
                         class="btn btn-primary"
                         id="create_budget"
                         style="background-color: #80d1a1; border: none"
                         data-dismiss="modal"
+                        v-on:click="createBudget"
                 >
                   Create Budget
                 </button>
+                <!-- ADD BUDGET BUTTON ENDS -->
               </div>
             </form>
           </div>

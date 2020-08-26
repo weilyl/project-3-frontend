@@ -29,6 +29,8 @@ const login = new Vue({
           this.user = data.user;
           this.token = data.token;
           this.loggedin = true;
+          budget.loggedin = true;
+          expense.loggedin = true;
           this.loginPW = "";
           this.loginUN = "";
           if (data.error) {
