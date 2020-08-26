@@ -8,7 +8,7 @@ const login = new Vue({
         loginUN: "",
         loginPW: "",
         devURL: "http://localhost:3000",
-        prodURL: null,// "https://squilliamp3.herokuapp.com"
+        prodURL: "https://squilliamp3.herokuapp.com",
         user: null,
         token: null
     },
