@@ -4,22 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- BOOTSTAP TAGS -->
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous" defer
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/main-style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <!-- JQUERY SCRIPT TAG -->
+     <script
+     src="https://code.jquery.com/jquery-3.5.1.js"
+     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+     crossorigin="anonymous" defer
+   ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous" defer
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous" defer
+    ></script>
   </head>
   <body>
-    <form class="needs-validation container" novalidate>
+    <!-- <form class="needs-validation container" novalidate>
       <div class="form-row">
         <div class="col-md-4 mb-3 md-form">
           <label for="amount">Amount</label>
@@ -62,13 +72,15 @@
       >
         Submit
       </button>
-    </form>
-
+    </form> -->
     <button
-      class="add-expense"
-      data-toggle="modal"
-      data-target="#addExpenseModal"
-    >Add Expense</button>
+    type="button"
+    class="btn btn-primary add-expense"
+    data-toggle="modal"
+    data-target="#addExpenseModal"
+    style="background-color: #FFBB56;border: none;"
+    data-dismiss="modal"
+  >Add Expense</button>
 
     <div
       class="modal fade"
@@ -79,14 +91,15 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content"style="background-color: #8A8EF2;">
           <div class="modal-header">
-            <h5 class="modal-title" id="expenseModalLabel">Add new Expense</h5>
+            <h5 class="modal-title" id="expenseModalLabel"style="color: white;">Add new Expense</h5>
             <button
               type="button"
               class="close"
               data-dismiss="modal"
               aria-label="Close"
+              style="color:white"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -94,31 +107,38 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="expense_amount" class="col-form-label">Amount:</label>
-                <input type="number" class="form-control" id="expense_amount" />
+                <label for="expense_amount" class="col-form-label" style="color: #322A8B;font-weight: bold;">Amount:</label>
+                <input type="number" placeholder="$" class="form-control" id="expense_amount" />
               </div>
               <div class="form-group">
-                <label for="expense_date" class="col-form-label"
+                <label for="expense_date" class="col-form-label" style="color: #322A8B;font-weight: bold;"
                   >Date:</label
                 >
                 <input type="date" class="form-control" id="expense_date" />
               </div>
               <div class="form-group">
-                <label for="expense_category" class="col-form-label"
+                <label for="expense_category" class="col-form-label" style="color: #322A8B;font-weight: bold;"
                   >Category:</label
                 >
                 <select id="expense_category">
                   <option value="1">Housing</option>
                   <option value="2">Transportation</option>
-                  <option value="3">Entertainment</option>
+                  <option value="3">Entertainment/Recreational</option>
+                  <option value="4">Food</option>
+                  <option value="5">Utilities</option>
+                  <option value="6">Insurance</option>
+                  <option value="7">Medical</option>
+                  <option value="8">Investments</option>
+                  <option value="2">Personal</option>
+                  <option value="3">Other</option>
                 </select>
               </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-primary"
-              id="create-game"
-              style="background-color: #f26627"
+              id="add-expense"
+              style="background-color: #80D1A1;border: none;"
               data-dismiss="modal"
             >
               Add Expense
