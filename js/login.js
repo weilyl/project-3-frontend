@@ -66,3 +66,10 @@ const login = new Vue({
         }
     }
 })
+
+const welcome = new Vue ({
+    el: '#welcome',
+    data: {
+        greeting: `Hello ${login.loginUN}`
+    }
+})
