@@ -61,38 +61,7 @@ const budget = new Vue({
                 method: "DELETE"
             }) 
         }
-//         handleLogout:function () {
-//             this.loggedin = false;
-//             this.user = null;
-//             this.token = null;
-//         },
-//         handleSignup: function () {
-//             const URL = this.prodURL ? this.prodURL : this.devURL;
-//             console.log(URL);
-//             const user = JSON.stringify({
-//                 username: this.createUN,
-//                 password: this.createPW,
-//             });
-//             console.log(user);
-
-//             fetch(`${URL}/users`, {
-//                 method: "post",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                 },
-//                 body: user
-//             })
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 console.log(data)
-//                 if(data.error) {
-//                     alert("sign up unsuccessful");
-//                 } else {
-//                     alert("signup successful")
-//                 }
-//             });
-//         }
-   }
+    }
 })
 
 
