@@ -9,35 +9,51 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous" defer
+      crossorigin="anonymous"
+      defer
     />
-     <!-- JQUERY SCRIPT TAG -->
-     <script
-     src="https://code.jquery.com/jquery-3.5.1.js"
-     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-     crossorigin="anonymous" defer
-   ></script>
+    <!-- JQUERY SCRIPT TAG -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous" defer
+      crossorigin="anonymous"
+      defer
     ></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous" defer
+      crossorigin="anonymous"
+      defer
     ></script>
   </head>
   <body>
-  
     <button
-    type="button"
-    class="btn btn-primary add-expense"
-    data-toggle="modal"
-    data-target="#addExpenseModal"
-    style="background-color: #FFBB56;border: none;"
-    data-dismiss="modal"
-  >Add Expense</button>
+      type="button"
+      class="btn btn-primary add-expense"
+      data-toggle="modal"
+      data-target="#addExpenseModal"
+      style="background-color: #ffbb56; border: none"
+      data-dismiss="modal"
+    >
+      Add Expense
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-primary add-expense"
+      data-toggle="modal"
+      data-target="#createBudgetModal"
+      style="background-color: #ffbb56; border: none"
+      data-dismiss="modal"
+    >
+      Create Budget
+    </button>
 
     <div
       class="modal fade"
@@ -48,15 +64,17 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div class="modal-content"style="background-color: #8A8EF2;">
+        <div class="modal-content" style="background-color: #8a8ef2">
           <div class="modal-header">
-            <h5 class="modal-title" id="expenseModalLabel"style="color: white;">Add new Expense</h5>
+            <h5 class="modal-title" id="expenseModalLabel" style="color: white">
+              Add new Expense
+            </h5>
             <button
               type="button"
               class="close"
               data-dismiss="modal"
               aria-label="Close"
-              style="color:white"
+              style="color: white"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -64,17 +82,33 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="expense_amount" class="col-form-label" style="color: #322A8B;font-weight: bold;">Amount:</label>
-                <input type="number" placeholder="$" class="form-control" id="expense_amount" />
+                <label
+                  for="expense_amount"
+                  class="col-form-label"
+                  style="color: #322a8b; font-weight: bold"
+                  >Amount:</label
+                >
+                <input
+                  type="number"
+                  placeholder="$"
+                  class="form-control"
+                  id="expense_amount"
+                />
               </div>
               <div class="form-group">
-                <label for="expense_date" class="col-form-label" style="color: #322A8B;font-weight: bold;"
+                <label
+                  for="expense_date"
+                  class="col-form-label"
+                  style="color: #322a8b; font-weight: bold"
                   >Date:</label
                 >
                 <input type="date" class="form-control" id="expense_date" />
               </div>
               <div class="form-group">
-                <label for="expense_category" class="col-form-label" style="color: #322A8B;font-weight: bold;"
+                <label
+                  for="expense_category"
+                  class="col-form-label"
+                  style="color: #322a8b; font-weight: bold"
                   >Category:</label
                 >
                 <select id="expense_category">
@@ -90,30 +124,24 @@
                   <option value="3">Other</option>
                 </select>
               </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="add-expense"
-              style="background-color: #80D1A1;border: none;"
-              data-dismiss="modal"
-            >
-              Add Expense
-            </button>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="add-expense"
+                  style="background-color: #80d1a1; border: none"
+                  data-dismiss="modal"
+                >
+                  Add Expense
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
 
     <!--Budget Modal-->
-    <button
-    type="button"
-    class="btn btn-primary add-expense"
-    data-toggle="modal"
-    data-target="#createBudgetModal"
-    style="background-color: #FFBB56;border: none;"
-    data-dismiss="modal"
-  >Create Budget</button>
 
     <div
       class="modal fade"
@@ -124,15 +152,17 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div class="modal-content"style="background-color: #8A8EF2;">
+        <div class="modal-content" style="background-color: #8a8ef2">
           <div class="modal-header">
-            <h5 class="modal-title" id="budgetModalLabel"style="color: white;">Create new Budget</h5>
+            <h5 class="modal-title" id="ebudgetModalLabel" style="color: white">
+              Create new Budget
+            </h5>
             <button
               type="button"
               class="close"
               data-dismiss="modal"
               aria-label="Close"
-              style="color:white"
+              style="color: white"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -140,25 +170,40 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="budget_amount" class="col-form-label" style="color: #322A8B;font-weight: bold;">Amount:</label>
-                <input type="number" placeholder="$" class="form-control" id="budget_amount" />
+                <label
+                  for="budget_amount"
+                  class="col-form-label"
+                  style="color: #322a8b; font-weight: bold"
+                  >Amount:</label
+                >
+                <input
+                  type="number"
+                  placeholder="$"
+                  class="form-control"
+                  id="budget_amount"
+                />
               </div>
               <div class="form-group">
-                <label for="budget_name" class="col-form-label" style="color: #322A8B;font-weight: bold;"
+                <label
+                  for="budget_name"
+                  class="col-form-label"
+                  style="color: #322a8b; font-weight: bold"
                   >Budget Name:</label
                 >
                 <input type="text" class="form-control" id="budget_name" />
               </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="create-budget"
-              style="background-color: #80D1A1;border: none;"
-              data-dismiss="modal"
-            >
-              Create Budget
-            </button>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="create_budget"
+                  style="background-color: #80d1a1; border: none"
+                  data-dismiss="modal"
+                >
+                  Create Budget
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
