@@ -17,7 +17,6 @@ const login = new Vue({
             event.preventDefault()
             const URL = this.prodURL ? this.prodURL : this.devURL;
             const user = {username: this.loginUN, password: this.loginPW};
-            console.log("hello");
             fetch(`${URL}/login`, {
                 method: "post",
                 headers: {
@@ -27,13 +26,11 @@ const login = new Vue({
             })
                 .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 this.user = data.user;
                 this.token = data.token;
                 this.loggedin = true;
                 this.loginPW = "";
                 this.loginUN = "";
-                console.log(data, "boomshakalaka", data.user);
                 if(data.error) {
                     alert("log in unsuccessful");
                 } else {
@@ -46,6 +43,7 @@ const login = new Vue({
             this.user = null;
             this.token = null;
         },
+<<<<<<< HEAD
         body: JSON.stringify(user),
       })
         .then((response) => response.json())
@@ -69,6 +67,14 @@ const login = new Vue({
         password: this.createPW,
       });
       console.log(user);
+=======
+        handleSignup: function () {
+            const URL = this.prodURL ? this.prodURL : this.devURL;
+            const user = JSON.stringify({
+                username: this.createUN,
+                password: this.createPW,
+            });
+>>>>>>> 414cec38308606194bed26a9ec82b80f546d2cc5
 
             fetch(`${URL}/users`, {
                 method: "post",
