@@ -1,4 +1,5 @@
 const login = new Vue({
+<<<<<<< HEAD
   el: "#login",
   data: {
     loggedin: false,
@@ -21,6 +22,54 @@ const login = new Vue({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+=======
+    el: "#login",
+    data: {
+        loggedin: false,
+        JWT: "",
+        createUN: "",
+        createPW: "",
+        loginUN: "",
+        loginPW: "",
+        devURL: "http://localhost:3000",
+        prodURL: "https://squilliamp3.herokuapp.com",
+        user: null,
+        token: null
+    },
+    methods: {
+        handleLogin: function(event) {
+            event.preventDefault()
+            const URL = this.prodURL ? this.prodURL : this.devURL;
+            const user = {username: this.loginUN, password: this.loginPW};
+            console.log("hello");
+            fetch(`${URL}/login`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            })
+                .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                this.user = data.user;
+                this.token = data.token;
+                this.loggedin = true;
+                this.loginPW = "";
+                this.loginUN = "";
+                console.log(data, "boomshakalaka", data.user);
+                if(data.error) {
+                    alert("log in unsuccessful");
+                } else {
+                    alert("log in successful");
+                }
+            });
+        },
+        handleLogout: function () {
+            this.loggedin = false;
+            this.user = null;
+            this.token = null;
+>>>>>>> 745573f0b4c53b73249e4ce3882e2b11f09b0799
         },
         body: JSON.stringify(user),
       })
@@ -46,6 +95,7 @@ const login = new Vue({
       });
       console.log(user);
 
+<<<<<<< HEAD
       fetch(`${URL}/users`, {
         method: "post",
         headers: {
@@ -65,3 +115,24 @@ const login = new Vue({
     },
   },
 });
+=======
+            fetch(`${URL}/users`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: user
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if(data.error) {
+                    alert("sign up unsuccessful");
+                } else {
+                    alert("signup successful")
+                }
+            });
+        }
+    }
+})
+>>>>>>> 745573f0b4c53b73249e4ce3882e2b11f09b0799
