@@ -177,7 +177,7 @@
 
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-default" v-on:click="handleLogin">Login</button>
+            <button class="btn btn-default" type=submit v-on:click.prevent="handleLogin">Login</button>
           </div>
         </div>
       </div>
@@ -189,10 +189,6 @@
     <!-- THE VUE INSTANCE BEGINS -->
 
     <!-- THE VUE INSTANCE ENDS -->
-
-  <div id="welcome" v-if="loggedin">
-    <h1>{{greeting}}</h1>
-  </div>
 
 
   </body>

@@ -8,27 +8,26 @@ const login = new Vue({
         loginUN: "",
         loginPW: "",
         devURL: "http://localhost:3000",
-        prodURL: "https://squilliamp3.herokuapp.com",
+        prodURL: null,// "https://squilliamp3.herokuapp.com"
         user: null,
         token: null
     },
     methods: {
-        handleLogin: function() {
+        handleLogin: function(event) {
+            event.preventDefault()
             const URL = this.prodURL ? this.prodURL : this.devURL;
             const user = {username: this.loginUN, password: this.loginPW};
             console.log("hello");
             fetch(`${URL}/login`, {
-                method: "POST",
+                method: "post",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: user
+                body: JSON.stringify(user)
             })
-                .then((response) => {
-                    response.json();
-                    console.log(response, response.json)
-                })
+                .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 this.user = data.user;
                 this.token = data.token;
                 this.loggedin = true;
@@ -42,7 +41,7 @@ const login = new Vue({
                 }
             });
         },
-        handleLogout:function () {
+        handleLogout: function () {
             this.loggedin = false;
             this.user = null;
             this.token = null;
@@ -73,12 +72,5 @@ const login = new Vue({
                 }
             });
         }
-    }
-})
-
-const welcome = new Vue ({
-    el: '#welcome',
-    data: {
-        greeting: `Hello ${login.loginUN}`
     }
 })
