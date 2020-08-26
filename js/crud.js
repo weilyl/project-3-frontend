@@ -96,57 +96,92 @@ const expense = new Vue({
         prodURL: "https://squilliamp3.netlify.app",
         URL: this.prodURL ? this.prodURL : this.devURL,
         expense: null,
+        updatedExpCategory: "",
+        updatedExpAmount: null,
+        updatedExpDate: "",
+        expense_id: null
         //token: null
     },
     methods: {
-        //Create a budget
-        expenseCreate: function() {
+        //Add/create an expense
+        createExpense: function() {
             //const URL = this.prodURL ? this.prodURL : this.devURL;
-            const newExpense = {category: this.expCategory, date: this.expDate, amount: this.expAmount};
+            const newExpense = JSON.stringify({category: this.expCategory, date: this.expDate, amount: this.expAmount});
             console.log("hello");
-            fetch(`${URL}/budgets/:budget_id/expenses`, {
+            fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `bearer ${login.token}`
                 },
                 body: newExpense
             })
-                .then((response) => response.json())
-            .then((data) => {
-                this.expense = data.expense;
-                // this.token = data.token;
-                // this.loggedin = true;
-                // this.loginPW = ""
-                // this.loginUN = ""
+                .then((response) => {
+                    this.expCategory = "";
+                    this.expAmount = null;
+                    this.expDate = "";
+                    this.showExpense();
             });
         },
         //Show the budget
         showExpense: function() {
             //const URL2 = this.prodURL ? this.prodURL : this.devURL;
-            fetch(`${URL}/budgets/:budget_id/expenses`) 
+            fetch(`${URL}/budgets/${budget.budget_id}/expenses`), {
+                method: "GET",
+                headers: {
+                    Authorization: `bearer ${login.token}`
+                }
+            } 
             .then((response) => response.json())
             .then((data) => {
-                this.expense = data.expense;
+                this.expense = data;
+                console.log(this.expense)
+            })
+        },
+        //Show Expense by Category
+        showExpenseByCategory: function() {
+            //const URL2 = this.prodURL ? this.prodURL : this.devURL;
+            fetch(`${URL}/budgets/${budget.budget_id}/expenses/${category}`), {
+                method: "GET",
+                headers: {
+                    Authorization: `bearer ${login.token}`
+                }
+            } 
+            .then((response) => response.json())
+            .then((data) => {
+                this.expense = data;
                 console.log(this.expense)
             })
         },
         //Update/edit the budget
-        updateExpense: function() {
+        updateExpense: function(event) {
             const editExpense = {
-                category: this.expCategory, date: this.expDate, amount: this.expAmount
+                category: this.updatedExpCategory, date: this.updatedExpDate, amount: this.updatedExpAmount
             }
-            fetch(`${URL}/budgets/:budget_id/expenses/:expense_id`, {
+            const expense_id = event.target.id
+            console.log(editExpense)
+            fetch(`${URL}/budgets/${budget.budget_id}/expenses/${this.expense_id}`, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `bearer ${login.token}`
                 },
-                body: editExpense
+                body: JSON.stringify(editExpense)
+            })
+            .then(response => response.JSON())
+            .then((data) => {
+                this.showExpense();
+                console.log(data)
             })
     },
         //Delete the budget
         deleteExpense: function() {
-            fetch(`${URL}/budgets/:budgets_id/expenses/:expense_id`, {
-                method: "DELETE"
+            fetch(`${URL}/budgets/${budget.budget_id}/expenses/${this.expense_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: bearer `${login.token}`
+                }
             }) 
         }
     }
