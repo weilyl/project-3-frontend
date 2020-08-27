@@ -146,7 +146,7 @@ const expense = new Vue({
         .then((data) => {
           console.log("here's the fetch data ", data);
           tabulate(data, ["date", "amount", "category"]);
-          pieChart(data);
+          pieChart(data.data);
         });
     },
     //Show Expense by Category

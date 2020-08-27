@@ -128,9 +128,9 @@ let data_grouped_array = Object.entries(data_grouped).map((e) => ({
 
 //pie chart size
 let w = 600, //width
-  h = 600, //height
-  r = 200, //radius
-  color = d3.scale.category20c(); //builtin range of colors
+    h = 600, //height
+    r = 200, //radius
+    color = d3.scale.category20c(); //builtin range of colors
 
 let vis = d3
   .select("body")
@@ -179,7 +179,13 @@ arcs
     return data_grouped_array[i].category;
   }); //get the label from grouped data array
 
-  return pie;
+
+  console.log(vis);
+  return vis;
+
+  // console.log(pie);
+  // return pie;
+
 };
 
 // pieChart(data);
