@@ -144,8 +144,13 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          tabulate(data, ["date", "amount", "category", "update", "delete"]);
+          tabulate(data.data, [
+            "date",
+            "amount",
+            "category",
+            "update",
+            "delete",
+          ]);
         });
     },
     //Show Expense by Category
