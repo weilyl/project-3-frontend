@@ -1,13 +1,13 @@
 // table
 let data = [
   { "id" : 1, "date" : '2013-01-01', "amount" : 45, "category" : "food" },
-  { "id" : 2,"date" : '2013-02-01', "amount" : 50, "category" : "food" },
-  { "id" : 3,"date" : '2013-03-01', "amount" : 55, "category" : "food" },
-  { "id" : 4,"date" : '2013-04-01', "amount" : 50, "category" : "food" },
-  { "id" : 5,"date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
-  { "id" : 6,"date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
-  { "id" : 7,"date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
-  { "id" : 8,"date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
+  { "id" : 2, "date" : '2013-02-01', "amount" : 50, "category" : "food" },
+  { "id" : 3, "date" : '2013-03-01', "amount" : 55, "category" : "food" },
+  { "id" : 4, "date" : '2013-04-01', "amount" : 50, "category" : "food" },
+  { "id" : 5, "date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
+  { "id" : 6, "date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
+  { "id" : 7, "date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
+  { "id" : 8, "date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
 ];
 
 function tabulate(data, columns) {
@@ -42,19 +42,19 @@ function tabulate(data, columns) {
       .text(function (d) { return d.value; });
       
   // update button
-  thead.append("th").text('update');
+  thead.append("th").text('');
   rows.selectAll("td.update")  
   // use a class so you don't re-select the existing <td> elements
           .data(function(d) {return [d];})
           .enter()
             .append("td")
-            .attr("id", `${d.id}`)
+            .attr("id", `${function(d) {return d.id;}}`)
             .append("button")
             .text(function(d){return "update"})
             .on("click", function(d){ console.log(d); alert("hello")});
 
   // delete button
-  thead.append("th").text('delete');
+  thead.append("th").text('');
   rows.selectAll("td.delete")  
   // use a class so you don't re-select the existing <td> elements
           .data(function(d) {return [d];})
@@ -69,7 +69,7 @@ function tabulate(data, columns) {
 }
 
 // render the tables
-tabulate(data, ["date", "amount", "category", "update", "delete"]); // 3 column table
+tabulate(data, ["date", "amount", "category"]); // 3 column table
 
 let data_grouped = {};
 
@@ -89,11 +89,6 @@ for (let i = 0; i < data.length; i++) {
 }
 
 let data_grouped_array = Object.entries(data_grouped).map((e) => ({
-  category: e[0],
-  amount: e[1],
-}));
-
-const data_grouped_array = Object.entries(data_grouped).map((e) => ({
   category: e[0],
   amount: e[1],
 }));
