@@ -42,17 +42,19 @@ function tabulate(data, columns) {
       .text(function (d) { return d.value; });
       
   // update button
-    let thisElement = {};
+    let thisElement = null;
+
   thead.append("th").text('');
-  rows.selectAll("td.update")  
+  rows.selectAll("td.update")
   // use a class so you don't re-select the existing <td> elements
-          .data(function(d) {thisElement = d; console.log(thisElement); return [d];})
+          .data(function(d) {return [d];})
           .enter()
             .append("td")
-            .attr("id", `${thisElement.id}`)
+            .attr("id", function(d){return d.id})
             .append("button")
             .text(function(d){return "update"})
-            .on("click", function(d){ console.log(d); alert("hello")});
+            .on("click", function(d){console.log(d.id); alert("hello")});
+
 
   // delete button
   thead.append("th").text('');
@@ -61,10 +63,11 @@ function tabulate(data, columns) {
           .data(function(d) {return [d];})
           .enter()
             .append("td")
-            .attr("id", `${data.id}`)
+            .attr("id", function(d){return d.id})
             .append("button")
             .text(function(d){return "delete"})
-            .on("click", function(d){ console.log(d); alert("hello")});
+            .on("click", function(d){ console.log(d.id); alert("hello")})
+            .on('click', function(){expense.deleteExpense()});
 
   return table;
 }

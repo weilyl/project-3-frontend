@@ -150,8 +150,8 @@ const expense = new Vue({
     },
     //Show Expense by Category
     showExpenseByCategory: function () {
-      //const URL2 = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/2/expenses/${category}`, {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      fetch(`${URL}/budgets/2/expenses/category/${this.category}`, {
         method: "GET",
         headers: {
           Authorization: `bearer ${login.token}`,
@@ -165,6 +165,7 @@ const expense = new Vue({
     },
     //Update/edit the budget
     updateExpense: function (event) {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
       const editExpense = {
         category: this.updatedExpCategory,
         date: this.updatedExpDate,
@@ -188,13 +189,16 @@ const expense = new Vue({
     },
     //Delete the budget
     deleteExpense: function () {
-      fetch(`${URL}/budgets/2/expenses/${this.expense_id}`, {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      const expense_id = event.target.id;
+      fetch(`${URL}/budgets/2/expenses/18`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
           Authorization: `bearer ${login.token}`,
         },
-      });
+      })
+          .then(response => console.log("hi"))
     },
   },
 });
