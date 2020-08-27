@@ -32,7 +32,7 @@ const budget = new Vue({
         },
         body: newBudget,
       }).then((response) => {
-        heading.loggedin = true;
+        heading.heading = true;
         this.budName = "";
         this.budAmount = null;
         this.showOneBudget();
@@ -144,14 +144,14 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          tabulate(data, ["date", "amount", "category", "update", "delete"]);
+          tabulate(data.data, ["date", "amount", "category"]);
+          pieMaker(data.data);
         });
     },
     //Show Expense by Category
     showExpenseByCategory: function () {
-      //const URL2 = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/1/expenses/${category}`, {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      fetch(`${URL}/budgets/1/expenses/category/${this.category}`, {
         method: "GET",
         headers: {
           Authorization: `bearer ${login.token}`,
@@ -164,37 +164,48 @@ const expense = new Vue({
         });
     },
     //Update/edit the budget
-    updateExpense: function (event) {
-      const editExpense = {
+    updateExpense: function () {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+
+      const editExpense = JSON.stringify({
         category: this.updatedExpCategory,
         date: this.updatedExpDate,
         amount: this.updatedExpAmount,
-      };
-      const expense_id = event.target.id;
-      console.log(editExpense);
-      fetch(`${URL}/budgets/1/expenses/${this.expense_id}`, {
+      });
+      console.log(
+        this.updatedExpAmount,
+        this.updatedExpCategory,
+        this.updatedExpDate
+      );
+      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `bearer ${login.token}`,
         },
-        body: JSON.stringify(editExpense),
+        body: editExpense,
       })
-        .then((response) => response.JSON())
+        .then((response) => response.json())
         .then((data) => {
+          console.log(expense._data.updatedExpCategory);
           this.showExpense();
-          console.log(data);
+          console.log("ALL DONE!");
         });
     },
     //Delete the budget
     deleteExpense: function () {
-      fetch(`${URL}/budgets/1/expenses/${this.expense_id}`, {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
           Authorization: `bearer ${login.token}`,
         },
-      });
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.showExpense();
+        });
     },
   },
 });
@@ -211,7 +222,7 @@ const getExpenses = function () {
     .then((response) => response.json())
     .then((data) => console.log(data));
 };
-getExpenses();
+// getExpenses();
 
 // post-MVP for budgets
 // make empty array of all budgets

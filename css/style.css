@@ -12,12 +12,12 @@
 /* -------------------------------------------------------- */
 
 :root {
-  --main-font: serif;
+  --main-font: sans-serif;
   --title-font: sans-serif;
 
-  --main-color: white;
-  --secondard-color: red;
-  --accent: blue;
+  --main-color: #ffbb56;
+  --secondard-color: #80d1a1;
+  --accent: #8a8ef2;
 }
 
 /* -------------------------------------------------------- */
@@ -26,6 +26,10 @@
 
 body {
   font-family: var(--main-font);
+  color: white;
+  background: linear-gradient(#131133, #322a8b, #131133);
+  background-size: cover;
+  background-position: center;
 }
 
 h1,
@@ -42,10 +46,51 @@ h6 {
 /* -------------------------------------------------------- */
 
 /* table */
-td, th {
-  padding: 1px 4px;
+td,
+th {
+  padding: 0.25em 0.5em;
+  margin: 0 2em;
+  text-align: center;
 }
-
+.update {
+  color: white;
+  background: var(--secondard-color);
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+}
+.delete {
+  color: white;
+  background: var(--accent);
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+}
 
 /* graph */
 
+.slice text {
+  font-size: 10pt;
+  font-family: sans-serif;
+}
+
+#expense {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.expense-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+.expense-buttons button {
+  margin: 2em;
+}
+
+#piechart {
+  margin: 3em;
+  position: relative;
+  left: 5em;
+}
