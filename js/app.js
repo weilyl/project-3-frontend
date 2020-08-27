@@ -1,5 +1,5 @@
 // table
-let data = [
+const data = [
   { id: 1, date: "2013-01-01", amount: 45, category: "food" },
   { id: 2, date: "2013-02-01", amount: 50, category: "food" },
   { id: 3, date: "2013-03-01", amount: 55, category: "food" },
@@ -10,10 +10,17 @@ let data = [
   { id: 8, date: "2013-08-01", amount: 52, category: "transportation" },
 ];
 
-function tabulate(data, columns) {
-  console.log("tabulate function is running");
-  console.log(data, columns);
-  let table = d3.select("body").append("table");
+const assignID = () => {
+  $(".update-expense")
+    .attr("id", event.target.id)
+    .on("click", function () {
+      expense.updateExpense();
+    });
+};
+
+const tabulate = (data, columns) => {
+  $("#table").empty();
+  let table = d3.select("#table").append("table");
   let thead = table.append("thead");
   let tbody = table.append("tbody");
 
@@ -30,7 +37,6 @@ function tabulate(data, columns) {
 
   // create a row for each object in the data
   let rows = tbody.selectAll("tr").data(data).enter().append("tr");
-  console.table(rows);
 
   // create a cell in each row for each column
   let cells = rows
@@ -58,17 +64,15 @@ function tabulate(data, columns) {
     })
     .enter()
     .append("td")
+    .attr("data-toggle", "modal")
+    .attr("data-target", "#updateExpenseModal")
+    .attr("class", "update")
+    .append("button")
     .attr("id", function (d) {
       return d.id;
     })
-    .append("button")
-    .text(function (d) {
-      return "update";
-    })
-    .on("click", function (d) {
-      console.log(d.id);
-      alert("hello");
-    });
+    .text("update")
+    .on("click", assignID);
 
   // delete button
   thead.append("th").text("");
@@ -80,28 +84,22 @@ function tabulate(data, columns) {
     })
     .enter()
     .append("td")
+    .append("button")
     .attr("id", function (d) {
       return d.id;
     })
-    .append("button")
-    .text(function (d) {
-      return "delete";
-    })
-    .on("click", function (d) {
-      console.log(d.id);
-      alert("hello");
-    })
+    .text("delete")
     .on("click", function () {
       expense.deleteExpense();
     });
 
   return table;
-}
+};
 
 // render the tables
-tabulate(data, ["date", "amount", "category"]); // 3 column table
+// tabulate(data, ["date", "amount", "category"]); // 3 column table
 
-function pieMaker(data) {
+const pieMaker = (data) => {
   let data_grouped = {};
 
   // populate data_grouped array
@@ -180,11 +178,6 @@ function pieMaker(data) {
   //
   // //END PIE CHART
 
-  const data_grouped_array = Object.entries(data_grouped).map((e) => ({
-    category: e[0],
-    amount: e[1],
-  }));
-
   // pie chart
   let w = 600, //width
     h = 600, //height
@@ -237,7 +230,7 @@ function pieMaker(data) {
     .text(function (d, i) {
       return data_grouped_array[i].category;
     });
-} //get the label from grouped data array
+}; //get the label from grouped data array
 // line graph !!!!!!!!
 // Set the dimensions of the canvas / graph
 // var margin = {top: 30, right: 20, bottom: 30, left: 50},

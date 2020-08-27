@@ -32,7 +32,7 @@ const budget = new Vue({
         },
         body: newBudget,
       }).then((response) => {
-        heading.loggedin = true;
+        heading.heading = true;
         this.budName = "";
         this.budAmount = null;
         this.showOneBudget();
@@ -119,7 +119,7 @@ const expense = new Vue({
         amount: this.expAmount,
       });
 
-      fetch(`${URL}/budgets/2/expenses`, {
+      fetch(`${URL}/budgets/1/expenses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +136,7 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/2/expenses`, {
+      fetch(`${URL}/budgets/1/expenses`, {
         method: "GET",
         headers: {
           Authorization: `bearer ${login.token}`,
@@ -144,14 +144,13 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("here's the fetch data ", data);
           tabulate(data.data, ["date", "amount", "category"]);
         });
     },
     //Show Expense by Category
     showExpenseByCategory: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/2/expenses/category/${this.category}`, {
+      fetch(`${URL}/budgets/1/expenses/category/${this.category}`, {
         method: "GET",
         headers: {
           Authorization: `bearer ${login.token}`,
@@ -164,40 +163,44 @@ const expense = new Vue({
         });
     },
     //Update/edit the budget
-    updateExpense: function (event) {
+    updateExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      const editExpense = {
+
+      const editExpense = JSON.stringify({
         category: this.updatedExpCategory,
         date: this.updatedExpDate,
         amount: this.updatedExpAmount,
-      };
-      const expense_id = event.target.id;
+      });
       console.log(editExpense);
-      fetch(`${URL}/budgets/2/expenses/${this.expense_id}`, {
+      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `bearer ${login.token}`,
         },
-        body: JSON.stringify(editExpense),
+        body: editExpense,
       })
-        .then((response) => response.JSON())
+        .then((response) => response.json())
         .then((data) => {
+          console.log(data.data);
           this.showExpense();
-          console.log(data);
+          console.log("ALL DONE!");
         });
     },
     //Delete the budget
     deleteExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      const expense_id = event.target.id;
-      fetch(`${URL}/budgets/2/expenses/18`, {
+      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
           Authorization: `bearer ${login.token}`,
         },
-      }).then((response) => console.log("hi"));
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.showExpense();
+        });
     },
   },
 });
@@ -214,7 +217,7 @@ const getExpenses = function () {
     .then((response) => response.json())
     .then((data) => console.log(data));
 };
-getExpenses();
+// getExpenses();
 
 // post-MVP for budgets
 // make empty array of all budgets

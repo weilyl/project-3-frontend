@@ -1,7 +1,0 @@
-.was-validated .form-control:invalid {
-  border-color: #dc3545;
-  padding-right: 2.25rem;
-  background-repeat: no-repeat;
-  background-position: center right calc(2.25rem / 4);
-  background-size: calc(2.25rem / 2) calc(2.25rem / 2);
-}
