@@ -1,16 +1,18 @@
 // table
-let data = [
-  { "id" : 1, "date" : '2013-01-01', "amount" : 45, "category" : "food" },
-  { "id" : 2,"date" : '2013-02-01', "amount" : 50, "category" : "food" },
-  { "id" : 3,"date" : '2013-03-01', "amount" : 55, "category" : "food" },
-  { "id" : 4,"date" : '2013-04-01', "amount" : 50, "category" : "food" },
-  { "id" : 5,"date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
-  { "id" : 6,"date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
-  { "id" : 7,"date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
-  { "id" : 8,"date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
-];
+// let data = [
+//   { "id" : 1, "date" : '2013-01-01', "amount" : 45, "category" : "food" },
+//   { "id" : 2,"date" : '2013-02-01', "amount" : 50, "category" : "food" },
+//   { "id" : 3,"date" : '2013-03-01', "amount" : 55, "category" : "food" },
+//   { "id" : 4,"date" : '2013-04-01', "amount" : 50, "category" : "food" },
+//   { "id" : 5,"date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
+//   { "id" : 6,"date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
+//   { "id" : 7,"date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
+//   { "id" : 8,"date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
+// ];
 
 function tabulate(data, columns) {
+    console.log("tabulate function is running");
+    console.log(data, columns);
 	let table = d3.select('body').append('table')
 	let thead = table.append('thead')
   let	tbody = table.append('tbody');
@@ -24,7 +26,7 @@ function tabulate(data, columns) {
 
 	// create a row for each object in the data
 	let rows = tbody.selectAll('tr')
-	  .data(data)
+	  .data(data.data)
 	  .enter()
     .append('tr');
   console.log(rows);
@@ -73,7 +75,7 @@ function tabulate(data, columns) {
 }
 
 // render the tables
-tabulate(data, ["date", "amount", "category"]); // 3 column table
+// tabulate(data, ["date", "amount", "category"]); // 3 column table
 
 let data_grouped = {};
 
@@ -97,58 +99,61 @@ const data_grouped_array = Object.entries(data_grouped).map((e) => ({
   amount: e[1],
 }));
 
-// pie chart
-let w = 600, //width
-  h = 600, //height
-  r = 200, //radius
-  color = d3.scale.category20c(); //builtin range of colors
-
-let vis = d3
-  .select("body")
-  .append("svg:svg") //create the SVG element inside the <body>
-  .data([data_grouped_array]) //associate our data with the document
-  .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
-  .attr("height", h)
-  .append("svg:g") //make a group to hold our pie chart
-  .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
-
-let arc = d3.svg
-  .arc() //this will create <path> elements for us using arc data
-  .outerRadius(r);
-
-let pie = d3.layout
-  .pie() //this will create arc data for us given a list of values
-  .value(function (d) {
-    return d.amount;
-  }); //we must tell it out to access the value of each element in grouped data array
-
-let arcs = vis
-  .selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
-  .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
-  .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-  .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-  .attr("class", "slice"); //allow us to style things in the slices (like text)
-
-arcs
-  .append("svg:path")
-  .attr("fill", function (d, i) {
-    return color(i);
-  }) //set the color for each slice to be chosen from the color function defined above
-  .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-
-arcs
-  .append("svg:text") //add a label to each slice
-  .attr("transform", function (d) {
-    //set the label's origin to the center of the arc
-    //we have to make sure to set these before calling arc.centroid
-    d.innerRadius = 0;
-    d.outerRadius = r;
-    return "translate(" + arc.centroid(d) + ")";
-  }) //this gives us a pair of coordinates like [50, 50]
-  .attr("text-anchor", "middle") //center the text on it's origin
-  .text(function (d, i) {
-    return data_grouped_array[i].category;
-  }); //get the label from grouped data array
+//
+// // pie chart
+// let w = 600, //width
+//   h = 600, //height
+//   r = 200, //radius
+//   color = d3.scale.category20c(); //builtin range of colors
+//
+// let vis = d3
+//   .select("body")
+//   .append("svg:svg") //create the SVG element inside the <body>
+//   .data([data_grouped_array]) //associate our data with the document
+//   .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
+//   .attr("height", h)
+//   .append("svg:g") //make a group to hold our pie chart
+//   .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
+//
+// let arc = d3.svg
+//   .arc() //this will create <path> elements for us using arc data
+//   .outerRadius(r);
+//
+// let pie = d3.layout
+//   .pie() //this will create arc data for us given a list of values
+//   .value(function (d) {
+//     return d.amount;
+//   }); //we must tell it out to access the value of each element in grouped data array
+//
+// let arcs = vis
+//   .selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
+//   .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
+//   .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+//   .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+//   .attr("class", "slice"); //allow us to style things in the slices (like text)
+//
+// arcs
+//   .append("svg:path")
+//   .attr("fill", function (d, i) {
+//     return color(i);
+//   }) //set the color for each slice to be chosen from the color function defined above
+//   .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+//
+// arcs
+//   .append("svg:text") //add a label to each slice
+//   .attr("transform", function (d) {
+//     //set the label's origin to the center of the arc
+//     //we have to make sure to set these before calling arc.centroid
+//     d.innerRadius = 0;
+//     d.outerRadius = r;
+//     return "translate(" + arc.centroid(d) + ")";
+//   }) //this gives us a pair of coordinates like [50, 50]
+//   .attr("text-anchor", "middle") //center the text on it's origin
+//   .text(function (d, i) {
+//     return data_grouped_array[i].category;
+//   }); //get the label from grouped data array
+//
+// //END PIE CHART
 
 // line graph !!!!!!!!
 // Set the dimensions of the canvas / graph

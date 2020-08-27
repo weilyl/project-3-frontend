@@ -144,7 +144,7 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          console.log("here's the fetch data ", data);
           tabulate(data, ["date", "amount", "category"]);
         });
     },
