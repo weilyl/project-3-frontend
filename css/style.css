@@ -88,9 +88,25 @@ th {
 .expense-buttons button {
   margin: 2em;
 }
+.tables {
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+}
 
 #piechart {
-  margin: 3em;
+  width: 50%;
   position: relative;
-  left: 5em;
+  top: 6em;
+}
+#table {
+  width: 50%;
+  margin: 0 7em;
+}
+
+@media only screen and (max-width: 600px) {
+  #expense {
+    flex-direction: column;
+  }
 }
