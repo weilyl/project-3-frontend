@@ -1,28 +1,19 @@
 // table
-const data = [
-  {
-    amount: 50,
-    budget_id: 1,
-    category: "transportation",
-    created_at: "2020-08-26T23:21:27.991Z",
-    date: "2020-08-26",
-    id: 4,
-    updated_at: "2020-08-26T23:21:27.991Z",
-  },
+let data = [
+  { date: "2013-01-01", amount: 45, category: "food" },
   { date: "2013-02-01", amount: 50, category: "food" },
   { date: "2013-03-01", amount: 55, category: "food" },
   { date: "2013-04-01", amount: 50, category: "food" },
-  { date: "2013-05-01", amount: 45, category: "food" },
-  { date: "2013-06-01", amount: 50, category: "food" },
+  { date: "2013-05-01", amount: 45, category: "transportation" },
+  { date: "2013-06-01", amount: 50, category: "transportation" },
   { date: "2013-07-01", amount: 50, category: "transportation" },
   { date: "2013-08-01", amount: 52, category: "transportation" },
 ];
 
 function tabulate(data, columns) {
-  const table = d3.select("#expense").append("table");
-  console.log("1: ", data);
-  const thead = table.append("thead");
-  const tbody = table.append("tbody");
+  let table = d3.select("body").append("table");
+  let thead = table.append("thead");
+  let tbody = table.append("tbody");
 
   // append the header row
   thead
@@ -36,12 +27,10 @@ function tabulate(data, columns) {
     });
 
   // create a row for each object in the data
-  const rows = tbody.selectAll("tr").data(data).enter().append("tr");
-  console.log(rows);
-  console.log("2: ", data[2]);
+  let rows = tbody.selectAll("tr").data(data).enter().append("tr");
 
   // create a cell in each row for each column
-  const cells = rows
+  let cells = rows
     .selectAll("td")
     .data(function (row) {
       return columns.map(function (column) {
@@ -60,7 +49,7 @@ function tabulate(data, columns) {
 // render the tables
 tabulate(data, ["date", "amount", "category", "update", "delete"]); // 3 column table
 
-const data_grouped = {};
+let data_grouped = {};
 
 // populate data_grouped array
 for (let i = 0; i < data.length; i++) {
@@ -77,18 +66,23 @@ for (let i = 0; i < data.length; i++) {
   }
 }
 
+let data_grouped_array = Object.entries(data_grouped).map((e) => ({
+  category: e[0],
+  amount: e[1],
+}));
+
 const data_grouped_array = Object.entries(data_grouped).map((e) => ({
   category: e[0],
   amount: e[1],
 }));
 
 // pie chart
-const w = 600, //width
+let w = 600, //width
   h = 600, //height
   r = 200, //radius
   color = d3.scale.category20c(); //builtin range of colors
 
-const vis = d3
+let vis = d3
   .select("body")
   .append("svg:svg") //create the SVG element inside the <body>
   .data([data_grouped_array]) //associate our data with the document
@@ -97,17 +91,17 @@ const vis = d3
   .append("svg:g") //make a group to hold our pie chart
   .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
 
-const arc = d3.svg
+let arc = d3.svg
   .arc() //this will create <path> elements for us using arc data
   .outerRadius(r);
 
-const pie = d3.layout
+let pie = d3.layout
   .pie() //this will create arc data for us given a list of values
   .value(function (d) {
     return d.amount;
   }); //we must tell it out to access the value of each element in grouped data array
 
-const arcs = vis
+let arcs = vis
   .selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
   .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
   .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
