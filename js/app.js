@@ -42,19 +42,20 @@ function tabulate(data, columns) {
       .text(function (d) { return d.value; });
       
   // update button
-  thead.append("th").text('update');
+    let thisElement = {};
+  thead.append("th").text('');
   rows.selectAll("td.update")  
   // use a class so you don't re-select the existing <td> elements
-          .data(function(d) {return [d];})
+          .data(function(d) {thisElement = d; console.log(thisElement); return [d];})
           .enter()
             .append("td")
-            .attr("id", `${d.id}`)
+            .attr("id", `${thisElement.id}`)
             .append("button")
             .text(function(d){return "update"})
             .on("click", function(d){ console.log(d); alert("hello")});
 
   // delete button
-  thead.append("th").text('delete');
+  thead.append("th").text('');
   rows.selectAll("td.delete")  
   // use a class so you don't re-select the existing <td> elements
           .data(function(d) {return [d];})
@@ -69,7 +70,7 @@ function tabulate(data, columns) {
 }
 
 // render the tables
-tabulate(data, ["date", "amount", "category", "update", "delete"]); // 3 column table
+tabulate(data, ["date", "amount", "category"]); // 3 column table
 
 let data_grouped = {};
 
@@ -87,11 +88,6 @@ for (let i = 0; i < data.length; i++) {
     data_grouped[data[i].category] = data[i].amount;
   }
 }
-
-let data_grouped_array = Object.entries(data_grouped).map((e) => ({
-  category: e[0],
-  amount: e[1],
-}));
 
 const data_grouped_array = Object.entries(data_grouped).map((e) => ({
   category: e[0],
