@@ -1,19 +1,19 @@
 // table
 let data = [
-  { "date" : '2013-01-01', "amount" : 45, "category" : "food" },
-  { "date" : '2013-02-01', "amount" : 50, "category" : "food" },
-  { "date" : '2013-03-01', "amount" : 55, "category" : "food" },
-  { "date" : '2013-04-01', "amount" : 50, "category" : "food" },
-  { "date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
-  { "date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
-  { "date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
-  { "date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
+  { "id" : 1, "date" : '2013-01-01', "amount" : 45, "category" : "food" },
+  { "id" : 2,"date" : '2013-02-01', "amount" : 50, "category" : "food" },
+  { "id" : 3,"date" : '2013-03-01', "amount" : 55, "category" : "food" },
+  { "id" : 4,"date" : '2013-04-01', "amount" : 50, "category" : "food" },
+  { "id" : 5,"date" : '2013-05-01', "amount" : 45, "category" : "transportation" },
+  { "id" : 6,"date" : '2013-06-01', "amount" : 50, "category" : "transportation" },
+  { "id" : 7,"date" : '2013-07-01', "amount" : 50, "category" : "transportation" },
+  { "id" : 8,"date" : '2013-08-01', "amount" : 52, "category" : "transportation" }
 ];
 		
 function tabulate(data, columns) {
 	let table = d3.select('body').append('table')
 	let thead = table.append('thead')
-	let	tbody = table.append('tbody');
+  let	tbody = table.append('tbody');
 
 	// append the header row
 	thead.append('tr')
@@ -26,7 +26,9 @@ function tabulate(data, columns) {
 	let rows = tbody.selectAll('tr')
 	  .data(data)
 	  .enter()
-	  .append('tr');
+    .append('tr');
+  console.log(rows);
+  console.table(rows);
 
 	// create a cell in each row for each column
 	let cells = rows.selectAll('td')
@@ -37,7 +39,31 @@ function tabulate(data, columns) {
 	  })
 	  .enter()
 	  .append('td')
-	    .text(function (d) { return d.value; });
+      .text(function (d) { return d.value; });
+      
+  // update button
+  thead.append("th").text('update');
+  rows.selectAll("td.update")  
+  // use a class so you don't re-select the existing <td> elements
+          .data(function(d) {return [d];})
+          .enter()
+            .append("td")
+            .attr("id", `${data.id}`)
+            .append("button")
+            .text(function(d){return "update"})
+            .on("click", function(d){ console.log(d); alert("hello")});
+
+  // delete button
+  thead.append("th").text('delete');
+  rows.selectAll("td.delete")  
+  // use a class so you don't re-select the existing <td> elements
+          .data(function(d) {return [d];})
+          .enter()
+            .append("td")
+            .attr("id", `${data.id}`)
+            .append("button")
+            .text(function(d){return "delete"})
+            .on("click", function(d){ console.log(d); alert("hello")});
 
   return table;
 };
