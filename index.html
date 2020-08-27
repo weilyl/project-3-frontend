@@ -529,113 +529,112 @@
         </div>
       </div>
       <!-- ADD EXPENSE MODAL ENDS -->
-    </div>
 
-    <!-- UPDATE EXPENSE MODAL BEGINS -->
-    <div
-      class="modal fade"
-      id="updateExpenseModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="UpdatedExpenseModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #8a8ef2">
-          <div class="modal-header">
-            <h5
-              class="modal-title"
-              id="UpdatedExpenseModalLabel"
-              style="color: white"
-            >
-              Update Your Expense
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              style="color: white"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label
-                  for="updated_expense_amount"
-                  class="col-form-label"
-                  style="color: #322a8b; font-weight: bold"
-                  >Amount:</label
-                >
-                <input
-                  type="number"
-                  placeholder="$"
-                  class="form-control"
-                  id="updated_expense_amount"
-                  v-model="updatedExpAmount"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="updatedExpense_date"
-                  class="col-form-label"
-                  style="color: #322a8b; font-weight: bold"
-                  >Date:</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  id="updatedExpense_date"
-                  v-model="updatedExpDate"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  for="updatedExpense_category"
-                  class="col-form-label"
-                  style="color: #322a8b; font-weight: bold"
-                  >Category:</label
-                >
-                <select
-                  id="updatedExpense_category"
-                  v-model="updatedExpCategory"
-                >
-                  <option value="Housing">Housing</option>
-                  <option value="Transportation">Transportation</option>
-                  <option value="Entertainment/Recreational">
-                    Entertainment/Recreational
-                  </option>
-                  <option value="Food">Food</option>
-                  <option value="Utilities">Utilities</option>
-                  <option value="Insurance">Insurance</option>
-                  <option value="Medical">Medical</option>
-                  <option value="Investments">Investments</option>
-                  <option value="Personal">Personal</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="modal-footer">
-                <!-- EXPENSE UPDATE BUTTON BEGINS -->
-                <button
-                  type="button"
-                  class="btn btn-primary update-expense"
-                  style="background-color: #80d1a1; border: none"
-                  data-dismiss="modal"
-                >
-                  <!-- v-on:click="updateExpense" -->
-                  Update Expense
-                </button>
-                <!-- EXPENSE UPDATE BUTTON ENDS -->
-              </div>
-            </form>
+      <!-- UPDATE EXPENSE MODAL BEGINS -->
+      <div
+        class="modal fade"
+        id="updateExpenseModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="UpdatedExpenseModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content" style="background-color: #8a8ef2">
+            <div class="modal-header">
+              <h5
+                class="modal-title"
+                id="UpdatedExpenseModalLabel"
+                style="color: white"
+              >
+                Update Your Expense
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                style="color: white"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label
+                    for="updated_expense_amount"
+                    class="col-form-label"
+                    style="color: #322a8b; font-weight: bold"
+                    >Amount:</label
+                  >
+                  <input
+                    type="number"
+                    placeholder="$"
+                    class="form-control"
+                    id="updated_expense_amount"
+                    v-model="updatedExpAmount"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="updatedExpense_date"
+                    class="col-form-label"
+                    style="color: #322a8b; font-weight: bold"
+                    >Date:</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="updatedExpense_date"
+                    v-model="updatedExpDate"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="updatedExpense_category"
+                    class="col-form-label"
+                    style="color: #322a8b; font-weight: bold"
+                    >Category:</label
+                  >
+                  <select
+                    id="updatedExpense_category"
+                    v-model="updatedExpCategory"
+                  >
+                    <option value="Housing">Housing</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Entertainment/Recreational">
+                      Entertainment/Recreational
+                    </option>
+                    <option value="Food">Food</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Investments">Investments</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <!-- EXPENSE UPDATE BUTTON BEGINS -->
+                  <button
+                    type="button"
+                    class="btn btn-primary update-expense"
+                    style="background-color: #80d1a1; border: none"
+                    data-dismiss="modal"
+                  >
+                    <!-- v-on:click="updateExpense" -->
+                    Update Expense
+                  </button>
+                  <!-- EXPENSE UPDATE BUTTON ENDS -->
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+      <!-- UPDATE EXPENSE MODAL ENDS-->
     </div>
-    <!-- UPDATE EXPENSE MODAL ENDS-->
-
     <!-- END OF EXPENSE MODAL & BUTTON -->
 
     <div id="heading" v-bind:id="budget" v-if="loggedin">

@@ -230,7 +230,10 @@ const pieMaker = (data) => {
     .text(function (d, i) {
       return data_grouped_array[i].category;
     });
-}; //get the label from grouped data array
+  return vis;
+};
+
+//get the label from grouped data array
 // line graph !!!!!!!!
 // Set the dimensions of the canvas / graph
 // var margin = {top: 30, right: 20, bottom: 30, left: 50},

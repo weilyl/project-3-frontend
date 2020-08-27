@@ -145,6 +145,7 @@ const expense = new Vue({
         .then((response) => response.json())
         .then((data) => {
           tabulate(data.data, ["date", "amount", "category"]);
+          pieMaker(data.data);
         });
     },
     //Show Expense by Category
@@ -171,7 +172,11 @@ const expense = new Vue({
         date: this.updatedExpDate,
         amount: this.updatedExpAmount,
       });
-      console.log(editExpense);
+      console.log(
+        this.updatedExpAmount,
+        this.updatedExpCategory,
+        this.updatedExpDate
+      );
       fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
         method: "PUT",
         headers: {
@@ -182,7 +187,7 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.data);
+          console.log(expense._data.updatedExpCategory);
           this.showExpense();
           console.log("ALL DONE!");
         });
