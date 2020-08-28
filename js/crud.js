@@ -35,17 +35,18 @@ const budget = new Vue({
           Authorization: `bearer ${login.token}`,
         },
         body: newBudget,
-      }).then((response) => response.json())
-          .then(data => {
-        console.log(data.data);
-        console.log(data.data.id);
-        this.budget_id = data.data.id;
-        console.log("this is your new budget id ", this.budget_id);
-        heading.heading = true;
-        this.budName = "";
-        this.budAmount = null;
-        expense.showExpense();
-      });
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.data);
+          console.log(data.data.id);
+          this.budget_id = data.data.id;
+          console.log("this is your new budget id ", this.budget_id);
+          heading.heading = true;
+          this.budName = "";
+          this.budAmount = null;
+          expense.showExpense();
+        });
     },
     //Show the budget
     showOneBudget: function () {
@@ -67,7 +68,8 @@ const budget = new Vue({
         });
     },
     //Update/edit the budget
-    updateBudget: function (event) { //post- post MVP
+    updateBudget: function (event) {
+      //post- post MVP
       const editBudget = {
         name: this.updatedBudName,
         amount: this.updatedBudAmount, // v-model="updatedBudName", etc
@@ -89,7 +91,8 @@ const budget = new Vue({
         });
     },
     //Delete the budget
-    deleteBudget: function () { // Post post MVP
+    deleteBudget: function () {
+      // Post post MVP
       fetch(`${URL}/budgets/${this.budget_id}`, {
         method: "DELETE",
         headers: {
@@ -144,13 +147,16 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      console.log("ARE YOU AT SHOW EXPENSE YET")
-      fetch(`${URL}/user/${login.user_id}/budgets/${budget.budget_id}/expenses`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      console.log("ARE YOU AT SHOW EXPENSE YET");
+      fetch(
+        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           tabulate(data.data, ["date", "amount", "category"]);
@@ -160,12 +166,15 @@ const expense = new Vue({
     //Show Expense by Category
     showExpenseByCategory: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/${budget.budget_id}/expenses/category/${this.category}`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      fetch(
+        `${URL}/budgets/${budget.budget_id}/expenses/category/${this.category}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           this.expense = data;
