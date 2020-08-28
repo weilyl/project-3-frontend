@@ -11,10 +11,10 @@ const login = new Vue({
     prodURL: "https://squilliamp3.herokuapp.com",
     user: null,
     token: null,
-    user_id: null
   },
   methods: {
-    handleLogin: function () {
+    handleLogin: function (event) {
+      event.preventDefault();
       const URL = this.prodURL ? this.prodURL : this.devURL;
       const user = { username: this.loginUN, password: this.loginPW };
       fetch(`${URL}/login`, {
@@ -29,9 +29,15 @@ const login = new Vue({
           this.user = data.user;
           this.token = data.token;
           this.loggedin = true;
+          budget.loggedin = true;
+          expense.loggedin = true;
           this.loginPW = "";
           this.loginUN = "";
-          this.user_id = data.user.id;
+          if (data.error) {
+            alert("log in unsuccessful");
+          } else {
+            alert("log in successful");
+          }
         });
     },
     // handleLogin: function () {
@@ -83,8 +89,6 @@ const login = new Vue({
         username: this.createUN,
         password: this.createPW,
       });
-      console.log(user);
-​
       fetch(`${URL}/users`, {
         method: "post",
         headers: {
@@ -99,6 +103,7 @@ const login = new Vue({
             alert("sign up unsuccessful");
           } else {
             alert("signup successful");
+            this.loggedin = true;
           }
         });
     },
@@ -135,9 +140,9 @@ const login = new Vue({
   },
 });
 
-const heading = new Vue ({
+const heading = new Vue({
   el: "#heading",
   data: {
-    heading: `${login.loginUN}'s ${budget.budName} Budget`
-  }
-})
+    heading: `${login.loginUN}'s ${budget.budName} Budget`,
+  },
+});

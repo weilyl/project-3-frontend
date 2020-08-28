@@ -6,7 +6,7 @@ const budget = new Vue({
     devURL: "http://localhost:3000",
     prodURL: "https://squilliamp3.herokuapp.com",
     budget: null, // ?
-    budget_id: null,
+    budget_id: 1,
     updatedBudName: "", // grab input for update budget
     updatedBudAmount: null, // grab input for create budget
     loggedin: false,
@@ -35,17 +35,18 @@ const budget = new Vue({
           Authorization: `bearer ${login.token}`,
         },
         body: newBudget,
-      }).then((response) => response.json())
-          .then(data => {
-        console.log(data.data);
-        console.log(data.data.id);
-        this.budget_id = data.data.id;
-        console.log("this is your new budget id ", this.budget_id);
-        heading.heading = true;
-        this.budName = "";
-        this.budAmount = null;
-        expense.showExpense();
-      });
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.data);
+          console.log(data.data.id);
+          this.budget_id = data.data.id;
+          console.log("this is your new budget id ", this.budget_id);
+          heading.heading = true;
+          this.budName = "";
+          this.budAmount = null;
+          expense.showExpense();
+        });
     },
     //Show the budget
     showOneBudget: function () {
@@ -67,7 +68,8 @@ const budget = new Vue({
         });
     },
     //Update/edit the budget
-    updateBudget: function (event) { //post- post MVP
+    updateBudget: function (event) {
+      //post- post MVP
       const editBudget = {
         name: this.updatedBudName,
         amount: this.updatedBudAmount, // v-model="updatedBudName", etc
@@ -89,7 +91,8 @@ const budget = new Vue({
         });
     },
     //Delete the budget
-    deleteBudget: function () { // Post post MVP
+    deleteBudget: function () {
+      // Post post MVP
       fetch(`${URL}/budgets/${this.budget_id}`, {
         method: "DELETE",
         headers: {
@@ -125,7 +128,9 @@ const expense = new Vue({
         category: this.expCategory,
         date: this.expDate,
         amount: this.expAmount,
+        user_id: login.user.id,
       });
+      console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 
       fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
         method: "POST",
@@ -135,6 +140,7 @@ const expense = new Vue({
         },
         body: newExpense,
       }).then((response) => {
+        console.log("created expense: ", newExpense);
         this.expCategory = "";
         this.expAmount = null;
         this.expDate = "";
@@ -144,15 +150,22 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      console.log("ARE YOU AT SHOW EXPENSE YET")
-      fetch(`${URL}/user/${login.user_id}/budgets/${budget.budget_id}/expenses`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      console.log(
+        "show route: ",
+        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`
+      );
+      fetch(
+        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           tabulate(data.data, ["date", "amount", "category"]);
           pieMaker(data.data);
         });
@@ -160,12 +173,15 @@ const expense = new Vue({
     //Show Expense by Category
     showExpenseByCategory: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/${budget.budget_id}/expenses/category/${this.category}`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      fetch(
+        `${URL}/budgets/${budget.budget_id}/expenses/category/${this.category}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           this.expense = data;
