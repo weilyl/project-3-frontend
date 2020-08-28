@@ -152,10 +152,10 @@ const expense = new Vue({
       const URL = this.prodURL ? this.prodURL : this.devURL;
       console.log(
         "show route: ",
-        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`
       );
       fetch(
-        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`,
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`,
         {
           method: "GET",
           headers: {

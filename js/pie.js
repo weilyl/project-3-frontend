@@ -28,7 +28,7 @@ function pieMaker(data) {
     r = 200, //radius
     color = d3.scale.category20c(); //builtin range of colors
 
-  d3.select("#piechart").empty();
+  document.getElementById("piechart").innerHTML = "";
 
   let vis = d3
     .select("#piechart")
