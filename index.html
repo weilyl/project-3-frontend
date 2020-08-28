@@ -21,7 +21,7 @@
 
     <!-- Load required Bootstrap and BootstrapVue CSS -->
     <!-- EXTERNAL -->
-    <link href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<!--    <link href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />-->
     <!-- LOCAL -->
     <link href="./css/unpkg.bootstrap.min.css" type="text/css" rel="stylesheet" />
 
@@ -279,5 +279,11 @@
   <!-- Add Vue and Bootstrap-Vue JS just before the closing </body> tag -->
 <!--  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>-->
 <!--  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>-->
+
+  <script>
+    window.app = new Vue({
+      el: '#app',
+    })
+  </script>
   </body>
 </html>
