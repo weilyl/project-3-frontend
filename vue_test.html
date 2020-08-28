@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <div id="app">
+    <div id="app2">
         {{hello}} {{2+2}}
         <h1 v-if="show">You can handle the truth!</h1>
         <button v-on:click="toggleShow">The Truth Is Out There!</button>
@@ -60,30 +60,26 @@
     </div>
 
 
-    <div class="table-responsive">
+    <div class="table-responsive" id="app">
         <table class="table-hover" v-if="data">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Status</th>
-                    <th>Title</th>
-                    <th>Summary</th>
-                    <!-- and so on -->
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Category</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, idx) in archivelist">
-                    <td>{{ item.id }}></td>
-                    <td>{{ item.status }}></td>
-                    <td>{{ item.title }}></td>
-                    <td>{{ item.summary }}></td>
-                    <!-- and so on -->
+                    <td>{{ item.date }}></td>
+                    <td>{{ item.amount }}></td>
+                    <td>{{ item.category }}></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    
+
     
 </body>
 </html>
