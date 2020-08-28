@@ -19,7 +19,7 @@ const assignID = () => {
 };
 
 const tabulate = (data, columns) => {
-  $("#table").empty();
+  d3.select("#table").empty();
   let table = d3.select("#table").append("table");
   let thead = table.append("thead");
   let tbody = table.append("tbody");
