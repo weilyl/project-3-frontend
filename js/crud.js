@@ -6,7 +6,7 @@ const budget = new Vue({
     devURL: "http://localhost:3000",
     prodURL: "https://squilliamp3.herokuapp.com",
     budget: null, // ?
-    budget_id: null,
+    budget_id: 1,
     updatedBudName: "", // grab input for update budget
     updatedBudAmount: null, // grab input for create budget
     loggedin: false,
@@ -128,7 +128,9 @@ const expense = new Vue({
         category: this.expCategory,
         date: this.expDate,
         amount: this.expAmount,
+        user_id: login.user.id,
       });
+      console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 
       fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
         method: "POST",
@@ -138,6 +140,7 @@ const expense = new Vue({
         },
         body: newExpense,
       }).then((response) => {
+        console.log("created expense: ", newExpense);
         this.expCategory = "";
         this.expAmount = null;
         this.expDate = "";
@@ -147,7 +150,10 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      console.log("ARE YOU AT SHOW EXPENSE YET");
+      console.log(
+        "show route: ",
+        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`
+      );
       fetch(
         `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`,
         {
@@ -159,6 +165,7 @@ const expense = new Vue({
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           tabulate(data.data, ["date", "amount", "category"]);
           pieMaker(data.data);
         });
