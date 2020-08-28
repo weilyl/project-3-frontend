@@ -145,7 +145,7 @@ const expense = new Vue({
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
       console.log("ARE YOU AT SHOW EXPENSE YET")
-      fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
+      fetch(`${URL}/user/${login.user_id}/budgets/${budget.budget_id}/expenses`, {
         method: "GET",
         headers: {
           Authorization: `bearer ${login.token}`,
