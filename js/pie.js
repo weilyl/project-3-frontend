@@ -77,6 +77,6 @@ function pieMaker(data) {
       return data_grouped_array[i].category;
     }); //get the label from grouped data array
 
-  console.log(vis);
+
   return vis;
 }
