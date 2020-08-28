@@ -6,7 +6,7 @@ const budget = new Vue({
     devURL: "http://localhost:3000",
     prodURL: "https://squilliamp3.herokuapp.com",
     budget: null, // ?
-    budget_id: 1,
+    budget_id: null,
     updatedBudName: "", // grab input for update budget
     updatedBudAmount: null, // grab input for create budget
     loggedin: false,
@@ -17,15 +17,15 @@ const budget = new Vue({
       // object from input
       // HTML v-model="budName" & v-model="budAmount"
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      // console.log(this.budName);
-      // console.log(this.budAmount);
-      const newBudget = JSON.stringify({
-        name: "Your Budget", // post-MVP : this.budName
-        amount: 1000000000, // post-MVP: this.budAmount
-        user_id: login.user_id, // post- MVP can use login.user_id == data.data.user_id as condition
-      });
+       console.log(this.budName);
+       console.log(this.budAmount);
+      const newBudget = {
+        name: this.budName, // post-MVP : this.budName
+        amount: this.budAmount, // post-MVP: this.budAmount
+        user_id: login.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
+      };
       // fetch request from budgets#create route
-      // console.log(newBudget);
+      console.log(newBudget);
       console.log(login.token);
       fetch(`${URL}/budgets`, {
         method: "POST",
@@ -34,7 +34,7 @@ const budget = new Vue({
           // only if logged in
           Authorization: `bearer ${login.token}`,
         },
-        body: newBudget,
+        body: JSON.stringify(newBudget),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -128,7 +128,7 @@ const expense = new Vue({
         category: this.expCategory,
         date: this.expDate,
         amount: this.expAmount,
-        user_id: login.user.id,
+        //user_id: login.user.id,
       });
       console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 
@@ -152,10 +152,10 @@ const expense = new Vue({
       const URL = this.prodURL ? this.prodURL : this.devURL;
       console.log(
         "show route: ",
-        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`
       );
       fetch(
-        `${URL}/user/${login.user.id}/budgets/${budget.budget_id}/expenses`,
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`,
         {
           method: "GET",
           headers: {
