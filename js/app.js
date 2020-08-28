@@ -97,6 +97,35 @@ const tabulate = (data, columns) => {
   return table;
 };
 
+const table = new Vue({
+  el: "#table",
+  data: {
+    headings: [
+      { header: "date" },
+      { header: "category" },
+      { header: "amount" },
+      {},
+      {},
+    ],
+    expenses: [
+      { id: 1, date: "2013-01-01", amount: 45, category: "food" },
+      { id: 2, date: "2013-02-01", amount: 50, category: "food" },
+      { id: 3, date: "2013-03-01", amount: 55, category: "food" },
+      { id: 4, date: "2013-04-01", amount: 50, category: "food" },
+      { id: 5, date: "2013-05-01", amount: 45, category: "transportation" },
+      { id: 6, date: "2013-06-01", amount: 50, category: "transportation" },
+      { id: 7, date: "2013-07-01", amount: 50, category: "transportation" },
+      { id: 8, date: "2013-08-01", amount: 52, category: "transportation" },
+    ],
+    // expenses: null,
+  },
+  methods: {
+    getData: function (data) {
+      this.expenses = data.data;
+      // fetch request to get all the expenses, and set the data that is returned equal to the 'this' expenses variable
+    },
+  },
+});
 // render the tables
 // tabulate(data, ["date", "amount", "category"]); // 3 column table
 
@@ -211,13 +240,10 @@ function pieMaker(data) {
 
 // pieChart(data);
 
-
-
-
 // Vue.js
 // const URL = this.prodURL ? this.prodURL : this.devURL;
 
-// const expenses = 
+// const expenses =
 //       fetch(`${URL}/budgets/1/expenses`, {
 //         method: "GET",
 //         headers: {
@@ -228,214 +254,211 @@ function pieMaker(data) {
 
 // console.log("Check expenses", expenses)
 
-new Vue({
-  el: '#app',
-  data() {
-    return {
-      headers: [{
-          text: 'Date',
-          value: 'date'
-        },
-        {
-          text: 'Amount',
-          value: 'amount'
-        },
-        {
-          text: 'Category',
-          value: 'category'
-        }
-      ],
-      // expenses: expenses,
-      methods : {
-        const URL = this.prodURL ? this.prodURL : this.devURL;
+// new Vue({
+//   el: '#app',
+//   data() {
+//     return {
+//       headers: [{
+//           text: 'Date',
+//           value: 'date'
+//         },
+//         {
+//           text: 'Amount',
+//           value: 'amount'
+//         },
+//         {
+//           text: 'Category',
+//           value: 'category'
+//         }
+//       ],
+//       // expenses: expenses,
+//       methods : {
+//         const URL = this.prodURL ? this.prodURL : this.devURL;
 
-      const expenses = 
-      fetch(`${URL}/budgets/1/expenses`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
-        .then((response) => response.json())
+//       const expenses =
+//       fetch(`${URL}/budgets/1/expenses`, {
+//         method: "GET",
+//         headers: {
+//           Authorization: `bearer ${login.token}`,
+//         },
+//       })
+//         .then((response) => response.json())
 
-      console.log("Check expenses", expenses)
+//       console.log("Check expenses", expenses)
 
-      },
+//       },
 
-      expenses: expenses,
-          
-    }
-  }
-})
+//       expenses: expenses,
 
-// lecture code example
-const app = new Vue({
-  el: "#app",
-  data: {
-    searchQuery: "",
-    gridColumns: ["name", "power"],
-    gridData: [
-      { name: "Chuck Norris", power: Infinity },
-      { name: "Bruce Lee", power: 9000 },
-      { name: "Jackie Chan", power: 7000 },
-      { name: "Jet Li", power: 8000 }
-    ]
-  },
+//     }
+//   }
+// })
 
-  // data() {
-  //   return {
-  //     headers: [{
-  //         text: 'Date',
-  //         value: 'date'
-  //       },
-  //       {
-  //         text: 'Amount',
-  //         value: 'amount'
-  //       },
-  //       {
-  //         text: 'Category',
-  //         value: 'category'
-  //       }
-  //     ],
-  //     expenses: expenses,
-  //   }
-  // },
-  methods: {
-    const URL = this.prodURL ? this.prodURL : this.devURL;
+// // lecture code example
+// const app = new Vue({
+//   el: "#app",
+//   data: {
+//     searchQuery: "",
+//     gridColumns: ["name", "power"],
+//     gridData: [
+//       { name: "Chuck Norris", power: Infinity },
+//       { name: "Bruce Lee", power: 9000 },
+//       { name: "Jackie Chan", power: 7000 },
+//       { name: "Jet Li", power: 8000 }
+//     ]
+//   },
 
-      const expenses = 
-      fetch(`${URL}/budgets/1/expenses`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
-        .then((response) => response.json())
+//   // data() {
+//   //   return {
+//   //     headers: [{
+//   //         text: 'Date',
+//   //         value: 'date'
+//   //       },
+//   //       {
+//   //         text: 'Amount',
+//   //         value: 'amount'
+//   //       },
+//   //       {
+//   //         text: 'Category',
+//   //         value: 'category'
+//   //       }
+//   //     ],
+//   //     expenses: expenses,
+//   //   }
+//   // },
+//   methods: {
+//     const URL = this.prodURL ? this.prodURL : this.devURL;
 
-      toggleShow: function(){this.show = !this.show},
-      addOne: function(){this.nums.push(this.nums.length + 1)},
-      reset: function(){
-          console.log(this.name)
-          console.log(this.age)
-          this.name = "";
-          this.age = 0;
-      },
-      edit: function(event){
-          const id = event.target.idy
-          console.log(id)
-          // fetch request
-          // refetch the data
-      }
-  },
-  beforeCreate: function(){
-      fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => {
-          this.posts = data
-      })
-  }
-})
+//       const expenses =
+//       fetch(`${URL}/budgets/1/expenses`, {
+//         method: "GET",
+//         headers: {
+//           Authorization: `bearer ${login.token}`,
+//         },
+//       })
+//         .then((response) => response.json())
 
-// bootstrap the demo
-var demo = new Vue({
-  el: "#demo",
-  data: {
-    searchQuery: "",
-    gridColumns: ["name", "power"],
-    gridData: [
-      { name: "Chuck Norris", power: Infinity },
-      { name: "Bruce Lee", power: 9000 },
-      { name: "Jackie Chan", power: 7000 },
-      { name: "Jet Li", power: 8000 }
-    ]
-  }
-});
+//       toggleShow: function(){this.show = !this.show},
+//       addOne: function(){this.nums.push(this.nums.length + 1)},
+//       reset: function(){
+//           console.log(this.name)
+//           console.log(this.age)
+//           this.name = "";
+//           this.age = 0;
+//       },
+//       edit: function(event){
+//           const id = event.target.idy
+//           console.log(id)
+//           // fetch request
+//           // refetch the data
+//       }
+//   },
+//   beforeCreate: function(){
+//       fetch('https://jsonplaceholder.typicode.com/posts')
+//       .then(response => response.json())
+//       .then(data => {
+//           this.posts = data
+//       })
+//   }
+// })
 
+// // bootstrap the demo
+// var demo = new Vue({
+//   el: "#demo",
+//   data: {
+//     searchQuery: "",
+//     gridColumns: ["name", "power"],
+//     gridData: [
+//       { name: "Chuck Norris", power: Infinity },
+//       { name: "Bruce Lee", power: 9000 },
+//       { name: "Jackie Chan", power: 7000 },
+//       { name: "Jet Li", power: 8000 }
+//     ]
+//   }
+// });
 
-// test 3
-data() {
-  return {
-      data: null
-  };
-},
+// // test 3
+// data() {
+//   return {
+//       data: null
+//   };
+// },
 
-mounted() {
-  this.getData();
+// mounted() {
+//   this.getData();
 
-},
+// },
 
-methods: {
-  getData() {
-      // vue-resource example
-      this.$http.get('data.json', {responseType: 'json'}).then(response => {
-          return response.json();
-      }).then(jsonData => {
-          this.data = JSON.parse(jsonData);
-      }).catch(e => {
-          console.log('Error', e);
-      });
-  }
-}
+// methods: {
+//   getData() {
+//       // vue-resource example
+//       this.$http.get('data.json', {responseType: 'json'}).then(response => {
+//           return response.json();
+//       }).then(jsonData => {
+//           this.data = JSON.parse(jsonData);
+//       }).catch(e => {
+//           console.log('Error', e);
+//       });
+//   }
+// }
 
-// test 4
-const app = new Vue({
-  el: '#app',
-  data: {
-       variable1: 'value',
-       variable2: 'value2'
-       },
-  methods: {
-       function1: function (param) {
-            console.log(param)
-            },
-       function2: function (param) {
-            this.variable1 = param
-            }
-       }
-  })
+// // test 4
+// const app = new Vue({
+//   el: '#app',
+//   data: {
+//        variable1: 'value',
+//        variable2: 'value2'
+//        },
+//   methods: {
+//        function1: function (param) {
+//             console.log(param)
+//             },
+//        function2: function (param) {
+//             this.variable1 = param
+//             }
+//        }
+//   })
 
-// test 5 
-// const URL = /// logic to set URL
-const URL = this.prodURL ? this.prodURL : this.devURL;
+// // test 5
+// // const URL = /// logic to set URL
+// const URL = this.prodURL ? this.prodURL : this.devURL;
 
-new Vue({
-  el: '#app',
-  data: {
-      headers: [
-        {
-          text: 'Date',
-          value: 'date'
-        },
-        {
-          text: 'Amount',
-          value: 'amount'
-        },
-        {
-          text: 'Category',
-          value: 'category'
-        }
-      ],
-      expenses: null
-    },
-    methods : {
-      getExpenses: function () { 
-        fetch(`${URL}/budgets/1/expenses`, {
-            method: "GET",
-            headers: {
-                Authorization: `bearer ${login.token}`,
-            },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Check expenses: ', data)
-            this.expenses = data
-            })
-      }          
-    },
-    beforeMount: function () {
-        this.getExpenses()
-        }
-    })
-Colla
-            
-
+// new Vue({
+//   el: '#app',
+//   data: {
+//       headers: [
+//         {
+//           text: 'Date',
+//           value: 'date'
+//         },
+//         {
+//           text: 'Amount',
+//           value: 'amount'
+//         },
+//         {
+//           text: 'Category',
+//           value: 'category'
+//         }
+//       ],
+//       expenses: null
+//     },
+//     methods : {
+//       getExpenses: function () {
+//         fetch(`${URL}/budgets/1/expenses`, {
+//             method: "GET",
+//             headers: {
+//                 Authorization: `bearer ${login.token}`,
+//             },
+//         })
+//         .then((response) => response.json())
+//         .then((data) => {
+//             console.log('Check expenses: ', data)
+//             this.expenses = data
+//             })
+//       }
+//     },
+//     beforeMount: function () {
+//         this.getExpenses()
+//         }
+//     })
+// Colla

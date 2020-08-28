@@ -289,7 +289,38 @@
       </div>
     </div>
     <!-- LOG IN MODAL ENDS -->
-
+    <h1>this renders?</h1>
+    <div id="table" v-bind:id="table">
+      <table>
+        <thead>
+          <th v-for="header in headings" :key="headings.header">
+            {{header.header}}
+          </th>
+        </thead>
+        <tbody>
+          <tr v-for="expense in expenses">
+            <td>{{expense.date}}</td>
+            <td>{{expense.category}}</td>
+            <td>{{expense.amount}}</td>
+            <td>
+              <button
+                data-toggle="modal"
+                data-target="#updateExpenseModal"
+                v-bind:id="expense.id"
+                onclick="assignID()"
+              >
+                update
+              </button>
+            </td>
+            <td>
+              <button v-bind:id="expense.id" v-on:click="deleteExpense">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <!-- BEGINNING OF BUDGET BUTTON AND MODAL -->
 
     <div id="budget" v-if="loggedin">
@@ -420,7 +451,18 @@
       <!-- EXPENSE BUTTON END -->
 
       <!-- TABLE STARTS HERE -->
-      <div id="table"></div>
+      <div id="table" v-bind:id="table">
+        <table>
+          <thead>
+            <th v-for="heading in headings">{{headings.header}}</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <!-- TABLE ENDS HERE -->
 
       <!-- PIE CHART STARTS HERE -->
