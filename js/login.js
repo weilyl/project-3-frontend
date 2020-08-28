@@ -73,9 +73,9 @@ const login = new Vue({
   },
 });
 
-const heading = new Vue ({
+const heading = new Vue({
   el: "#heading",
   data: {
-    heading: `${login.loginUN}'s ${budget.budName} Budget`
-  }
-})
+    heading: `${login.loginUN}'s ${budget.budName} Budget`,
+  },
+});
