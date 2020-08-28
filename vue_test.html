@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Merced's Vue/Jquery Boilerplate</title>
+
+    <!-- VUE SCRIPT TAG -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- -------------------------------- -->
+
+    <!-- JQUERY SCRIPT TAG -->
+    <script
+     src="https://code.jquery.com/jquery-3.5.1.js"
+     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+     crossorigin="anonymous"></script>
+    <!-- -------------------------------------------- -->
+
+    <!-- BOOTSTAP TAGS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- -------------------------------------------- -->
+
+    <!-- YOUR CUSTOM CSS TAG -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- -------------------------------------------- -->
+
+    <!-- YOUR CUSTOM JS TAG -->
+    <script src="./js/app.js" defer></script>
+    <!-- -------------------------------------------- -->
+
+</head>
+<body>
+
+    <div id="app">
+        {{hello}} {{2+2}}
+        <h1 v-if="show">You can handle the truth!</h1>
+        <button v-on:click="toggleShow">The Truth Is Out There!</button>
+
+        <ul>
+            <li v-for="num of nums">{{num}}</li>
+        </ul>
+        <button v-on:click="addOne">Add a Number!</button>
+
+        <h1>{{name}}</h1>
+        <div>
+            <input type="text" name="name" v-model="name">
+            <input type="number" name="name" v-model="age">
+            <button v-on:click="reset">Reset</button>
+        </div>
+
+        <div v-for="post of posts">
+            <h1>{{post.title}}</h1>
+            <p>{{post.body}}</p>
+            <button v-bind:id="post.id" v-on:click="edit">Edit</button>
+            <button v-bind:id="post.id">Delete</button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table-hover" v-if="data">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Summary</th>
+                    <!-- and so on -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, idx) in archivelist">
+                    <td>{{ item.id }}></td>
+                    <td>{{ item.status }}></td>
+                    <td>{{ item.title }}></td>
+                    <td>{{ item.summary }}></td>
+                    <!-- and so on -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    
+</body>
+</html>

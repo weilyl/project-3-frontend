@@ -1,14 +1,14 @@
 // table
-const data = [
-  { id: 1, date: "2013-01-01", amount: 45, category: "food" },
-  { id: 2, date: "2013-02-01", amount: 50, category: "food" },
-  { id: 3, date: "2013-03-01", amount: 55, category: "food" },
-  { id: 4, date: "2013-04-01", amount: 50, category: "food" },
-  { id: 5, date: "2013-05-01", amount: 45, category: "transportation" },
-  { id: 6, date: "2013-06-01", amount: 50, category: "transportation" },
-  { id: 7, date: "2013-07-01", amount: 50, category: "transportation" },
-  { id: 8, date: "2013-08-01", amount: 52, category: "transportation" },
-];
+// const data = [
+//   { id: 1, date: "2013-01-01", amount: 45, category: "food" },
+//   { id: 2, date: "2013-02-01", amount: 50, category: "food" },
+//   { id: 3, date: "2013-03-01", amount: 55, category: "food" },
+//   { id: 4, date: "2013-04-01", amount: 50, category: "food" },
+//   { id: 5, date: "2013-05-01", amount: 45, category: "transportation" },
+//   { id: 6, date: "2013-06-01", amount: 50, category: "transportation" },
+//   { id: 7, date: "2013-07-01", amount: 50, category: "transportation" },
+//   { id: 8, date: "2013-08-01", amount: 52, category: "transportation" },
+// ];
 
 const assignID = () => {
   $(".update-expense")
@@ -211,180 +211,231 @@ function pieMaker(data) {
 
 // pieChart(data);
 
-// const data_grouped_array = Object.entries(data_grouped).map((e) => ({
-//   category: e[0],
-//   amount: e[1],
-// }));
 
-// //
-// // // pie chart
-// // let w = 600, //width
-// //   h = 600, //height
-// //   r = 200, //radius
-// //   color = d3.scale.category20c(); //builtin range of colors
-// //
-// // let vis = d3
-// //   .select("body")
-// //   .append("svg:svg") //create the SVG element inside the <body>
-// //   .data([data_grouped_array]) //associate our data with the document
-// //   .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
-// //   .attr("height", h)
-// //   .append("svg:g") //make a group to hold our pie chart
-// //   .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
-// //
-// // let arc = d3.svg
-// //   .arc() //this will create <path> elements for us using arc data
-// //   .outerRadius(r);
-// //
-// // let pie = d3.layout
-// //   .pie() //this will create arc data for us given a list of values
-// //   .value(function (d) {
-// //     return d.amount;
-// //   }); //we must tell it out to access the value of each element in grouped data array
-// //
-// // let arcs = vis
-// //   .selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
-// //   .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
-// //   .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-// //   .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-// //   .attr("class", "slice"); //allow us to style things in the slices (like text)
-// //
-// // arcs
-// //   .append("svg:path")
-// //   .attr("fill", function (d, i) {
-// //     return color(i);
-// //   }) //set the color for each slice to be chosen from the color function defined above
-// //   .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-// //
-// // arcs
-// //   .append("svg:text") //add a label to each slice
-// //   .attr("transform", function (d) {
-// //     //set the label's origin to the center of the arc
-// //     //we have to make sure to set these before calling arc.centroid
-// //     d.innerRadius = 0;
-// //     d.outerRadius = r;
-// //     return "translate(" + arc.centroid(d) + ")";
-// //   }) //this gives us a pair of coordinates like [50, 50]
-// //   .attr("text-anchor", "middle") //center the text on it's origin
-// //   .text(function (d, i) {
-// //     return data_grouped_array[i].category;
-// //   }); //get the label from grouped data array
-// //
-// // //END PIE CHART
 
-// // pie chart
-// let w = 600, //width
-//   h = 600, //height
-//   r = 200, //radius
-//   color = d3.scale.category20c(); //builtin range of colors
 
-// let vis = d3
-//   .select("body")
-//   .append("svg:svg") //create the SVG element inside the <body>
-//   .data([data_grouped_array]) //associate our data with the document
-//   .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
-//   .attr("height", h)
-//   .append("svg:g") //make a group to hold our pie chart
-//   .attr("transform", "translate(" + r + "," + r + ")"); //move the center of the pie chart from 0, 0 to radius, radius
+// Vue.js
+// const URL = this.prodURL ? this.prodURL : this.devURL;
 
-// let arc = d3.svg
-//   .arc() //this will create <path> elements for us using arc data
-//   .outerRadius(r);
+// const expenses = 
+//       fetch(`${URL}/budgets/1/expenses`, {
+//         method: "GET",
+//         headers: {
+//           Authorization: `bearer ${login.token}`,
+//         },
+//       })
+//         .then((response) => response.json())
 
-// let pie = d3.layout
-//   .pie() //this will create arc data for us given a list of values
-//   .value(function (d) {
-//     return d.amount;
-//   }); //we must tell it out to access the value of each element in grouped data array
+// console.log("Check expenses", expenses)
 
-// let arcs = vis
-//   .selectAll("g.slice") //this selects all <g> elements with class slice (there aren't any yet)
-//   .data(pie) //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
-//   .enter() //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-//   .append("svg:g") //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-//   .attr("class", "slice"); //allow us to style things in the slices (like text)
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      headers: [{
+          text: 'Date',
+          value: 'date'
+        },
+        {
+          text: 'Amount',
+          value: 'amount'
+        },
+        {
+          text: 'Category',
+          value: 'category'
+        }
+      ],
+      // expenses: expenses,
+      methods : {
+        const URL = this.prodURL ? this.prodURL : this.devURL;
 
-// arcs
-//   .append("svg:path")
-//   .attr("fill", function (d, i) {
-//     return color(i);
-//   }) //set the color for each slice to be chosen from the color function defined above
-//   .attr("d", arc); //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+      const expenses = 
+      fetch(`${URL}/budgets/1/expenses`, {
+        method: "GET",
+        headers: {
+          Authorization: `bearer ${login.token}`,
+        },
+      })
+        .then((response) => response.json())
 
-// arcs
-//   .append("svg:text") //add a label to each slice
-//   .attr("transform", function (d) {
-//     //set the label's origin to the center of the arc
-//     //we have to make sure to set these before calling arc.centroid
-//     d.innerRadius = 0;
-//     d.outerRadius = r;
-//     return "translate(" + arc.centroid(d) + ")";
-//   }) //this gives us a pair of coordinates like [50, 50]
-//   .attr("text-anchor", "middle") //center the text on it's origin
-//   .text(function (d, i) {
-//     return data_grouped_array[i].category;
-//   });
-// return vis;
+      console.log("Check expenses", expenses)
 
-//get the label from grouped data array
-// line graph !!!!!!!!
-// Set the dimensions of the canvas / graph
-// var margin = {top: 30, right: 20, bottom: 30, left: 50},
-//     width = 600 - margin.left - margin.right,
-//     height = 270 - margin.top - margin.bottom;
+      },
 
-// // Parse the date / time
-// var parseDate = d3.time.format("%d-%b-%y").parse;
+      expenses: expenses,
+          
+    }
+  }
+})
 
-// // Set the ranges
-// var x = d3.time.scale().range([0, width]);
-// var y = d3.scale.linear().range([height, 0]);
+// lecture code example
+const app = new Vue({
+  el: "#app",
+  data: {
+    searchQuery: "",
+    gridColumns: ["name", "power"],
+    gridData: [
+      { name: "Chuck Norris", power: Infinity },
+      { name: "Bruce Lee", power: 9000 },
+      { name: "Jackie Chan", power: 7000 },
+      { name: "Jet Li", power: 8000 }
+    ]
+  },
 
-// // Define the axes
-// var xAxis = d3.svg.axis().scale(x)
-//     .orient("bottom").ticks(5);
+  // data() {
+  //   return {
+  //     headers: [{
+  //         text: 'Date',
+  //         value: 'date'
+  //       },
+  //       {
+  //         text: 'Amount',
+  //         value: 'amount'
+  //       },
+  //       {
+  //         text: 'Category',
+  //         value: 'category'
+  //       }
+  //     ],
+  //     expenses: expenses,
+  //   }
+  // },
+  methods: {
+    const URL = this.prodURL ? this.prodURL : this.devURL;
 
-// var yAxis = d3.svg.axis().scale(y)
-//     .orient("left").ticks(5);
+      const expenses = 
+      fetch(`${URL}/budgets/1/expenses`, {
+        method: "GET",
+        headers: {
+          Authorization: `bearer ${login.token}`,
+        },
+      })
+        .then((response) => response.json())
 
-// // Define the line
-// var valueline = d3.svg.line()
-// 	.x(function(d) { return x(data[i].dates); })    //  <= Change to dates
-//     .y(function(d) { return y(data[i].amount); });
+      toggleShow: function(){this.show = !this.show},
+      addOne: function(){this.nums.push(this.nums.length + 1)},
+      reset: function(){
+          console.log(this.name)
+          console.log(this.age)
+          this.name = "";
+          this.age = 0;
+      },
+      edit: function(event){
+          const id = event.target.idy
+          console.log(id)
+          // fetch request
+          // refetch the data
+      }
+  },
+  beforeCreate: function(){
+      fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => {
+          this.posts = data
+      })
+  }
+})
 
-// // Adds the svg canvas
-// var svg = d3.select("body")
-//     .append("svg")
-//         .attr("width", width + margin.left + margin.right)
-//         .attr("height", height + margin.top + margin.bottom)
-//     .append("g")
-//         .attr("transform",
-//               "translate(" + margin.left + "," + margin.top + ")");
+// bootstrap the demo
+var demo = new Vue({
+  el: "#demo",
+  data: {
+    searchQuery: "",
+    gridColumns: ["name", "power"],
+    gridData: [
+      { name: "Chuck Norris", power: Infinity },
+      { name: "Bruce Lee", power: 9000 },
+      { name: "Jackie Chan", power: 7000 },
+      { name: "Jet Li", power: 8000 }
+    ]
+  }
+});
 
-// // Get the data
-// d3.csv("data.csv", function(error, data) {
-//     data.forEach(function(d) {
-// 		d.dates = parseDate(d.date);    //  <= Change to dates
-//         d.amount = +d.amount;
-//     });
 
-//     // Scale the range of the data
-// 	x.domain(d3.extent(data, function(d) { return d.dates; }));//<=dates
-//     y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+// test 3
+data() {
+  return {
+      data: null
+  };
+},
 
-//     // Add the valueline path.
-//     svg.append("path")
-//         .attr("class", "line")
-//         .attr("d", valueline(data));
+mounted() {
+  this.getData();
 
-//     // Add the X Axis
-//     svg.append("g")
-//         .attr("class", "x axis")
-//         .attr("transform", "translate(0," + height + ")")
-//         .call(xAxis);
+},
 
-//     // Add the Y Axis
-//     svg.append("g")
-//         .attr("class", "y axis")
-//         .call(yAxis);
-// });
+methods: {
+  getData() {
+      // vue-resource example
+      this.$http.get('data.json', {responseType: 'json'}).then(response => {
+          return response.json();
+      }).then(jsonData => {
+          this.data = JSON.parse(jsonData);
+      }).catch(e => {
+          console.log('Error', e);
+      });
+  }
+}
+
+// test 4
+const app = new Vue({
+  el: '#app',
+  data: {
+       variable1: 'value',
+       variable2: 'value2'
+       },
+  methods: {
+       function1: function (param) {
+            console.log(param)
+            },
+       function2: function (param) {
+            this.variable1 = param
+            }
+       }
+  })
+
+// test 5 
+// const URL = /// logic to set URL
+const URL = this.prodURL ? this.prodURL : this.devURL;
+
+new Vue({
+  el: '#app',
+  data: {
+      headers: [
+        {
+          text: 'Date',
+          value: 'date'
+        },
+        {
+          text: 'Amount',
+          value: 'amount'
+        },
+        {
+          text: 'Category',
+          value: 'category'
+        }
+      ],
+      expenses: null
+    },
+    methods : {
+      getExpenses: function () { 
+        fetch(`${URL}/budgets/1/expenses`, {
+            method: "GET",
+            headers: {
+                Authorization: `bearer ${login.token}`,
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Check expenses: ', data)
+            this.expenses = data
+            })
+      }          
+    },
+    beforeMount: function () {
+        this.getExpenses()
+        }
+    })
+Colla
+            
+
