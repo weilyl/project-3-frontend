@@ -13,7 +13,7 @@ const budget = new Vue({
   },
   methods: {
     //Create a budget
-    createBudget: function () {
+    createBudget: function (data) {
       // object from input
       // HTML v-model="budName" & v-model="budAmount"
       const URL = this.prodURL ? this.prodURL : this.devURL;
@@ -22,7 +22,7 @@ const budget = new Vue({
       const newBudget = JSON.stringify({
         name: "Your Budget", // post-MVP : this.budName
         amount: 1000000000, // post-MVP: this.budAmount
-        user_id: login.user_id, // post- MVP can use login.user_id == data.data.user_id as condition
+        user_id: data.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
       });
       // fetch request from budgets#create route
       // console.log(newBudget);
@@ -32,7 +32,7 @@ const budget = new Vue({
         headers: {
           "Content-Type": "application/json",
           // only if logged in
-          Authorization: `bearer ${login.token}`,
+          Authorization: `bearer ${data.token}`,
         },
         body: newBudget,
       })
@@ -45,6 +45,18 @@ const budget = new Vue({
           heading.heading = true;
           this.budName = "";
           this.budAmount = null;
+        });
+    },
+    userBudget: function () {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      fetch(`${URL}/users/${login.user.id}/budgets`, {
+        method: "get",
+        headers: {
+          Authorization: `bearer ${login.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
           expense.showExpense();
         });
     },
@@ -128,7 +140,6 @@ const expense = new Vue({
         category: this.expCategory,
         date: this.expDate,
         amount: this.expAmount,
-        user_id: login.user.id,
       });
       console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 

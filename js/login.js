@@ -67,6 +67,7 @@ const login = new Vue({
           } else {
             alert("signup successful");
             this.loggedin = true;
+            budget.createBudget(data);
           }
         });
     },
