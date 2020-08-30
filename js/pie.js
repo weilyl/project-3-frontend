@@ -25,7 +25,7 @@ function pieMaker(data) {
   //pie chart size
   let w = 600, //width
     h = 600, //height
-    r = w/3, //radius
+    r = w/2, //radius
     color = d3.scale.category20c(); //builtin range of colors
 
   $("#piechart").empty();
@@ -33,15 +33,16 @@ function pieMaker(data) {
   let vis = d3
     .select("#piechart")
     .append("svg:svg") //create the SVG element inside the <body>
+    .attr("viewBox", `0 0 600 600`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .classed("svg-content", true)
     .data([data_grouped_array]) //associate our data with the document
-    .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
-    .attr("height", h)
+    // .attr("width", w) //set the width and height of our visualization (these will be attributes of the <svg> tag
+    // .attr("height", h)
     .append("svg:g") //make a group to hold our pie chart
     .attr("transform", "translate(" + r + "," + r + ")") //move the center of the pie chart from 0, 0 to radius, radius
     .attr("width", 600)
     .attr("height", 600)
-    .attr("viewBox", `0 0 300 600`)
-    .attr("preserveAspectRatio", "xMidYMid meet")
 
   let arc = d3.svg
     .arc() //this will create <path> elements for us using arc data

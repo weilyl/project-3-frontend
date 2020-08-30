@@ -25,8 +25,9 @@ const budget = new Vue({
         user_id: user.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
       });
       // fetch request from budgets#create route
-      console.log(newBudget);
-      console.log(login.token);
+      console.log("here's your new budget: ", newBudget);
+      console.log("here's the token from the login Vue instance ", login.token);
+      console.log("here's the token from the parameter being passed in to create budget", user.token);
       fetch(`${URL}/budgets`, {
         method: "POST",
         headers: {
@@ -38,11 +39,12 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          console.log("here's the data from creating your budget", data);
           console.log(data.data.id);
           this.budget_id = data.data.id;
           console.log("this is your new budget id ", this.budget_id);
           heading.heading = true;
+          this.userBudget()
           this.budName = "";
           this.budAmount = null;
         });

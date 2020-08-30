@@ -105,8 +105,37 @@ const login = new Vue({
           } else {
             alert("signup successful");
             this.loggedin = true;
+            budget.loggedin = true;
+            expense.loggedin = true;
+            this.user = data.user
+            this.handleLoginAfterSignup()
+            console.log("you should also be logged in now")
+          }
+        });
+    },
+    handleLoginAfterSignup: function () {
+      // event.preventDefault();
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      const user = { username: this.createUN, password: this.createPW };
+      fetch(`${URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            alert("log in unsuccessful");
+          } else {
+            console.log("logging you in...")
+            console.log("log in data: ", data);
+            this.user = data.user;
             this.token = data.token;
+            console.log("preparing to create your budget now...");
             budget.createBudget(data);
+            // budget.userBudget(data); moving inside createBudget for MVP with one budget per user
           }
         });
     },

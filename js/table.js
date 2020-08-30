@@ -70,8 +70,11 @@ const tabulate = (data, columns) => {
     .attr("id", function (d) {
       return d.id;
     })
-    .text("update")
-    .on("click", assignID);
+    // .text("update")
+    .on("click", assignID)
+    .append("i")
+    .attr("class", "fad")
+    .attr("class", "fa-edit")
 
   // delete button
   thead.append("th").text("");
