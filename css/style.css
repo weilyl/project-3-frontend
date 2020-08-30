@@ -141,5 +141,7 @@ th {
   #table,
   #piechart {
     width: 70vw;
+    margin: 1em 0;
+    padding: 0;
   }
 }
