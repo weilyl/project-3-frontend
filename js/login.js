@@ -26,17 +26,17 @@ const login = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          this.user = data.user;
-          this.token = data.token;
-          this.loggedin = true;
-          budget.loggedin = true;
-          expense.loggedin = true;
-          this.loginPW = "";
-          this.loginUN = "";
           if (data.error) {
             alert("log in unsuccessful");
           } else {
             alert("log in successful");
+            this.user = data.user;
+            this.token = data.token;
+            this.loggedin = true;
+            budget.loggedin = true;
+            expense.loggedin = true;
+            this.loginPW = "";
+            this.loginUN = "";
             budget.userBudget();
           }
         });
@@ -95,7 +95,7 @@ const login = new Vue({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: user,
       })
         .then((response) => response.json())
         .then((data) => {
@@ -104,8 +104,16 @@ const login = new Vue({
             alert("sign up unsuccessful");
           } else {
             alert("signup successful");
+            this.user = data.user;
+            this.token = data.token;
             this.loggedin = true;
-            budget.createBudget(data);
+            budget.loggedin = true;
+            expense.loggedin = true;
+            this.loginPW = "";
+            this.loginUN = "";
+            budget.createBudget(data).then((promise) => {
+              budget.userBudget();
+            });
           }
         });
     },
