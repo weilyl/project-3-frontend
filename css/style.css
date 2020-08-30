@@ -148,4 +148,14 @@ th {
     width: 300;
     height: 300;
   }
+  td,
+  th {
+    padding: 0.25em 0.5em;
+    margin: 0 0.5em;
+    text-align: center;
+  }
+  .update,
+  .delete {
+    width: 2em;
+  }
 }
