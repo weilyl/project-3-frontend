@@ -57,9 +57,9 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("DATA: ", data);
-          this.budget_id = data.data.id;
-          console.log("Is this the correct id? ", budget_id);
+          console.log("DATA: ", data.data[0].id);
+          this.budget_id = data.data[0].id;
+          console.log("Is this the correct id? ", this.budget_id);
           expense.showExpense();
         });
     },
@@ -179,7 +179,6 @@ const expense = new Vue({
       )
         .then((response) => response.json())
         .then((data) => {
-          console.table(data.data);
           tabulate(data.data, ["date", "amount", "category"]);
           pieMaker(data.data);
         });

@@ -38,7 +38,6 @@ const login = new Vue({
           } else {
             alert("log in successful");
             budget.userBudget();
-            expense.showExpense();
           }
         });
     },

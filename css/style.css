@@ -41,6 +41,10 @@ h6 {
   font-family: var(--title-font);
 }
 
+#logo {
+  height: 3em;
+  margin: 0 2em;
+}
 /* -------------------------------------------------------- */
 /* YOUR CUSTOM STYLES */
 /* -------------------------------------------------------- */
@@ -105,8 +109,8 @@ th {
   margin: 0 7em;
 }
 
-@media only screen and (max-width: 600px) {
-  #expense {
+@media only screen and (max-width: 1100px) {
+  .tables {
     flex-direction: column;
   }
 }
