@@ -99,7 +99,6 @@ const login = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data.error) {
             alert("sign up unsuccessful");
           } else {
