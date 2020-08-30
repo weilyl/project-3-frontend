@@ -13,36 +13,43 @@ const budget = new Vue({
   },
   methods: {
     //Create a budget
-    createBudget: function () {
+    createBudget: function (data) {
       // object from input
       // HTML v-model="budName" & v-model="budAmount"
       const URL = this.prodURL ? this.prodURL : this.devURL;
+      // console.log(this.budName);
+      // console.log(this.budAmount);
       const newBudget = JSON.stringify({
-        name: this.budName,
-        amount: this.budAmount,
+        name: "Your Budget", // post-MVP : this.budName
+        amount: 1000000000, // post-MVP: this.budAmount
+        user_id: data.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
       });
       // fetch request from budgets#create route
       console.log(newBudget);
+      console.log(login.token);
       fetch(`${URL}/budgets`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           // only if logged in
-          Authorization: `bearer ${login.token}`,
+          Authorization: `bearer ${data.token}`,
         },
-        body: newBudget,
-      }).then((response) => {
-        heading.heading = true;
-        this.budName = "";
-        this.budAmount = null;
-        this.showOneBudget();
-        expense.showExpense();
-      });
+        body: JSON.stringify(newBudget),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.data);
+          console.log(data.data.id);
+          this.budget_id = data.data.id;
+          console.log("this is your new budget id ", this.budget_id);
+          heading.heading = true;
+          this.budName = "";
+          this.budAmount = null;
+        });
     },
-    //Show the budget
-    showOneBudget: function () {
+    userBudget: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/1`, {
+      fetch(`${URL}/users/${login.user.id}/budgets`, {
         method: "get",
         headers: {
           Authorization: `bearer ${login.token}`,
@@ -50,23 +57,41 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          this.budget = data;
-          console.log(this.budget);
+          console.log("DATA: ", data);
+          this.budget_id = data.data.id;
+          console.log("Is this the correct id? ", budget_id);
+          expense.showExpense();
+        });
+    },
+    //Show the budget
+    showOneBudget: function () {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      fetch(`${URL}/budgets/${this.budget_id}`, {
+        method: "get",
+        headers: {
+          Authorization: `bearer ${login.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          //this.budget = data;
+          // console.log(this.budget);
           // idea: make into dashboard header with related expenses
           // underneath "login.loginUN's this.budName budget: this.budAmount"
           // target an html tag with ID or class
-          //
+          // post-post-MVP
         });
     },
     //Update/edit the budget
     updateBudget: function (event) {
+      //post- post MVP
       const editBudget = {
         name: this.updatedBudName,
         amount: this.updatedBudAmount, // v-model="updatedBudName", etc
       };
       const budget_id = event.target.id;
       console.log(editBudget);
-      fetch(`${URL}/budgets/1`, {
+      fetch(`${URL}/budgets/${this.budget_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +107,8 @@ const budget = new Vue({
     },
     //Delete the budget
     deleteBudget: function () {
-      fetch(`${URL}/budgets/1`, {
+      // Post post MVP
+      fetch(`${URL}/budgets/${this.budget_id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -118,8 +144,9 @@ const expense = new Vue({
         date: this.expDate,
         amount: this.expAmount,
       });
+      console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 
-      fetch(`${URL}/budgets/1/expenses`, {
+      fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,6 +154,7 @@ const expense = new Vue({
         },
         body: newExpense,
       }).then((response) => {
+        console.log("created expense: ", newExpense);
         this.expCategory = "";
         this.expAmount = null;
         this.expDate = "";
@@ -136,14 +164,22 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/1/expenses`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      console.log(
+        "show route: ",
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`
+      );
+      fetch(
+        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
+          console.table(data.data);
           tabulate(data.data, ["date", "amount", "category"]);
           pieMaker(data.data);
         });
@@ -151,12 +187,15 @@ const expense = new Vue({
     //Show Expense by Category
     showExpenseByCategory: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/1/expenses/category/${this.category}`, {
-        method: "GET",
-        headers: {
-          Authorization: `bearer ${login.token}`,
-        },
-      })
+      fetch(
+        `${URL}/budgets/${budget.budget_id}/expenses/category/${this.category}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `bearer ${login.token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           this.expense = data;
@@ -177,7 +216,7 @@ const expense = new Vue({
         this.updatedExpCategory,
         this.updatedExpDate
       );
-      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
+      fetch(`${URL}/budgets/${budget.budget_id}/expenses/${event.target.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -187,15 +226,13 @@ const expense = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(expense._data.updatedExpCategory);
           this.showExpense();
-          console.log("ALL DONE!");
         });
     },
     //Delete the budget
     deleteExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      fetch(`${URL}/budgets/1/expenses/${event.target.id}`, {
+      fetch(`${URL}/budgets/${budget.budget_id}/expenses/${event.target.id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
@@ -209,19 +246,7 @@ const expense = new Vue({
     },
   },
 });
-const getExpenses = function () {
-  const response = fetch(
-    "https://squilliamp3.herokuapp.com/budgets/1/expenses",
-    {
-      method: "GET",
-      headers: {
-        Authorization: `bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oT7kSePnYs7eVIsRIzIi0UEC7XBclsrO3qrnXwic8Zg`,
-      },
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-};
+
 // getExpenses();
 
 // post-MVP for budgets

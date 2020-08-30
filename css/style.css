@@ -27,7 +27,7 @@
 body {
   font-family: var(--main-font);
   color: white;
-  background: linear-gradient(#131133, #322a8b, #131133);
+  background: #322a8b;
   background-size: cover;
   background-position: center;
 }
