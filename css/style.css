@@ -142,16 +142,10 @@ th {
     width: 90vw;
   }
   #piechart {
-<<<<<<< HEAD
-    width: 70vw;
-    margin: 1em 0;
-    padding: 0;
-=======
     width: 80vw;
   }
   #piechart svg {
     width: 300;
     height: 300;
->>>>>>> 5a433a83f562520ce0ddb1b63eeb496e7a9a4d21
   }
 }
