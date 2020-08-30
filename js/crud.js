@@ -13,7 +13,7 @@ const budget = new Vue({
   },
   methods: {
     //Create a budget
-    createBudget: function (data) {
+    createBudget: function (user) {
       // object from input
       // HTML v-model="budName" & v-model="budAmount"
       const URL = this.prodURL ? this.prodURL : this.devURL;
@@ -22,7 +22,7 @@ const budget = new Vue({
       const newBudget = JSON.stringify({
         name: "Your Budget", // post-MVP : this.budName
         amount: 1000000000, // post-MVP: this.budAmount
-        user_id: data.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
+        user_id: user.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
       });
       // fetch request from budgets#create route
       console.log(newBudget);
@@ -32,13 +32,13 @@ const budget = new Vue({
         headers: {
           "Content-Type": "application/json",
           // only if logged in
-          Authorization: `bearer ${data.token}`,
+          Authorization: `bearer ${user.token}`,
         },
-        body: JSON.stringify(newBudget),
+        body: newBudget,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.data);
+          console.log(data);
           console.log(data.data.id);
           this.budget_id = data.data.id;
           console.log("this is your new budget id ", this.budget_id);
