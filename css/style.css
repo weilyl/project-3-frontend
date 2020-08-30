@@ -109,7 +109,6 @@ th {
   top: 6em;
 }
 #table {
-  width: 50%;
   margin: 0 7em;
 }
 
@@ -143,9 +142,5 @@ th {
   }
   #piechart {
     width: 80vw;
-  }
-  #piechart svg {
-    width: 300;
-    height: 300;
   }
 }

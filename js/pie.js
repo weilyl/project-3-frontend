@@ -23,9 +23,9 @@ function pieMaker(data) {
   }));
 
   //pie chart size
-  let w = 400, //width
-    h = 400, //height
-    r = 150, //radius
+  let w = 600, //width
+    h = 600, //height
+    r = 200, //radius
     color = d3.scale.category20c(); //builtin range of colors
 
   $("#piechart").empty();
