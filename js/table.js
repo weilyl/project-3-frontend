@@ -18,7 +18,6 @@ const assignID = () => {
 };
 
 const tabulate = (data, columns) => {
-  console.table(data);
   document.getElementById("table").innerHTML = "";
   let table = d3.select("#table").append("table");
   let thead = table.append("thead");

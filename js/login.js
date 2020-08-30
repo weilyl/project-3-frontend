@@ -37,6 +37,8 @@ const login = new Vue({
             alert("log in unsuccessful");
           } else {
             alert("log in successful");
+            budget.userBudget();
+            expense.showExpense();
           }
         });
     },
