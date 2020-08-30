@@ -130,6 +130,22 @@
           </ul>
         </div>
       </nav>
+
+      <!-- LANDING PAGE BEGINS -->
+      <div id="landing" v-if="!loggedin">
+        <img src="css/assets/budget.svg" />
+        <div class="desc">
+          <h1 class="text-white active">Budgeting made simple</h1>
+          <p class="text-white active">
+            This finance tracker is a simple tool for users to visualize their
+            spending history. Sign up and begin to track your expenses overtime.
+            See what areas of your day-to-day life are consuming the most of
+            your resources.
+          </p>
+        </div>
+      </div>
+      <!-- LANDING PAGE ENDS -->
+
       <!-- SIGN UP MODAL FORM BEGINS -->
       <div
         class="modal fade"
