@@ -104,9 +104,16 @@ const login = new Vue({
             alert("sign up unsuccessful");
           } else {
             alert("signup successful");
-            this.loggedin = true;
+            this.user = data.user;
             this.token = data.token;
-            budget.createBudget(data);
+            this.loggedin = true;
+            budget.loggedin = true;
+            expense.loggedin = true;
+            this.loginPW = "";
+            this.loginUN = "";
+            budget.createBudget(data).then((promise) => {
+              budget.userBudget();
+            });
           }
         });
     },

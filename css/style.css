@@ -138,8 +138,14 @@ th {
 }
 
 @media only screen and (max-width: 600px) {
-  #table,
+  #table {
+    width: 90vw;
+  }
   #piechart {
-    width: 70vw;
+    width: 80vw;
+  }
+  #piechart svg {
+    width: 300;
+    height: 300;
   }
 }
