@@ -75,39 +75,38 @@
 
   <body>
     <div id="login" style="color: #414141">
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Finance Tracker</a>
+      <nav
+        class="navbar navbar-expand-md navbar-dark"
+        style="background-color: #4248c5"
+      >
+        <img id="logo" src="./css/assets/budget.svg" />
         <button
-                class="navbar-toggler collapsed"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarToggleExternalContent"
-                aria-controls="navbarToggleExternalContent"
-                aria-expanded="true"
-                aria-label="Toggle navigation"
+          class="navbar-toggler collapsed"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="true"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-                class="navbar-collapse collapse"
-                id="navbarToggleExternalContent"
-                style
-        >
+        <div class="navbar-collapse collapse" id="navbarToggleExternalContent">
           <ul class="navbar-nav mr-auto">
             <li class="text-white nav-item active">
               <a class="nav-link text-white" href="#">Home</a>
             </li>
-            <li class="text-muted nav-item active">
+            <li v-if="!loggedin" class="nav-item active">
               <!-- BUTTON TO OPEN REGISTER MODAL BEGINS -->
               <!-- DESKTOP to do: justify right of nav-bar in desktop -->
               <!-- MOBILE to do: put in hamburger menu -->
               <!--div class="text-center"-->
               <a
-                      href=""
-                      class="text-muted nav-link"
-                      data-toggle="modal"
-                      data-target="#modalRegisterForm"
-              >Log In/Register Form</a
+                href=""
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#modalRegisterForm"
+                >Log In/Register Form</a
               >
               <!--/div-->
               <!-- BUTTON TO OPEN REGISTER MODAL ENDS -->
@@ -117,10 +116,10 @@
               <!-- TO DO: How to make Logout button REPLACE Login button when signed in -->
               <div v-if="loggedin">
                 <a
-                        href=""
-                        v-on:click="handleLogout"
-                        class="nav-link text-white active"
-                >Logout</a
+                  href=""
+                  v-on:click="handleLogout"
+                  class="nav-link text-white active"
+                  >Logout</a
                 >
               </div>
               <!-- BUTTON TO LOG OUT ENDS -->
@@ -130,22 +129,22 @@
       </nav>
       <!-- SIGN UP MODAL FORM BEGINS -->
       <div
-              class="modal fade"
-              id="modalRegisterForm"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="myModalLabel"
-              aria-hidden="true"
+        class="modal fade"
+        id="modalRegisterForm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
               <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
               <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -154,45 +153,45 @@
               <div class="md-form mb-5">
                 <i class="fas fa-user prefix grey-text"></i>
                 <input
-                        type="text"
-                        id="orangeForm-name"
-                        class="form-control validate"
+                  type="text"
+                  id="orangeForm-name"
+                  class="form-control validate"
                 />
                 <label
-                        data-error="wrong"
-                        data-success="right"
-                        for="orangeForm-name"
-                >Your name</label
+                  data-error="wrong"
+                  data-success="right"
+                  for="orangeForm-name"
+                  >Your name</label
                 >
               </div>
               <div class="md-form mb-5">
                 <i class="fas fa-envelope prefix grey-text"></i>
                 <input
-                        type="text"
-                        id="orangeForm-email"
-                        class="form-control validate"
-                        v-model="createUN"
+                  type="text"
+                  id="orangeForm-email"
+                  class="form-control validate"
+                  v-model="createUN"
                 />
                 <label
-                        data-error="wrong"
-                        data-success="right"
-                        for="orangeForm-email"
-                >Your username</label
+                  data-error="wrong"
+                  data-success="right"
+                  for="orangeForm-email"
+                  >Your username</label
                 >
               </div>
               <div class="md-form mb-4">
                 <i class="fas fa-lock prefix grey-text"></i>
                 <input
-                        type="password"
-                        id="orangeForm-pass"
-                        class="form-control validate"
-                        v-model="createPW"
+                  type="password"
+                  id="orangeForm-pass"
+                  class="form-control validate"
+                  v-model="createPW"
                 />
                 <label
-                        data-error="wrong"
-                        data-success="right"
-                        for="orangeForm-pass"
-                >Your password</label
+                  data-error="wrong"
+                  data-success="right"
+                  for="orangeForm-pass"
+                  >Your password</label
                 >
               </div>
             </div>
@@ -204,12 +203,12 @@
             <!-- THIS BUTTON HAS CLOSES THE SIGN UP MODAL (data-target) AND THEN OPENS THE LOG IN MODAL (data-dismiss) -->
             <!--div class="text-center"-->
             <a
-                    href=""
-                    class="btn btn-default btn-rounded mb-4"
-                    data-toggle="modal"
-                    data-target="#modalLoginForm"
-                    data-dismiss="modal"
-            >Already have an account? Log in here</a
+              href=""
+              class="btn btn-default btn-rounded mb-4"
+              data-toggle="modal"
+              data-target="#modalLoginForm"
+              data-dismiss="modal"
+              >Already have an account? Log in here</a
             >
             <!--/div-->
           </div>
@@ -219,22 +218,22 @@
 
       <!-- LOG IN MODAL BEGINS -->
       <div
-              class="modal fade"
-              id="modalLoginForm"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="myModalLabel"
-              aria-hidden="true"
+        class="modal fade"
+        id="modalLoginForm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content" v-if="!loggedin">
             <div class="modal-header text-center">
               <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
               <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -243,39 +242,39 @@
               <div class="md-form mb-5">
                 <i class="fas fa-envelope prefix grey-text"></i>
                 <input
-                        type="text"
-                        id="defaultForm-email"
-                        class="form-control validate"
-                        v-model="loginUN"
+                  type="text"
+                  id="defaultForm-email"
+                  class="form-control validate"
+                  v-model="loginUN"
                 />
                 <label
-                        data-error="wrong"
-                        data-success="right"
-                        for="defaultForm-email"
-                >Your username</label
+                  data-error="wrong"
+                  data-success="right"
+                  for="defaultForm-email"
+                  >Your username</label
                 >
               </div>
               <div class="md-form mb-4">
                 <i class="fas fa-lock prefix grey-text"></i>
                 <input
-                        type="password"
-                        id="defaultForm-pass"
-                        class="form-control validate"
-                        v-model="loginPW"
+                  type="password"
+                  id="defaultForm-pass"
+                  class="form-control validate"
+                  v-model="loginPW"
                 />
                 <label
-                        data-error="wrong"
-                        data-success="right"
-                        for="defaultForm-pass"
-                >Your password</label
+                  data-error="wrong"
+                  data-success="right"
+                  for="defaultForm-pass"
+                  >Your password</label
                 >
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
               <button
-                      class="btn btn-default"
-                      type="submit"
-                      v-on:click.prevent="handleLogin"
+                class="btn btn-default"
+                type="submit"
+                v-on:click.prevent="handleLogin"
               >
                 Login
               </button>
@@ -292,19 +291,18 @@
       <br />
       <!-- post-post MVP -->
 
-       <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
+      <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
       <button
-              type="button"
-              class="btn btn-primary add-expense"
-              data-toggle="modal"
-              data-target="#createBudgetModal"
-              style="background-color: #ffbb56; border: none"
-              data-dismiss="modal">
-
+        type="button"
+        class="btn btn-primary add-expense"
+        data-toggle="modal"
+        data-target="#createBudgetModal"
+        style="background-color: #ffbb56; border: none"
+        data-dismiss="modal"
+      >
         Create Budget
       </button>
       <!-- BUDGET MODAL OPEN BUTTON ENDS -->
-
 
       <!-- BUDGET MODAL BEGINS -->
       <div
@@ -417,13 +415,15 @@
       </div>
       <!-- EXPENSE BUTTON END -->
 
-      <!-- TABLE STARTS HERE -->
-      <div id="table"></div>
-      <!-- TABLE ENDS HERE -->
+      <div class="tables">
+        <!-- TABLE STARTS HERE -->
+        <div id="table"></div>
+        <!-- TABLE ENDS HERE -->
 
-      <!-- PIE CHART STARTS HERE -->
-      <div id="piechart"></div>
-      <!-- PIE CHART ENDS HERE-->
+        <!-- PIE CHART STARTS HERE -->
+        <div id="piechart"></div>
+        <!-- PIE CHART ENDS HERE-->
+      </div>
 
       <!-- ADD EXPENSE MODAL BEGINS -->
       <div

@@ -41,6 +41,10 @@ h6 {
   font-family: var(--title-font);
 }
 
+#logo {
+  height: 3em;
+  margin: 0 2em;
+}
 /* -------------------------------------------------------- */
 /* YOUR CUSTOM STYLES */
 /* -------------------------------------------------------- */
@@ -88,9 +92,25 @@ th {
 .expense-buttons button {
   margin: 2em;
 }
+.tables {
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+}
 
 #piechart {
-  margin: 3em;
+  width: 50%;
   position: relative;
-  left: 5em;
+  top: 6em;
+}
+#table {
+  width: 50%;
+  margin: 0 7em;
+}
+
+@media only screen and (max-width: 1100px) {
+  .tables {
+    flex-direction: column;
+  }
 }
