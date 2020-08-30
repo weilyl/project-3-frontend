@@ -6,14 +6,22 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Carousel Template · Bootstrap</title>
+    <title>Financial Tracker</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+      body {
+        background-color: #091235;
+      }
+      .container marketing {
+        background-color:#050A30 ;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -21,6 +29,15 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+      }
+
+      .fa {
+        font-size: 400px;
+        text-align: center;
+      }
+      .fa-instagram {
+        background: orangered;
+        font-size: 1000px;
       }
 
       @media (min-width: 768px) {
@@ -42,20 +59,20 @@
   <body>
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Carousel</a>
+    <a class="navbar-brand" href="index.html">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">About our company <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">About our team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Features</a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
@@ -76,32 +93,32 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <h1>About our project</h1>
+            <p>We help people keep track of their finances.This finance tracker is a simple tool for users to visualize their spending history. The front-end will be built using HTML, CSS, Vue.js, Bootstrap, and D3.js. Our users value a minimal layout and functionality to achieve their goals faster. Users will be able to make an account and sign in. Users will be able to store their expenses in a database, organized by date and category. Users will be able to exclusively access their own expenses. Users will be able to see their expenses as a table and as a chart. In future features, users will be able to log in using social media accounts, select dates, and select different types of charts.</p>
+            <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <h1>Why we do it</h1>
+            <p>Because so many people are struggling with their finances</p>
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            <h1>Contact us on</h1>
+            <p>Social Media</p>
+            <p><a class="btn btn-lg btn-primary" href="https://www.instagram.com/squilliamfinancetracker" role="button">Instagram</a></p>
           </div>
         </div>
       </div>
@@ -125,23 +142,42 @@
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
+      
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598539762/Screen_Shot_2020-08-27_at_10.49.09_AM_ni81xg.png" width="140" height="140">
+        <h2>William Clavell</h2>
+        <h6>Project Manager</h6>
+        <p>I am a creative and detail-oriented developer with a passion for coming up with functional and immersive solutions to problems. Having a background in finance and real estate, I've developed an analytical mindset, but at that same time, I am constantly working my creative side through logo and brand design. Instead of feeling half-fulfilled in one area, I am thrilled to collaborate and use both my logical and innovative thinking in tech to produce impactful results.</p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/williamclavell/" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540339/Screen_Shot_2020-08-27_at_10.56.16_AM_t0bbkl.png"  width="140" height="140" >
+        <h2>Weily lang</h2>
+        <h6>Git Master</h6>
         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/weilylang/" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540436/Screen_Shot_2020-08-27_at_11.00.22_AM_zuqop6.png"  width="140" height="140">
+        <h2>Nang Shen Hom(Rachel)</h2>
+        <p>I'm aspire Software Engineer.As an immigrant from Myanmar,I have a multi-cultural perspective in the world which I bring to the work that I do.I m recently enrolling in General Assembly Software Engineering Immersive Program. </p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/nang-shen-hom/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540510/Screen_Shot_2020-08-27_at_11.01.39_AM_d6911a.png"  width="140" height="140">
+        <h2>Brandon Balkaransingh</h2>
+        <p></p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/brandon-balkaransingh23/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540550/Screen_Shot_2020-08-27_at_11.02.17_AM_g8go3k.png"  width="140" height="140">
+        <h2>Eric Mestiza</h2>
+        <p>Aspiring software engineer and data scientist. A versatile technical professional with a multidisciplinary skill set:
+          • Experience with data visualization, data wrangling, probability, inference, & modeling with practical application
+          • Experience with implementing machine learning algorithms
+          • Knowledge of Python, SQL, R, JavaScript, HTML, CSS, GitHub, and Git
+          </p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/eric-mestiza-040368143/" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -152,37 +188,14 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598658639/Screen_Shot_2020-08-28_at_11.58.12_AM_x4uhyf.png" width="500" height="600">
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598630576/Screen_Shot_2020-08-28_at_11.57.45_AM_fw7nbl.png" width="500" height="500">
       </div>
     </div>
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
+    
 
     <hr class="featurette-divider">
 
@@ -194,7 +207,9 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>&copy; 2020 Squilliam, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <a href = "https://www.instagram.com/squilliamfinancetracker"></i>
+
   </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
