@@ -123,6 +123,7 @@ const expense = new Vue({
     expense_id: null,
     loggedin: false,
     heading: "",
+    total: null,
     //token: null
   },
   methods: {
@@ -165,7 +166,15 @@ const expense = new Vue({
         .then((data) => {
           tabulate(data.data, ["date", "amount", "category"]);
           pieMaker(data.data);
+          this.addExpenses(data.data);
         });
+    },
+    addExpenses: function (data) {
+      let addedUp = 0;
+      expense.total = data.forEach((expense) => {
+        addedUp += expense.amount;
+      });
+      this.total = addedUp;
     },
     //Show Expense by Category
     showExpenseByCategory: function () {
