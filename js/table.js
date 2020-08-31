@@ -88,10 +88,10 @@ const tabulate = (data, columns) => {
     .attr("id", function (d) {
       return d.id;
     })
+    .text("delete")
     .on("click", function () {
       expense.deleteExpense();
     });
-  $(".delete").append('<i class="far fa-trash-alt"></i>');
 
   return table;
 };
