@@ -2,7 +2,7 @@
 
 ## Project
 
-Link to completed project [here]()
+Link to completed project [here](http://finance-tracker.surge.sh/)
 
 Link to project frontend [here](https://github.com/weilyl/project-3-frontend)
 
@@ -16,23 +16,28 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 | Day   | Deliverable                                                      | Status     |
 | ----- | ---------------------------------------------------------------- | ---------- |
-| Day 1 | Project Description                                              | Incomplete |
-| Day 1 | Wireframes / Priority Matrix / Timeline `backend` and `frontend` | Incomplete |
-| Day 2 | Working RestAPI                                                  | Incomplete |
-| Day 3 | Core Application Structure (HTML, CSS, etc.)                     | Incomplete |
-| Day 4 | MVP & Bug Fixes                                                  | Incomplete |
-| Day 5 | Final Touches and Present                                        | Incomplete |
+| Day 1 | Project Description                                              | Complete |
+| Day 1 | Wireframes / Priority Matrix / Timeline `backend` and `frontend` | Complete |
+| Day 2 | Working RestAPI                                                  | Complete |
+| Day 3 | Core Application Structure (HTML, CSS, etc.)                     | Complete |
+| Day 4 | MVP & Bug Fixes                                                  | Complete |
+| Day 5 | Final Touches and Present                                        | Complete |
 
 ## Project Description
 
 This finance tracker is a simple tool for users to visualize their spending history. 
-The front-end will be built using HTML, CSS, Vue.js, Bootstrap, and D3.js. 
+The front-end will be built using HTML, CSS, Vue.js, Bootstrap, jQuery and D3.js. 
 Our users value a minimal layout and functionality to achieve their goals faster.
 Users will be able to make an account and sign in. 
-Users will be able to store their expenses in a database, organized by date and category. 
+Users will be able to store their expenses in a database. 
 Users will be able to exclusively access their own expenses. 
-Users will be able to see their expenses as a table and as a chart.
-In future features, users will be able to log in using social media accounts, select dates, and select different types of charts.
+Users will be able to see their expenses as a table and as a color-coded pie chart.
+In future features, users will be able to: 
+- log in using social media accounts
+- select dates 
+- select different types of charts 
+- make multiple budgets, and
+- sort expenses by category.
 
 ## Wireframes
 
@@ -46,79 +51,109 @@ In future features, users will be able to log in using social media accounts, se
 
 ### MVP/PostMVP
 
-The functionality will then be divided into two separate lists: MPV and PostMVP. The MVP list includes functionality that will be implemented upon project completion.
+The functionality will then be divided into two separate lists: MPV and PostMVP. 
+The MVP list includes functionality that will be implemented upon project completion.
 
 #### MVP
 
-- Hamburger menu
+- Hamburger menu/Navigation Bar (mobile-first)
 - Sign In Modal
-- Input Modal
+- Log In Modal
+- Input Expenses Modal
 - Table Template
 - Vue.js
-- Average and totals
+- Total spending
 - CSS (Bootstrap)
-- Navigation Bar (mobile-first)
+- D3.js Table
 - D3.js Chart
 - Footer
 
 #### PostMVP
 
-- About, Contact, etc. for the Footer
+- About, Contact, etc. for the footer
 - More charts (line graph, bar chart, pie chart)
 - Filter by month, year, etc.
 - Sort by category
-- Choose specific to look at
 - Logo
+- User profile
 
 ## Functional Components
 
-Based on the initial logic defined in the previous sections try and breakdown the logic further into functional components, and by that we mean functions. Try and capture what logic would need to be defined if the game was broken down into the following categories.
+Based on the initial logic defined in the previous sections, try and breakdown the logic further into functional components, and by that we mean functions. Try and capture what logic would need to be defined if the game was broken down into the following categories.
 
 Time frames are also key in the development cycle. You have limited time to code all phases of the game. Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe.
 
 #### MVP
 
-| Component                     | Priority | Estimated Time | Time Invetsted | Actual Time |
+| Component                     | Priority | Estimated Time | Time Allotted | Actual Time |
 | ----------------------------- | :------: | :------------: | :------------: | :---------: |
-| Hamburger menu                |    H     |      1 hr      |       hr       |     -hr     |
-| Sign In Modal                 |    H     |     3 hrs      |      -hr       |     -hr     |
-| Input Modal                   |    H     |     3 hrs      |      -hr       |     -hr     |
-| Table Template                |    H     |     3 hrs      |      -hr       |     -hr     |
-| Vue.js                        |    M     |     3 hrs      |       hr       |     -hr     |
-| Average and totals            |    H     |     3 hrs      |      -hr       |     -hr     |
-| CSS (Bootstrap)               |    H     |      3hrs      |      -hr       |     -hr     |
-| Navigation Bar (mobile-first) |    L     |      1 hr      |      -hr       |     -hr     |
-| D3.js Chart                   |    H     |     2 hrs      |      -hr       |     -hr     |
-| Footer                        |    L     |      1 hr      |      -hr       |     -hr     |
-| Total                         |    H     |     23 hrs     |      -hrs      |    -hrs     |
+| Hamburger menu/Navbar (mobile-first)  |    H     |   1 hr      |     10 hrs       |     2 hrs     |
+| Sign In Modal                 |    H     |     3 hrs      |      3 hrs       |     1.5 hrs   |
+| Input Modal                   |    H     |     3 hrs      |      3 hrs       |     1.5 hrs   |
+| Table Template                |    H     |     3 hrs      |      10 hrs      |     5 hrs     |
+| Vue.js                        |    M     |     3 hrs      |      5 hrs       |     5 hrs     |
+| Average and totals            |    H     |     3 hrs      |      1hr       |     1 hr     |
+| CSS (Bootstrap & D3.js)       |    H     |      3hrs      |      17 hrs      |     8hrs     |
+| D3.js Chart & Table           |    H     |     2 hrs      |      10 hrs       |     10hrs     |
+| Total                         |    H     |     23 hrs     |      59 hrs      |    34 hrs     |
 
 #### PostMVP
 
-| Component                                      | Priority | Estimated Time | Time Invetsted | Actual Time |
+| Component                                      | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------------------------------------- | :------: | :------------: | :------------: | :---------: |
-| About, Contact, etc. for the Footer            |    L     |     2 hrs      |      -hr       |     -hr     |
-| More charts (line graph, bar chart, pie chart) |    L     |     4 hrs      |      -hr       |     -hr     |
+| About, Contact, etc. for the footer            |    L     |     2 hrs      |      8 hrs     |     12 hrs  |
+| More charts (line graph, bar chart)           |    L     |     4 hrs      |      -hr       |     -hr     |
 | Filter by month, year, etc.                    |    H     |     4 hrs      |      -hr       |     -hr     |
 | Sort by category                               |    H     |     4 hrs      |      -hr       |     -hr     |
-| Choose specific to look at                     |    H     |     4 hrs      |      -hr       |     -hr     |
-| Logo                                           |    L     |    2.5 hrs     |      -hr       |     -hr     |
-| Total                                          |    M     |    20.5 hrs    |      -hrs      |    -hrs     |
+| Choose specific category/date to look at       |    H     |     4 hrs      |      -hr       |     -hr     |
+| Logo                                           |    L     |    2.5 hrs     |      1 hr       |     1 hr     |
+| Refactoring | L | 10 hrs | -hrs | - hrs|
+| Total                                          |    M     |    30.5 hrs    |      9 hrs      |     13 hrs     |
 
 ## Additional Libraries
 
-- Vue.js
-- Bootstrap
-- D3.js
-- jQuery
+- Vue.js (DOM manipulation, fetch requests from the backend, display)
+- Bootstrap (design, light responsiveness, display)
+- D3.js (data visualization, creating responsive table & pie chart)
+- jQuery (Bootstrap functionality)
 
 ## Code Snippet
 
 Use this section to include a brief code snippet of functionality that you are proud of an a brief description
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+handleSignup: function () {
+      const URL = this.prodURL ? this.prodURL : this.devURL;
+      const user = JSON.stringify({
+        username: this.createUN,
+        password: this.createPW,
+      });
+      fetch(`${URL}/users`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: user,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            alert("sign up unsuccessful");
+          } else {
+            alert("signup successful");
+            this.user = data.user;
+            this.token = data.token;
+            this.loggedin = true;
+            budget.loggedin = true;
+            expense.loggedin = true;
+            expense.heading = `${login.user.username}'s Budget`;
+            this.loginPW = "";
+            this.loginUN = "";
+            budget.createBudget(data);
+            budget.userBudget();
+          }
+        });
+    }
 ```
 
 ## Issues and Resolutions
@@ -127,3 +162,25 @@ Use this section to list of all major issues encountered and their resolution.
 
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier  
 **RESOLUTION**: Missing comma after first object in sources {} object
+
+**ERROR**: BootstrapVue library had difficulty importing properly 
+**RESOLUTION**: Kept jQuery library for MVP, will refactor to write Bootstrap functionality in vanilla JS
+
+**ERROR**: Cannot use vanilla JS files in a project also using Vue.js
+**RESOLUTION**: kept jQuery library for MVP, will refactor to try vanilla JS as Vue.js methods
+
+**ERROR**: generating tables & charts in D3.js from fetch data  
+**RESOLUTION**: DOM manipulation with D3.js
+
+**ERROR**: Display buttons on login & signup
+**RESOLUTION**: use v-if in HTML
+
+**ERROR**: Have users be automatically logged in once signed up
+**RESOLUTION**: call handleLogin in handleSignup
+
+**ERROR**: Generate a budget under the hood upon signup
+**RESOLUTION**: call createBudget function in handleSignup
+
+**ERROR**: Display the user-specific budget & expenses upon signup
+**RESOLUTION**: create a Vue method to get budget by user ID
+
