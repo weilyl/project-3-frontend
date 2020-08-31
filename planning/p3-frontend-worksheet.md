@@ -107,8 +107,10 @@ Time frames are also key in the development cycle. You have limited time to code
 | Sort by category                               |    H     |     4 hrs      |      -hr       |     -hr     |
 | Choose specific category/date to look at       |    H     |     4 hrs      |      -hr       |     -hr     |
 | Logo                                           |    L     |    2.5 hrs     |      1 hr       |     1 hr     |
-| Refactoring | L | 10 hrs | -hrs | - hrs|
-| Total                                          |    M     |    30.5 hrs    |      9 hrs      |     13 hrs     |
+| Landing page                                        |    L     |    3 hrs     |      1 hr       |     2 hr     |
+| Animations                                           |    L     |    2 hrs     |      1 hr       |     1 hr     |
+| Refactoring                                     | L | 10 hrs | -hrs | - hrs|
+| Total                                          |    M     |     35.5 hrs    |      11 hrs      |     16 hrs     |
 
 ## Additional Libraries
 
@@ -154,6 +156,27 @@ handleSignup: function () {
           }
         });
     }
+```
+
+```
+rows
+    .selectAll("td.update")
+    // use a class so you don't re-select the existing <td> elements
+    .data(function (d) {
+      return [d];
+    })
+    .enter()
+    .append("td")
+    .attr("data-toggle", "modal")
+    .attr("data-target", "#updateExpenseModal")
+    .append("button")
+    .attr("class", "update")
+    .attr("id", function (d) {
+      return d.id;
+    })
+    .text("update")
+    .on("click", assignID);
+
 ```
 
 ## Issues and Resolutions
