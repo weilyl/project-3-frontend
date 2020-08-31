@@ -130,6 +130,35 @@
           </ul>
         </div>
       </nav>
+
+      <!-- LANDING PAGE BEGINS -->
+      <div id="landing" v-if="!loggedin">
+        <div class="hero">
+          <img src="css/assets/budget.svg" />
+          <div class="desc">
+            <h1 class="text-white active">Budgeting made simple</h1>
+            <p class="text-white active">
+              This finance tracker is a simple tool for users to visualize their
+              spending history. Sign up and begin to track your expenses
+              overtime. See what areas of your day-to-day life are consuming the
+              most of your resources.
+            </p>
+            <a
+              class="signup"
+              data-toggle="modal"
+              data-target="#modalRegisterForm"
+              >Sign up</a
+            >
+          </div>
+        </div>
+        <div id="uno-container">
+          <img class="pie-svg" id="uno" src="css/assets/pie_pieces.svg" />
+        </div>
+        <img class="pie-svg" id="dos" src="css/assets/pie_pieces.svg" />
+        <img class="pie-svg" id="tres" src="css/assets/pie_pieces.svg" />
+      </div>
+      <!-- LANDING PAGE ENDS -->
+
       <!-- SIGN UP MODAL FORM BEGINS -->
       <div
         class="modal fade"
@@ -393,6 +422,7 @@
     <div id="expense" v-if="loggedin">
       <!-- show Vue instance only when logged in -->
       <br />
+      <h3 v-if="loggedin">{{heading}}</h3>
       <!-- EXPENSE MODAL OPEN BUTTON BEGINS -->
       <div class="expense-buttons">
         <button
@@ -406,7 +436,7 @@
           Add Expense
         </button>
 
-        <button
+        <!-- <button
           type="button"
           class="btn btn-primary"
           id="get-expense"
@@ -414,7 +444,7 @@
           v-on:click="showExpense"
         >
           Show expenses
-        </button>
+        </button> -->
       </div>
       <!-- EXPENSE BUTTON END -->
 
@@ -641,11 +671,6 @@
       <!-- UPDATE EXPENSE MODAL ENDS-->
     </div>
     <!-- END OF EXPENSE MODAL & BUTTON -->
-
-    <div id="heading" v-bind:id="expense" v-if="loggedin">
-      <h3>{{heading}}</h3>
-    </div>
-    <script src="./js/vanilla.js"></script>
   </body>
 </html>
 

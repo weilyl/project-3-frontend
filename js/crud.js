@@ -122,6 +122,7 @@ const expense = new Vue({
     updatedExpDate: "",
     expense_id: null,
     loggedin: false,
+    heading: "",
     //token: null
   },
   methods: {

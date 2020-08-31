@@ -26,7 +26,20 @@ function pieMaker(data) {
   let w = 400, //width
     h = 400, //height
     r = 200, //radius
-    color = d3.scale.category20c(); //builtin range of colors
+    color = d3.scale
+      .ordinal()
+      .range([
+        "#80D1A1",
+        "#64A17D",
+        "#FFBB56",
+        "#8A8EF2",
+        "#4248C5",
+        "#FED18D",
+        "#436C54",
+        "#FDA015",
+        "#EEEEEE",
+        "#DDDDDD",
+      ]); //builtin range of colors
 
   $("#piechart").empty();
 
