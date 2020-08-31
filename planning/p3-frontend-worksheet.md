@@ -183,9 +183,6 @@ rows
 
 Use this section to list of all major issues encountered and their resolution.
 
-**ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier  
-**RESOLUTION**: Missing comma after first object in sources {} object
-
 **ERROR**: BootstrapVue library had difficulty importing properly 
 **RESOLUTION**: Kept jQuery library for MVP, will refactor to write Bootstrap functionality in vanilla JS
 
@@ -207,3 +204,8 @@ Use this section to list of all major issues encountered and their resolution.
 **ERROR**: Display the user-specific budget & expenses upon signup
 **RESOLUTION**: create a Vue method to get budget by user ID
 
+**ERROR**: Resizing D3 svg responsively
+**RESOLUTION**: use viewBox attribute
+
+**ERROR**: Font Awesome icons not displaying on table buttons (attempt at fitting table to mobile view)
+**RESOLUTION**: `<i>` and `<button>` don't work well together (EITHER `<i>` with `<a>` OR `<span>` with `<button>`), so horizontal scroll bar added to table
