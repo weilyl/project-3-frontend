@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Financial Tracker</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      body {
+        background-color: #091235;
+      }
+      .container marketing {
+        background-color:#050A30 ;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .fa {
+        font-size: 400px;
+        text-align: center;
+      }
+      .fa-instagram {
+        background: orangered;
+        font-size: 1000px;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
+
+  </head>
+  <body>
+    <header>
+      <nav
+      class="navbar navbar-expand-md navbar-dark"
+      style="background-color: #4248c5"
+    >
+      <img id="logo" src="./css/assets/budget.svg" />
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent"
+        aria-expanded="true"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarToggleExternalContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="text-white nav-item active">
+            <a class="nav-link text-white" href="index.html">Home</a>
+          </li>
+          <li class="text-white nav-item active">
+            <a class="nav-link text-white" href="about.html">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</header>
+
+<main role="main">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>About our project</h1>
+            <p>We help people keep track of their finances.This finance tracker is a simple tool for users to visualize their spending history. The front-end will be built using HTML, CSS, Vue.js, Bootstrap, and D3.js. Our users value a minimal layout and functionality to achieve their goals faster. Users will be able to make an account and sign in. Users will be able to store their expenses in a database, organized by date and category. Users will be able to exclusively access their own expenses. Users will be able to see their expenses as a table and as a chart. In future features, users will be able to log in using social media accounts, select dates, and select different types of charts.</p>
+            <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Why we do it</h1>
+            <p>Because so many people are struggling with their finances</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#000C66"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>Contact us on</h1>
+            <p>Social Media</p>
+            <p><a class="btn btn-lg btn-primary" href="https://www.instagram.com/squilliamfinancetracker" role="button">Instagram</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598539762/Screen_Shot_2020-08-27_at_10.49.09_AM_ni81xg.png" width="140" height="140">
+        <h2>William Clavell</h2>
+        <h6>Project Manager</h6>
+        <p>I am a creative and detail-oriented developer with a passion for coming up with functional and immersive solutions to problems. Having a background in finance and real estate, I've developed an analytical mindset, but at that same time, I am constantly working my creative side through logo and brand design. Instead of feeling half-fulfilled in one area, I am thrilled to collaborate and use both my logical and innovative thinking in tech to produce impactful results.</p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/williamclavell/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dd3nkph31/image/upload/v1598842146/GAProject03/WLcropped.jpg"  width="140" height="140" >
+        <h2>Weily lang</h2>
+        <h6>Git Master</h6>
+        <p>Junior software engineer with a background in biology, mathematics and chemistry.
+          My STEM background has thoroughly prepared me with analytical tools geared towards systemic, modular organization of information,
+          but I remain passionate about contributing to existing bodies of knowledge and building connections between people and opportunities.
+          Day to day, I am driven by curiosity and the thrill of finding solutions.</p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/weilylang/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540436/Screen_Shot_2020-08-27_at_11.00.22_AM_zuqop6.png"  width="140" height="140">
+        <h2>Nang Shen Hom(Rachel)</h2>
+        <p>I'm aspire Software Engineer.As an immigrant from Myanmar,I have a multi-cultural perspective in the world which I bring to the work that I do.I m recently enrolling in General Assembly Software Engineering Immersive Program. </p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/nang-shen-hom/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540510/Screen_Shot_2020-08-27_at_11.01.39_AM_d6911a.png"  width="140" height="140">
+        <h2>Brandon Balkaransingh</h2>
+        <p>I am a fullstack software engineer who enjoys being challenged in all aspects of life. I possess both creative and analytical skills as I previously worked in sales and the finacial services industry after graduating college as an English major, Philosophy minor. I am ambitious, hard-working, enjoy acquiring new skills, and possess strong problem solving skills. I strive to be the best version of myself and derive joy from accomplishing the completion of a task. In my spare time, I am a health-nut and avid videogame nerd who enjoys travelling; sports; nature; and my family, friends, and dog.</p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/brandon-balkaransingh23/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598540550/Screen_Shot_2020-08-27_at_11.02.17_AM_g8go3k.png"  width="140" height="140">
+        <h2>Eric Mestiza</h2>
+        <p>Aspiring software engineer and data scientist. A versatile technical professional with a multidisciplinary skill set:
+          • Experience with data visualization, data wrangling, probability, inference, & modeling with practical application
+          • Experience with implementing machine learning algorithms
+          • Knowledge of Python, SQL, R, JavaScript, HTML, CSS, GitHub, and Git
+          </p>
+        <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/eric-mestiza-040368143/" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598658639/Screen_Shot_2020-08-28_at_11.58.12_AM_x4uhyf.png" width="500" height="600">
+      </div>
+      <div class="col-md-5">
+        <img src="https://res.cloudinary.com/dcrioc0sw/image/upload/v1598630576/Screen_Shot_2020-08-28_at_11.57.45_AM_fw7nbl.png" width="500" height="500">
+      </div>
+    </div>
+
+    
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2020 Squilliam, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <a href = "https://www.instagram.com/squilliamfinancetracker"></i>
+
+  </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</html>
