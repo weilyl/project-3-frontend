@@ -209,3 +209,7 @@ Use this section to list of all major issues encountered and their resolution.
 
 **ERROR**: Font Awesome icons not displaying on table buttons (attempt at fitting table to mobile view)
 **RESOLUTION**: `<i>` and `<button>` don't work well together (EITHER `<i>` with `<a>` OR `<span>` with `<button>`), so horizontal scroll bar added to table
+
+
+**ERROR**: Mixed content warning for D3.js libraries
+**RESOLUTION**: Deployed front-end on `surge.sh` instead of `Netlify` or `github.io`
