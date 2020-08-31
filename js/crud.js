@@ -17,16 +17,12 @@ const budget = new Vue({
       // object from input
       // HTML v-model="budName" & v-model="budAmount"
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      // console.log(this.budName);
-      // console.log(this.budAmount);
       const newBudget = JSON.stringify({
         name: "Your Budget", // post-MVP : this.budName
         amount: 1000000000, // post-MVP: this.budAmount
         user_id: user.user.id, // post- MVP can use login.user_id == data.data.user_id as condition
       });
       // fetch request from budgets#create route
-      console.log(newBudget);
-      console.log(login.token);
       fetch(`${URL}/budgets`, {
         method: "POST",
         headers: {
@@ -38,10 +34,7 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          console.log(data.data.id);
           this.budget_id = data.data.id;
-          console.log("this is your new budget id ", this.budget_id);
           heading.heading = true;
           this.budName = "";
           this.budAmount = null;
@@ -57,9 +50,7 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("DATA: ", data.data[0].id);
           this.budget_id = data.data[0].id;
-          console.log("Is this the correct id? ", this.budget_id);
           expense.showExpense();
         });
     },
@@ -90,7 +81,6 @@ const budget = new Vue({
         amount: this.updatedBudAmount, // v-model="updatedBudName", etc
       };
       const budget_id = event.target.id;
-      console.log(editBudget);
       fetch(`${URL}/budgets/${this.budget_id}`, {
         method: "PUT",
         headers: {
@@ -102,7 +92,6 @@ const budget = new Vue({
         .then((response) => response.json())
         .then((data) => {
           this.showOneBudget();
-          console.log(data);
         });
     },
     //Delete the budget
@@ -133,6 +122,7 @@ const expense = new Vue({
     updatedExpDate: "",
     expense_id: null,
     loggedin: false,
+    heading: "",
     //token: null
   },
   methods: {
@@ -144,7 +134,6 @@ const expense = new Vue({
         date: this.expDate,
         amount: this.expAmount,
       });
-      console.log(`${URL}/budgets/${budget.budget_id}/expenses`);
 
       fetch(`${URL}/budgets/${budget.budget_id}/expenses`, {
         method: "POST",
@@ -154,7 +143,6 @@ const expense = new Vue({
         },
         body: newExpense,
       }).then((response) => {
-        console.log("created expense: ", newExpense);
         this.expCategory = "";
         this.expAmount = null;
         this.expDate = "";
@@ -164,10 +152,6 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      console.log(
-        "show route: ",
-        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`
-      );
       fetch(
         `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`,
         {
@@ -198,7 +182,6 @@ const expense = new Vue({
         .then((response) => response.json())
         .then((data) => {
           this.expense = data;
-          console.log(this.expense);
         });
     },
     //Update/edit the budget
@@ -210,11 +193,6 @@ const expense = new Vue({
         date: this.updatedExpDate,
         amount: this.updatedExpAmount,
       });
-      console.log(
-        this.updatedExpAmount,
-        this.updatedExpCategory,
-        this.updatedExpDate
-      );
       fetch(`${URL}/budgets/${budget.budget_id}/expenses/${event.target.id}`, {
         method: "PUT",
         headers: {
