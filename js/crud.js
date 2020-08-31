@@ -57,9 +57,7 @@ const budget = new Vue({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("DATA: ", data.data[0].id);
           this.budget_id = data.data[0].id;
-          console.log("Is this the correct id? ", this.budget_id);
           expense.showExpense();
         });
     },
@@ -133,6 +131,7 @@ const expense = new Vue({
     updatedExpDate: "",
     expense_id: null,
     loggedin: false,
+    heading: "",
     //token: null
   },
   methods: {
@@ -164,10 +163,6 @@ const expense = new Vue({
     //Show the budget
     showExpense: function () {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      console.log(
-        "show route: ",
-        `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`
-      );
       fetch(
         `${URL}/users/${login.user.id}/budgets/${budget.budget_id}/expenses`,
         {

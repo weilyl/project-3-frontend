@@ -114,6 +114,7 @@ h6 {
   top: 30em;
   left: 10em;
   animation: left-spin 4s linear infinite;
+  z-index: -1;
 }
 #tres {
   width: 100px;
@@ -122,6 +123,7 @@ h6 {
   left: 4em;
   transform: scaleX(-1);
   animation: right-spin 2s linear infinite;
+  z-index: -1;
 }
 
 /* table */

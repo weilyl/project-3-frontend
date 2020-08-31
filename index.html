@@ -422,6 +422,7 @@
     <div id="expense" v-if="loggedin">
       <!-- show Vue instance only when logged in -->
       <br />
+      <h3 v-if="loggedin">{{heading}}</h3>
       <!-- EXPENSE MODAL OPEN BUTTON BEGINS -->
       <div class="expense-buttons">
         <button

@@ -35,6 +35,7 @@ const login = new Vue({
             this.loggedin = true;
             budget.loggedin = true;
             expense.loggedin = true;
+            expense.heading = `${login.user.username}'s Budget`;
             this.loginPW = "";
             this.loginUN = "";
             budget.userBudget();
@@ -109,6 +110,7 @@ const login = new Vue({
             this.loggedin = true;
             budget.loggedin = true;
             expense.loggedin = true;
+            expense.heading = `${login.user.username}'s Budget`;
             this.loginPW = "";
             this.loginUN = "";
             budget.createBudget(data).then((promise) => {
@@ -153,6 +155,6 @@ const login = new Vue({
 const heading = new Vue({
   el: "#heading",
   data: {
-    heading: `${login.loginUN}'s ${budget.budName} Budget`,
+    heading: `${login.loginUN}'s Budget`,
   },
 });
