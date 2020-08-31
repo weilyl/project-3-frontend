@@ -133,16 +133,29 @@
 
       <!-- LANDING PAGE BEGINS -->
       <div id="landing" v-if="!loggedin">
-        <img src="css/assets/budget.svg" />
-        <div class="desc">
-          <h1 class="text-white active">Budgeting made simple</h1>
-          <p class="text-white active">
-            This finance tracker is a simple tool for users to visualize their
-            spending history. Sign up and begin to track your expenses overtime.
-            See what areas of your day-to-day life are consuming the most of
-            your resources.
-          </p>
+        <div class="hero">
+          <img src="css/assets/budget.svg" />
+          <div class="desc">
+            <h1 class="text-white active">Budgeting made simple</h1>
+            <p class="text-white active">
+              This finance tracker is a simple tool for users to visualize their
+              spending history. Sign up and begin to track your expenses
+              overtime. See what areas of your day-to-day life are consuming the
+              most of your resources.
+            </p>
+            <a
+              class="signup"
+              data-toggle="modal"
+              data-target="#modalRegisterForm"
+              >Sign up</a
+            >
+          </div>
         </div>
+        <div id="uno-container">
+          <img class="pie-svg" id="uno" src="css/assets/pie_pieces.svg" />
+        </div>
+        <img class="pie-svg" id="dos" src="css/assets/pie_pieces.svg" />
+        <img class="pie-svg" id="tres" src="css/assets/pie_pieces.svg" />
       </div>
       <!-- LANDING PAGE ENDS -->
 
