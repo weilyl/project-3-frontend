@@ -324,7 +324,7 @@
       <!-- post-post MVP -->
 
       <!-- BUDGET MODAL OPEN BUTTON BEGINS -->
-      <!-- <button
+      <!--button
         type="button"
         class="btn btn-primary add-expense"
         data-toggle="modal"
@@ -333,7 +333,7 @@
         data-dismiss="modal"
       >
         Create Budget
-      </button> -->
+      </button -->
       <!-- BUDGET MODAL OPEN BUTTON ENDS -->
 
       <!-- BUDGET MODAL BEGINS -->
@@ -450,7 +450,11 @@
 
       <div class="tables">
         <!-- TABLE STARTS HERE -->
-        <div id="table"></div>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm w-auto">
+            <div id="table"></div>
+          </table>
+        </div>
         <!-- TABLE ENDS HERE -->
 
         <!-- PIE CHART STARTS HERE -->
@@ -667,11 +671,6 @@
       <!-- UPDATE EXPENSE MODAL ENDS-->
     </div>
     <!-- END OF EXPENSE MODAL & BUTTON -->
-
-    <div id="heading" v-bind:id="expense" v-if="loggedin">
-      <h3>{{heading}}</h3>
-    </div>
-    <!-- <script src="./js/vanilla.js"></script> -->
   </body>
 </html>
 
